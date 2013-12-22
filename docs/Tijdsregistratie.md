@@ -2,3 +2,4 @@
 * 09-12-13 Martijn,Sven en Stefan: app ontwerpen en strokendiagram database afgerond. 
 * 12-12-13 Sven: Begin app
 * 16-12-13 Martijn, Sven en Stefan: app maken en database invullen
+* 22-12-13 Sven: DatabaseHandler class en server klaargezet
