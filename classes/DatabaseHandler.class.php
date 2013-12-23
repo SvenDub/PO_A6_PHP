@@ -23,7 +23,7 @@ class DatabaseHandler {
 		$host = 'localhost';
 		$user = 'inf_po';
 		$password = '6UEayPhcRr6bZZfX';
-		$database = 'inf_po';
+		$database = 'inf_kassa';
 		
 		// Maak verbinding
 		$this->con = new mysqli ( $host, $user, $password, $database );
