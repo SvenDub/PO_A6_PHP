@@ -1,6 +1,6 @@
 Ontwerpen
 ---
-- [ ] Database ontwerpen/maken
+- [x] Database ontwerpen/maken
 - [ ] Interface ontwerpen
 - [x] App ontwerpen
 
