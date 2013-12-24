@@ -1,7 +1,7 @@
 Ontwerpen
 ---
 - [x] Database ontwerpen/maken
-- [ ] Interface ontwerpen
+- [x] Interface ontwerpen
 - [x] App ontwerpen
 
 - [ ] Database handler class
