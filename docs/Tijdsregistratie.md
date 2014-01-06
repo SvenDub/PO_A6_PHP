@@ -4,3 +4,4 @@
 * 16-12-13 Martijn, Sven en Stefan: app maken en database invullen
 * 22-12-13 Sven: DatabaseHandler class en server klaargezet
 * 23-12-13 Martijn: database ontwerp maken; Sven: App BeheerTafel layout
+* 06-01-14 Joris, Martijn, Stefan en Sven: projectopzet tweede milestone. 
