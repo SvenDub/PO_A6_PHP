@@ -94,4 +94,10 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
+	
+	
+	
+	
+	
+	
 }
