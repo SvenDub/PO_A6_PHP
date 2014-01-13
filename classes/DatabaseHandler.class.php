@@ -133,8 +133,81 @@ class DatabaseHandler {
 		$stmt->close ();
 	}
 	
+	function product_toevoegen($productcode, $categorie, $gerecht, $prijs) {
+		// De te gebruiken query
+		$query = "INSERT INTO producten ( productcode, categorie, geerechtrecht, prijs )  VALUES ( ?, ?, ?, ? ) ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'issd', $productcode, $categorie, $gerecht, $prijs )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
 	
-	
+	function klant_toevoegen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+		// De te gebruiken query
+		$query = "INSERT INTO producten ( nummer, id, tafelnummer, aantal_klanten, actief, datum )  VALUES ( ?, ?, ?, ? ) ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'issd', $productcode, $categorie, $gerecht, $prijs )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
 	
 	
 }
