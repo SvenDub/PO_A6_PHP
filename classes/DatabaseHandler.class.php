@@ -95,6 +95,43 @@ class DatabaseHandler {
 		$stmt->close ();
 	}
 	
+	function personeel_toevoegen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
+		// De te gebruiken query
+		$query = "INSERT INTO inlogsysteem ( id, gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'issii', $id, $gebruikersnaam, $wachtwoord, $beheer, $actief )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
 	
 	
 	
