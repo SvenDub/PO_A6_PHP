@@ -7,3 +7,5 @@
 * 06-01-14 Joris, Martijn, Stefan en Sven: projectopzet derde milestone. 
 * 09-01-14 Joris, Martijn, Stefan en Sven: database ontwerp opnieuw maken en link app naar server maken 
 * 10-01-14 Joris, Martijn en Sven: database aanpassen, query's maken en link app naar server maken
+* 13-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
+* 16-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
