@@ -133,9 +133,9 @@ class DatabaseHandler {
 		$stmt->close ();
 	}
 	
-	function product_toevoegen($productcode, $categorie, $gerecht, $prijs) {
+	function product_toevoegen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
-		$query = "INSERT INTO producten ( productcode, categorie, geerechtrecht, prijs )  VALUES ( ?, ?, ?, ? ) ";
+		$query = "INSERT INTO producten ( productcode, categorie, geerechtrecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -144,7 +144,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'issd', $productcode, $categorie, $gerecht, $prijs )) {
+			if ($stmt->bind_param ( 'issdi', $productcode, $categorie, $gerecht, $prijs, $actief )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -380,9 +380,9 @@ class DatabaseHandler {
 		
 	}
 
-                 function product_wijzigen($productcode, $categorie, $gerecht, $prijs) {
+                 function product_wijzigen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
-		$query = "UPDATE producten ( productcode, categorie, geerechtrecht, prijs )  VALUES ( ?, ?, ?, ? ) 
+		$query = "UPDATE producten ( productcode, categorie, gerecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) 
 		          WHERE productcode=?";
 		
 		// Maak een nieuw statement
@@ -392,7 +392,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'issd', $productcode, $categorie, $gerecht, $prijs )) {
+			if ($stmt->bind_param ( 'issdi', $productcode, $categorie, $gerecht, $prijs, $actief )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -546,7 +546,7 @@ class DatabaseHandler {
 	}
                 function bestelling_wijzigen ($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
 		// De te gebruiken query
-		$query = "INSERT INTO bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
+		$query = "UPDATE bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
 		          WHERE bestellingnummer=?";
 		
 		// Maak een nieuw statement
@@ -557,6 +557,177 @@ class DatabaseHandler {
 			
 			// Voeg de parameters toe
 			if ($stmt->bind_param ( 'iiiissi', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+	
+		$stmt->close ();
+		
+		
+		
+	}
+
+                function bestelling_verwijderen ($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
+		// De te gebruiken query
+		$query = "DELETE FROM bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
+		          WHERE bestellingnummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'iiiissi', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+	
+		$stmt->close ();
+		
+		
+		
+	}
+                function tafelnummer_verwijderen($tafelnummer) {
+		// De te gebruiken query
+		$query = "DELETE FROM tafelnummer ( tafelnummer )  VALUES ( ? ) 
+		          WHERE tafelnummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $tafelnummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+	
+		$stmt->close ();
+		
+		
+		
+	}
+                function klant_verwijderen( $nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+		// De te gebruiken query
+		$query = "DELETE FROM tafelregistratie ( id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) 
+		          WHERE nummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'iiiisi',  $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer)) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+				   if ($stmt->affected_rows>0 )	{return true;}
+						
+				    else {return false;}       		
+					
+					
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+	
+		$stmt->close ();
+		
+		
+		
+	}
+                function klanten_totaal( $nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+		// De te gebruiken query
+		$query = "SELECT SUM(aantal_klanten) AS klanten_totaal
+		          FROM tafelregistratie 
+		          ;"
+		       
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'iiiisi',  $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer)) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
