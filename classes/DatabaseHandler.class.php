@@ -757,4 +757,149 @@ class DatabaseHandler {
 		
 		
 	}
+	
+	function tafelnummers() { $array = new Array ( );
+		// De te gebruiken query
+		$query = "SELECT tafelnummer FROM tafelnummer";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $tafelnummer )) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							array_push ($array, $tafelnummer);
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array ;
+	}
+
+
+function gerechtenpercategorie($categorie) { $array = new Array ( );
+		// De te gebruiken query
+		$query = "SELECT gerecht FROM producten WHERE categorie=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ("s", $categorie)) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $gerecht)) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							array_push ($array, $gerecht);
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array ;
+	}
+
+function bestellingpertafel($nummer) { $array = new Array ( );
+		// De te gebruiken query
+		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum FROM bestellingen 
+				WHERE nummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ("i" , $nummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum)) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							$bestelling = new Array('nummer'=> $nummer, 'bestellingnummer'=>$bestellingnummer, 'id'=>$id, 'productcode'=>$productcode, 'aantal_besteld'=>$aantal_besteld, 'opmerking'=>$opmerking, 'datum'=>$datum );
+							
+							array_push ($array, $bestelling);
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array ;
+	}
+
+
+	
 }
