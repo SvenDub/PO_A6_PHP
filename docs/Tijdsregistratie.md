@@ -10,3 +10,4 @@
 * 13-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
 * 16-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
 * 17-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
+* 27-01-14 Stefan en Sven: Link app naar server maken
