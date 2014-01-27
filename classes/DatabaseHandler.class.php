@@ -94,7 +94,6 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	
 	function personeel_toevoegen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
 		// De te gebruiken query
 		$query = "INSERT INTO inlogsysteem ( id, gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
@@ -111,11 +110,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -132,7 +133,6 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	
 	function product_toevoegen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
 		$query = "INSERT INTO producten ( productcode, categorie, geerechtrecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
@@ -149,11 +149,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -170,8 +172,7 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	
-	function klant_toevoegen( $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+	function klant_toevoegen($id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "INSERT INTO tafelregistratie (  id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) ";
 		
@@ -182,16 +183,18 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiis',  $id, $tafelnummer, $aantal_klanten, $actief, $datum )) {
+			if ($stmt->bind_param ( 'iiiis', $id, $tafelnummer, $aantal_klanten, $actief, $datum )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -206,11 +209,8 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
 	function tafelnummer_toevoegen($tafelnummer) {
 		// De te gebruiken query
@@ -228,11 +228,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -247,14 +249,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-	
-	function categorie_toevoegen( $categorienummer, $categorie) {
+	function categorie_toevoegen($categorienummer, $categorie) {
 		// De te gebruiken query
 		$query = "INSERT INTO categorie ( categorienummer, categorie )  VALUES ( ?, ? ) ";
 		
@@ -270,11 +268,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -289,13 +289,9 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-	
 	function bestelling_toevoegen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum) {
 		// De te gebruiken query
 		$query = "INSERT INTO bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) ";
@@ -312,11 +308,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -331,17 +329,14 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
 	function personeel_wijzigen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
 		// De te gebruiken query
 		$query = " UPDATE inlogsysteem ( id, gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ?, ? ) 
 		           WHERE id=?";
-		             
+		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
 		
@@ -354,11 +349,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -373,14 +370,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-
-                 function product_wijzigen($productcode, $categorie, $gerecht, $prijs, $actief) {
+	function product_wijzigen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
 		$query = "UPDATE producten ( productcode, categorie, gerecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) 
 		          WHERE productcode=?";
@@ -397,11 +390,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -418,7 +413,7 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-		function klant_wijzigen( $nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+	function klant_wijzigen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "UPDATE tafelregistratie ( id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) 
 		          WHERE nummer=?";
@@ -430,16 +425,18 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiisi',  $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer)) {
+			if ($stmt->bind_param ( 'iiiisi', $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -454,13 +451,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-                function tafelnummer_wijzigen($tafelnummer) {
+	function tafelnummer_wijzigen($tafelnummer) {
 		// De te gebruiken query
 		$query = "UPDATE tafelnummer ( tafelnummer )  VALUES ( ? ) 
 		          WHERE tafelnummer=?";
@@ -477,11 +471,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -496,13 +492,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-         	function categorie_wijzigen( $categorienummer, $categorie) {
+	function categorie_wijzigen($categorienummer, $categorie) {
 		// De te gebruiken query
 		$query = "UPDATE categorie ( categorienummer, categorie )  VALUES ( ?, ? )
 		          WHERE categorienummer=?";
@@ -519,11 +512,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -538,13 +533,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-                function bestelling_wijzigen ($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
+	function bestelling_wijzigen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
 		// De te gebruiken query
 		$query = "UPDATE bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
 		          WHERE bestellingnummer=?";
@@ -561,11 +553,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -580,14 +574,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-
-                function bestelling_verwijderen ($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
+	function bestelling_verwijderen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
 		// De te gebruiken query
 		$query = "DELETE FROM bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
 		          WHERE bestellingnummer=?";
@@ -604,11 +594,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -623,13 +615,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-                function tafelnummer_verwijderen($tafelnummer) {
+	function tafelnummer_verwijderen($tafelnummer) {
 		// De te gebruiken query
 		$query = "DELETE FROM tafelnummer ( tafelnummer )  VALUES ( ? ) 
 		          WHERE tafelnummer=?";
@@ -646,11 +635,13 @@ class DatabaseHandler {
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -665,13 +656,10 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-                function klant_verwijderen( $nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+	function klant_verwijderen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "DELETE FROM tafelregistratie ( id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) 
 		          WHERE nummer=?";
@@ -683,16 +671,18 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiisi',  $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer)) {
+			if ($stmt->bind_param ( 'iiiisi', $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -707,18 +697,14 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-                function klanten_totaal( $nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+	function klanten_totaal($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "SELECT SUM(aantal_klanten) AS klanten_totaal
 		          FROM tafelregistratie 
 		          ";
-		       
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -727,16 +713,18 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiisi',  $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer)) {
+			if ($stmt->bind_param ( 'iiiisi', $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
-				   if ($stmt->affected_rows>0 )	{return true;}
-						
-				    else {return false;}       		
-					
-					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -751,14 +739,11 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-	
+		
 		$stmt->close ();
-		
-		
-		
 	}
-	
-	function tafelnummers() { $array = array ( );
+	function tafelnummers() {
+		$array = array ();
 		// De te gebruiken query
 		$query = "SELECT tafelnummer FROM tafelnummer";
 		
@@ -769,7 +754,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( )) {
+			if ($stmt->bind_param ()) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -779,7 +764,7 @@ class DatabaseHandler {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
-							array_push ($array, $tafelnummer);
+							array_push ( $array, $tafelnummer );
 							// Doe iets met de resultaten
 						}
 					} else {
@@ -801,11 +786,10 @@ class DatabaseHandler {
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
-		return $array ;
+		return $array;
 	}
-
-
-function gerechtenpercategorie($categorie) { $array = array ( );
+	function gerechtenpercategorie($categorie) {
+		$array = array ();
 		// De te gebruiken query
 		$query = "SELECT gerecht FROM producten WHERE categorie=?";
 		
@@ -816,17 +800,17 @@ function gerechtenpercategorie($categorie) { $array = array ( );
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ("s", $categorie)) {
+			if ($stmt->bind_param ( "s", $categorie )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
 					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $gerecht)) {
+					if ($stmt->bind_result ( $gerecht )) {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
-							array_push ($array, $gerecht);
+							array_push ( $array, $gerecht );
 							// Doe iets met de resultaten
 						}
 					} else {
@@ -848,10 +832,10 @@ function gerechtenpercategorie($categorie) { $array = array ( );
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
-		return $array ;
+		return $array;
 	}
-
-function bestellingpertafel($nummer) { $array = array ( );
+	function bestellingpertafel($nummer) {
+		$array = array ();
 		// De te gebruiken query
 		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum FROM bestellingen 
 				WHERE nummer=?";
@@ -863,19 +847,27 @@ function bestellingpertafel($nummer) { $array = array ( );
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ("i" , $nummer )) {
+			if ($stmt->bind_param ( "i", $nummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
 					
 					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum)) {
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum )) {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
-							$bestelling = array('nummer'=> $nummer, 'bestellingnummer'=>$bestellingnummer, 'id'=>$id, 'productcode'=>$productcode, 'aantal_besteld'=>$aantal_besteld, 'opmerking'=>$opmerking, 'datum'=>$datum );
+							$bestelling = array (
+									'nummer' => $nummer,
+									'bestellingnummer' => $bestellingnummer,
+									'id' => $id,
+									'productcode' => $productcode,
+									'aantal_besteld' => $aantal_besteld,
+									'opmerking' => $opmerking,
+									'datum' => $datum 
+							);
 							
-							array_push ($array, $bestelling);
+							array_push ( $array, $bestelling );
 							// Doe iets met de resultaten
 						}
 					} else {
@@ -897,9 +889,6 @@ function bestellingpertafel($nummer) { $array = array ( );
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
-		return $array ;
+		return $array;
 	}
-
-
-	
 }
