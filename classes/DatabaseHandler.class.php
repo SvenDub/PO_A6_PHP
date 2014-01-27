@@ -717,7 +717,7 @@ class DatabaseHandler {
 		// De te gebruiken query
 		$query = "SELECT SUM(aantal_klanten) AS klanten_totaal
 		          FROM tafelregistratie 
-		          ;"
+		          ";
 		       
 		
 		// Maak een nieuw statement
@@ -758,7 +758,7 @@ class DatabaseHandler {
 		
 	}
 	
-	function tafelnummers() { $array = new Array ( );
+	function tafelnummers() { $array = array ( );
 		// De te gebruiken query
 		$query = "SELECT tafelnummer FROM tafelnummer";
 		
@@ -805,7 +805,7 @@ class DatabaseHandler {
 	}
 
 
-function gerechtenpercategorie($categorie) { $array = new Array ( );
+function gerechtenpercategorie($categorie) { $array = array ( );
 		// De te gebruiken query
 		$query = "SELECT gerecht FROM producten WHERE categorie=?";
 		
@@ -851,7 +851,7 @@ function gerechtenpercategorie($categorie) { $array = new Array ( );
 		return $array ;
 	}
 
-function bestellingpertafel($nummer) { $array = new Array ( );
+function bestellingpertafel($nummer) { $array = array ( );
 		// De te gebruiken query
 		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum FROM bestellingen 
 				WHERE nummer=?";
@@ -873,7 +873,7 @@ function bestellingpertafel($nummer) { $array = new Array ( );
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
-							$bestelling = new Array('nummer'=> $nummer, 'bestellingnummer'=>$bestellingnummer, 'id'=>$id, 'productcode'=>$productcode, 'aantal_besteld'=>$aantal_besteld, 'opmerking'=>$opmerking, 'datum'=>$datum );
+							$bestelling = array('nummer'=> $nummer, 'bestellingnummer'=>$bestellingnummer, 'id'=>$id, 'productcode'=>$productcode, 'aantal_besteld'=>$aantal_besteld, 'opmerking'=>$opmerking, 'datum'=>$datum );
 							
 							array_push ($array, $bestelling);
 							// Doe iets met de resultaten
