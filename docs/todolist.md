@@ -7,7 +7,7 @@ Ontwerpen
 - [ ] Database handler class
 - [ ] Inlogsysteem maken
 - [ ] Link database naar app
-- [ ] Inlogsysteem android app
+- [x] Inlogsysteem android app
 - [ ] Liveticker keuken
 - [ ] Bestellingen aanmaken
 - [ ] Betalen app

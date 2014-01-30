@@ -11,3 +11,5 @@
 * 16-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
 * 17-01-14 Joris, Martijn, Stefan en Sven: query's maken en link app naar server maken
 * 27-01-14 Stefan en Sven: Link app naar server maken
+* 29-01-14 Sven: Link app naar server maken
+* 30-01-14 Joris, Martijn, Stefan en Sven: liveticker en inlogsysteem 
