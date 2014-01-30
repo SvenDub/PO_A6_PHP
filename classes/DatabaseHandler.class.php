@@ -896,7 +896,7 @@ class DatabaseHandler {
 	 *
 	 * @param String $gebruikersnaam        	
 	 * @param String $wachtwoord        	
-	 * @return array|boolean Array met de gegevens van de gebruiker bij succes, anders false
+	 * @return array boolean met de gegevens van de gebruiker bij succes, anders false
 	 */
 	function controleerLogin($gebruikersnaam, $wachtwoord) {
 		$array = array ();
@@ -952,5 +952,63 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 		return $array;
+	}
+	/**
+	 * Voegt een gebruiker toe aan de database.
+	 *
+	 * @param String $gebruikersnaam        	
+	 * @param String $wachtwoord        	
+	 * @param boolean $beheer
+	 *        	True voor beheerder.
+	 * @param boolean $actief
+	 *        	True voor actieve gebruiker.
+	 */
+	function voegGebruikerToe($gebruikersnaam, $wachtwoord, $beheer, $actief) {
+		$success = false;
+		
+		$salt = sprintf ( "$2a$%02d$", 10 ) . strtr ( base64_encode ( mcrypt_create_iv ( 16, MCRYPT_DEV_URANDOM ) ), '+', '.' ); // Password salt
+		
+		$hash = crypt ( $password, $salt ); // Encrypt wachtwoord
+		
+		$query = "INSERT INTO inlogsysteem (gebruikersnaam, wachtwoord, beheer, actief) VALUES (?,?,?,?)";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'ssii', $gebruikersnaam, $hash, $beheer, $actief )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						$success = true;
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		if ($success) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
