@@ -891,4 +891,66 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $array;
 	}
+	/**
+	 * Controleert de inloggegevens.
+	 *
+	 * @param String $gebruikersnaam        	
+	 * @param String $wachtwoord        	
+	 * @return array|boolean Array met de gegevens van de gebruiker bij succes, anders false
+	 */
+	function controleerLogin($gebruikersnaam, $wachtwoord) {
+		$array = array ();
+		// De te gebruiken query
+		$query = "SELECT id, gebruikersnaam, wachtwoord, beheer, actief FROM inlogsysteem WHERE gebruikersnaam=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( "i", $nummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $id, $db_gebruikersnaam, $db_wachtwoord, $beheer, $actief )) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							if (crypt ( $wachtwoord, $db_wachtwoord ) == $db_wachtwoord) {
+								$array = array (
+										'id' => $id,
+										'gebruikersnaam' => $db_gebruikersnaam,
+										'beheer' => $beheer,
+										'actief' => $actief 
+								);
+							} else {
+								$array = false;
+							}
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array;
+	}
 }
