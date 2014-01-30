@@ -536,9 +536,9 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	function bestelling_wijzigen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
+	function bestelling_wijzigen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer, $status) {
 		// De te gebruiken query
-		$query = "UPDATE bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
+		$query = "UPDATE bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum, status )  VALUES ( ?, ?, ?, ?, ?, ?, ? ) 
 		          WHERE bestellingnummer=?";
 		
 		// Maak een nieuw statement
@@ -548,7 +548,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiissi', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer )) {
+			if ($stmt->bind_param ( 'iiiissii', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer, $status )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -577,10 +577,9 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	function bestelling_verwijderen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer) {
+	function bestelling_verwijderen($bestellingnummer) {
 		// De te gebruiken query
-		$query = "DELETE FROM bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) 
-		          WHERE bestellingnummer=?";
+		$query = "DELETE FROM bestellingen WHERE bestellingnummer=?";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -589,7 +588,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiissi', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer )) {
+			if ($stmt->bind_param ( 'i', $bestellingnummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -620,8 +619,7 @@ class DatabaseHandler {
 	}
 	function tafelnummer_verwijderen($tafelnummer) {
 		// De te gebruiken query
-		$query = "DELETE FROM tafelnummer ( tafelnummer )  VALUES ( ? ) 
-		          WHERE tafelnummer=?";
+		$query = "DELETE FROM tafelnummer WHERE tafelnummer=?";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -659,10 +657,9 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	function klant_verwijderen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+	function klant_verwijderen($nummer) {
 		// De te gebruiken query
-		$query = "DELETE FROM tafelregistratie ( id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) 
-		          WHERE nummer=?";
+		$query = "DELETE FROM tafelregistratie WHERE nummer=?";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -671,7 +668,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iiiisi', $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer )) {
+			if ($stmt->bind_param ( 'i', $nummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
