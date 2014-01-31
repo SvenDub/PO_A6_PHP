@@ -834,7 +834,7 @@ class DatabaseHandler {
 	function bestellingpertafel($nummer) {
 		$array = array ();
 		// De te gebruiken query
-		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum FROM bestellingen 
+		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum, status FROM bestellingen 
 				WHERE nummer=?";
 		
 		// Maak een nieuw statement
@@ -862,6 +862,7 @@ class DatabaseHandler {
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
 									'datum' => $datum 
+									'status' => $status
 							);
 							
 							array_push ( $array, $bestelling );
@@ -1049,4 +1050,62 @@ class DatabaseHandler {
 			return false;
 		}
 	}
+	
+	function alle_bestellingen($status) {
+		// De te gebruiken query
+		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum, status FROM bestellingen WHERE status=? ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $status )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $status )) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							$bestelling = array (
+									'nummer' => $nummer,
+									'bestellingnummer' => $bestellingnummer,
+									'id' => $id,
+									'productcode' => $productcode,
+									'aantal_besteld' => $aantal_besteld,
+									'opmerking' => $opmerking,
+									'datum' => $datum
+									'status' => $dbstatus
+							);
+							
+							array_push ( $array, $bestelling );
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
+	
+	
 }
