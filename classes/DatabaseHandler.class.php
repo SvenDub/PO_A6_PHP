@@ -850,7 +850,7 @@ class DatabaseHandler {
 				if ($stmt->execute ()) {
 					
 					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum )) {
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $status )) {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
@@ -861,7 +861,7 @@ class DatabaseHandler {
 									'productcode' => $productcode,
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
-									'datum' => $datum 
+									'datum' => $datum,
 									'status' => $status
 							);
 							
@@ -977,7 +977,7 @@ class DatabaseHandler {
 					// Verwijs naar loginpagina
 					$_SESSION = array();
 					session_destroy();
-					\header ( 'Location: /' );
+					header ( 'Location: /' );
 				}
 			} else { // Geen logingegevens gevonden, verwijs naar loginpagina
 				$_SESSION = array();
@@ -1068,7 +1068,7 @@ class DatabaseHandler {
 				if ($stmt->execute ()) {
 					
 					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $status )) {
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $dbstatus )) {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
@@ -1079,7 +1079,7 @@ class DatabaseHandler {
 									'productcode' => $productcode,
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
-									'datum' => $datum
+									'datum' => $datum,
 									'status' => $dbstatus
 							);
 							
