@@ -94,45 +94,6 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	function personeel_toevoegen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
-		// De te gebruiken query
-		$query = "INSERT INTO inlogsysteem ( id, gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
-		
-		// Maak een nieuw statement
-		$stmt = $this->con->stmt_init ();
-		
-		// Bereid de query voor
-		if ($stmt->prepare ( $query )) {
-			
-			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'issii', $id, $gebruikersnaam, $wachtwoord, $beheer, $actief )) {
-				
-				// Voer de query uit
-				if ($stmt->execute ()) {
-					
-					if ($stmt->affected_rows > 0) {
-						return true;
-					} 
-
-					else {
-						return false;
-					}
-				} else {
-					// Verwerk errors
-					echo $stmt->error;
-				}
-			} else {
-				// Verwerk errors
-				echo $stmt->error;
-			}
-		} else {
-			// Verwerk errors
-			echo $stmt->error;
-		}
-		
-		// Sluit het statement om geheugen vrij te geven
-		$stmt->close ();
-	}
 	function product_toevoegen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
 		$query = "INSERT INTO producten ( productcode, categorie, geerechtrecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
@@ -908,7 +869,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( "i", $nummer )) {
+			if ($stmt->bind_param ( "s", $gebruikersnaam )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -1107,5 +1068,62 @@ class DatabaseHandler {
 		$stmt->close ();
 	}
 	
-	
+	/**
+	 * Haalt de gegevens van een personeelslid.
+	 *
+	 * @param String $gebruikersnaam
+	 *        	De gebruikersnaam van het personeelslid.
+	 * @return array De gegevens van het personeelslid.
+	 */
+	function getPersoneelByGebruikersnaam($gebruikersnaam) {
+		// De te gebruiken query
+		$query = "SELECT id, beheer, actief FROM inlogsysteem WHERE gebruikersnaam=? ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 's', $gebruikersnaam )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+						
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $id, $beheer, $actief )) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						if ($stmt->fetch ()) {
+							$personeel = array (
+									'id' => $id,
+									'gebruikersnaam' => $gebruikersnaam,
+									'beheer' => $beheer,
+									'actief' => $actief 
+							);
+							
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $personeel;
+	}
 }

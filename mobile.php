@@ -34,7 +34,34 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 	
 	// TODO: Verwerk verzoek
 	switch ($tag) {
+		case 'login' :
+			
+			// Login
+			
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
+				
+				$gebruiker = $db->getPersoneelByGebruikersnaam ( $gebruikersnaam );
+				
+				$response ['user'] ['id'] = $gebruiker ['id'];
+				$response ['user'] ['gebruikersnaam'] = $gebruikersnaam;
+				$response ['user'] ['wachtwoord'] = $wachtwoord;
+				$response ['user'] ['beheer'] = $gebruiker ['beheer'];
+				$response ['user'] ['actief'] = $gebruiker ['actief'];
+				
+				$response ['success'] = 1;
+				
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggegevens incorrect.';
+				
+			}
+			break;
 	}
+	
+	// Stuur antwoord
+	echo json_encode ( $response );
+	
 } else {
 	
 	// Geen tag meegestuurd, geef error terug
