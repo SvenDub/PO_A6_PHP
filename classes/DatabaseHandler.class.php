@@ -951,6 +951,47 @@ class DatabaseHandler {
 		return $array;
 	}
 	/**
+	 * Logt de gebruiker in als er logingegevens zijn gevonden.
+	 * 
+	 * Laat een loginscherm zien als er nog niet ingelogd is.
+	 */
+	function login() {
+		session_start();
+		if (isset ( $_GET ['logout'] )) { // Log de gebruiker uit
+			$_SESSION = array();
+			session_destroy();
+			header ( 'Location: /' );
+		} elseif (! isset($_SESSION['logged_in']) || ! $_SESSION['logged_in']) { // Gebruiker is niet ingelogd
+			if (isset ($_POST['login']['username']) && isset($_POST['login']['password'])) { // Login data found
+				$username = $_POST['login']['username'];
+				$password = $_POST['login']['password'];
+				if ($db->checkAuth($username, $password)) { // Controleer logingegevens
+					// OK!
+					session_regenerate_id();
+					$session = session_get_cookie_params();
+					setcookie(session_name(), session_id(), $session['lifetime'], $session['path'], $session['domain'], false, true );
+					$_SESSION['logged_in'] = 1;
+					$_SESSION['username'] = $username;
+				} else {
+					// Verwijs naar loginpagina
+					$_SESSION = array();
+					session_destroy();
+					\header ( 'Location: /' );
+				}
+			} else { // Geen logingegevens gevonden, verwijs naar loginpagina
+				$_SESSION = array();
+				session_destroy();
+				require_once '/login.php';
+				die();
+			}
+			} else {
+				// Gebruiker is ingelogd, vernieuw sessie voor de veiligheid
+				session_regenerate_id();
+				$session = session_get_cookie_params();
+				setcookie(session_name(), session_id(), $session['lifetime'], $session['path'], $session['domain'], false, true );
+			}
+	}
+	/**
 	 * Voegt een gebruiker toe aan de database.
 	 *
 	 * @param String $gebruikersnaam        	
