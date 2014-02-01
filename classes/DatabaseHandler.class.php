@@ -915,6 +915,11 @@ class DatabaseHandler {
 	/**
 	 * Logt de gebruiker in als er logingegevens zijn gevonden.
 	 * 
+	 * De logingegevens moeten via een POST request ingevoerd worden in het volgende formaat:
+	 * <code>
+	 * $_POST['login']['gebruikersnaam'] = $gebruikersnaam;
+	 * $_POST['login']['wachtwoord'] = $wachtwoord;
+	 * </code>
 	 * Laat een loginscherm zien als er nog niet ingelogd is.
 	 */
 	function login() {
@@ -924,16 +929,16 @@ class DatabaseHandler {
 			session_destroy();
 			header ( 'Location: /' );
 		} elseif (! isset($_SESSION['logged_in']) || ! $_SESSION['logged_in']) { // Gebruiker is niet ingelogd
-			if (isset ($_POST['login']['username']) && isset($_POST['login']['password'])) { // Login data found
-				$username = $_POST['login']['username'];
-				$password = $_POST['login']['password'];
-				if ($db->checkAuth($username, $password)) { // Controleer logingegevens
+			if (isset ($_POST['login']['gebruikersnaam']) && isset($_POST['login']['wachtwoord'])) { // Login data found
+				$gebruikersnaam = $_POST['login']['gebruikersnaam'];
+				$wachtwoord = $_POST['login']['wachtwoord'];
+				if ($db->checkAuth($gebruikersnaam, $wachtwoord)) { // Controleer logingegevens
 					// OK!
 					session_regenerate_id();
 					$session = session_get_cookie_params();
 					setcookie(session_name(), session_id(), $session['lifetime'], $session['path'], $session['domain'], false, true );
 					$_SESSION['logged_in'] = 1;
-					$_SESSION['username'] = $username;
+					$_SESSION['gebruikersnaam'] = $gebruikersnaam;
 				} else {
 					// Verwijs naar loginpagina
 					$_SESSION = array();
