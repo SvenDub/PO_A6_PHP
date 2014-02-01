@@ -57,6 +57,13 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				
 			}
 			break;
+		default:
+			
+			// Onbekende tag, geef error terug
+			
+			$response ['error_msg'] = 'Tag niet gevonden.';
+			$response ['error'] = 1;
+			
 	}
 	
 	// Stuur antwoord
