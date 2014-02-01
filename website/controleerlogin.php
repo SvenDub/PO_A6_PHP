@@ -11,7 +11,6 @@
 
 require_once('../classes/DatabaseHandler.class.php');
 $db=new DatabaseHandler(); 
-$db->controleerLogin($gebruikersnaam, $wachtwoord);
 
 $_POST['login']['gebruikersnaam'] = $gebruikersnaam;
 $_POST['login']['wachtwoord'] = $wachtwoord;
