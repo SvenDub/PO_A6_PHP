@@ -8,7 +8,7 @@ Ontwerpen
 - [ ] Inlogsysteem maken
 - [ ] Link database naar app
 - [x] Inlogsysteem android app
-- [ ] Liveticker keuken
+- [x] Liveticker keuken
 - [ ] Bestellingen aanmaken
 - [ ] Betalen app
 
