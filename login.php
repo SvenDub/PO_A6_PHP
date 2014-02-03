@@ -7,7 +7,18 @@
 </head>
 <body>
 <h1> Inloggen</h1>
-
+<?php 
+if (isset($_GET['error'])) {
+	switch ($_GET['error']) {
+		case 1:
+			echo '<p>De ingevoerde gegevens zijn niet correct.</p>';
+			break;
+		default:
+			echo '<p>Er is een fout opgetreden.</p>';
+			break;
+	}
+}
+?>
 
 <form name="inloggen" method="post" action="/po_kassa/product">
 Gebruikersnaam:

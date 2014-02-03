@@ -943,7 +943,7 @@ class DatabaseHandler {
 					// Verwijs naar loginpagina
 					$_SESSION = array();
 					session_destroy();
-					header ( 'Location: /' );
+					header ( 'Location: /?error=1' );
 				}
 			} else { // Geen logingegevens gevonden, verwijs naar loginpagina
 				$_SESSION = array();
