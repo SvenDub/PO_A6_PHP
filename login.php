@@ -9,12 +9,12 @@
 <h1> Inloggen</h1>
 
 
-<form name="inloggen" method="post" action="controleerlogin.php">
+<form name="inloggen" method="post" action="/">
 Gebruikersnaam:
-<input name="gebruikersnaam" type="text" id="gebruikersnaam">
+<input name="login[gebruikersnaam]" type="text" id="gebruikersnaam">
 <br />
 Wachtwoord:    
-<input name="wachtwoord" type="password" id="wachtwoord">
+<input name="login[wachtwoord]" type="password" id="wachtwoord">
 <br />
 <input type="submit" name="Submit" value="Inloggen">
 </form>
