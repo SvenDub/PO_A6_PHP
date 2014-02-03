@@ -9,7 +9,7 @@
 <h1> Inloggen</h1>
 
 
-<form name="inloggen" method="post" action="/">
+<form name="inloggen" method="post" action="/po_kassa/product">
 Gebruikersnaam:
 <input name="login[gebruikersnaam]" type="text" id="gebruikersnaam">
 <br />
