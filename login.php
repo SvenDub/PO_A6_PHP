@@ -20,7 +20,7 @@ if (isset($_GET['error'])) {
 }
 ?>
 
-<form name="inloggen" method="post" action="/po_kassa/product">
+<form name="inloggen" method="post" action="">
 Gebruikersnaam:
 <input name="login[gebruikersnaam]" type="text" id="gebruikersnaam">
 <br />
