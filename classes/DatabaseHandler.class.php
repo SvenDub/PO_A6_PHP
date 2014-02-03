@@ -948,7 +948,7 @@ class DatabaseHandler {
 			} else { // Geen logingegevens gevonden, verwijs naar loginpagina
 				$_SESSION = array();
 				session_destroy();
-				require_once '/login.php';
+				require_once 'login.php';
 				die();
 			}
 			} else {
