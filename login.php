@@ -20,16 +20,15 @@ if (isset($_GET['error'])) {
 }
 ?>
 
-<form name="inloggen" method="post" action="">
+<form name="inloggen" method="post" action="?">
 Gebruikersnaam:
-<input name="login[gebruikersnaam]" type="text" id="gebruikersnaam">
+<input name="login[gebruikersnaam]" type="text" id="gebruikersnaam" />
 <br />
 Wachtwoord:    
-<input name="login[wachtwoord]" type="password" id="wachtwoord">
+<input name="login[wachtwoord]" type="password" id="wachtwoord" />
 <br />
-<input type="submit" name="Submit" value="Inloggen">
+<input type="submit" name="Submit" value="Inloggen" />
 </form>
-<!-- met een formulier wordt de gebruikersnaam en wachtwoord gevraagd om te kunnen inloggen -->
 
 </body>
 </html>
