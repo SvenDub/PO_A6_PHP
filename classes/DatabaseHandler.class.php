@@ -707,27 +707,20 @@ class DatabaseHandler {
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
-		
-		// Bereid de query voor
+			
+			// Bereid de query voor
 		if ($stmt->prepare ( $query )) {
 			
-			// Voeg de parameters toe
-			if ($stmt->bind_param ()) {
+			// Voer de query uit
+			if ($stmt->execute ()) {
 				
-				// Voer de query uit
-				if ($stmt->execute ()) {
+				// Bind de resultaten aan variabelen
+				if ($stmt->bind_result ( $tafelnummer )) {
 					
-					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $tafelnummer )) {
-						
-						// Haal alle resultaten op een loop er doorheen
-						while ( $stmt->fetch () ) {
-							array_push ( $array, $tafelnummer );
-							// Doe iets met de resultaten
-						}
-					} else {
-						// Verwerk errors
-						echo $stmt->error;
+					// Haal alle resultaten op een loop er doorheen
+					while ( $stmt->fetch () ) {
+						array_push ( $array, $tafelnummer );
+						// Doe iets met de resultaten
 					}
 				} else {
 					// Verwerk errors
@@ -1189,5 +1182,57 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 		return $beheer;
+	}
+	/**
+	 * Geeft aan of een tafel bezet is.
+	 * 
+	 * @param int $tafelnummer Het nummer van de tafel.
+	 * @return boolean True als de tafel bezet is.
+	 */
+	function isTafelBezet($tafelnummer) {
+		
+		$bezet = false;
+		
+		// De te gebruiken query
+		$query = "SELECT * FROM tafelregistratie WHERE tafelnummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+		
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $tafelnummer )) {
+		
+				// Voer de query uit
+				if ($stmt->execute ()) {
+		
+					// Sla het resultaat op
+					$stmt->store_result();
+					
+					// Tel het aantal rijen
+					if ($stmt->num_rows == 0) {
+						$bezet = false;
+					} else {
+						$bezet = true;
+					}
+		
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $bezet;
 	}
 }

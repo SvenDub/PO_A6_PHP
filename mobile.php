@@ -57,6 +57,36 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				
 			}
 			break;
+		case 'tafel_status':
+				
+				// Tafel status
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
+				
+				// Haal alle tafels op
+				$tafels = $db->tafelnummers ();
+								
+				foreach ( $tafels as $id ) {
+					
+					// Kijk bij elke tafel of deze bezet is
+					if ($db->isTafelBezet ( $id )) {
+						$status = 1;
+					} else {
+						$status = 0;
+					}
+					
+					$response ['tafels'] [$id] = $status;
+				}
+				
+				$response ['success'] = 1;
+				
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggegevens incorrect.';
+				
+			}
+			
+			break;
 		default:
 			
 			// Onbekende tag, geef error terug
