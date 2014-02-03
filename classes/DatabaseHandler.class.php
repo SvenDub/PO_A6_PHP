@@ -927,7 +927,7 @@ class DatabaseHandler {
 		if (isset ( $_GET ['logout'] )) { // Log de gebruiker uit
 			$_SESSION = array();
 			session_destroy();
-			header ( 'Location: /' );
+			header ( 'Location: ?' );
 		} elseif (! isset($_SESSION['logged_in']) || ! $_SESSION['logged_in']) { // Gebruiker is niet ingelogd
 			if (isset ($_POST['login']['gebruikersnaam']) && isset($_POST['login']['wachtwoord'])) { // Login data found
 				$gebruikersnaam = $_POST['login']['gebruikersnaam'];
@@ -943,7 +943,7 @@ class DatabaseHandler {
 					// Verwijs naar loginpagina
 					$_SESSION = array();
 					session_destroy();
-					header ( 'Location: /?error=1' );
+					header ( 'Location: ?error=1' );
 				}
 			} else { // Geen logingegevens gevonden, verwijs naar loginpagina
 				$_SESSION = array();
@@ -1018,6 +1018,7 @@ class DatabaseHandler {
 	}
 	
 	function alle_bestellingen($status) {
+		$array = array();
 		// De te gebruiken query
 		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum, status FROM bestellingen WHERE status=? ";
 		
