@@ -932,7 +932,7 @@ class DatabaseHandler {
 			if (isset ($_POST['login']['gebruikersnaam']) && isset($_POST['login']['wachtwoord'])) { // Login data found
 				$gebruikersnaam = $_POST['login']['gebruikersnaam'];
 				$wachtwoord = $_POST['login']['wachtwoord'];
-				if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) { // Controleer logingegevens
+				if (self::controleerLogin($gebruikersnaam, $wachtwoord)) { // Controleer logingegevens
 					// OK!
 					session_regenerate_id();
 					$session = session_get_cookie_params();
