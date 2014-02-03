@@ -11,5 +11,6 @@ $db->login();
 		<title>PO Kassasysteem</title>
 	</head>
 	<body>
+	<p>De website van uw kassasysteem</p>
 	</body>
 </html>
