@@ -1,3 +1,11 @@
+<?php
+
+require_once('../classes/DatabaseHandler.class.php');
+$db=new DatabaseHandler(); 
+
+$db->login();
+
+?>
 <!DOCTYPE html > 
 <html>
 <head>
@@ -13,8 +21,6 @@
 <table>
 <?php
 
-require_once('../classes/DatabaseHandler.class.php');
-$db=new DatabaseHandler(); 
 $resultaat=$db->alle_bestellingen(0);
 foreach($resultaat as $bestelling=>$data)
   {
