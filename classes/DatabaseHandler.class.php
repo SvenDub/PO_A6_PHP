@@ -1071,6 +1071,7 @@ class DatabaseHandler {
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
+		return $array;
 	}
 	
 	/**
