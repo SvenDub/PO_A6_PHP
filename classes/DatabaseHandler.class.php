@@ -1363,6 +1363,57 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		
 		$stmt->close ();
 	}
-
-
+	
+	/**
+	 * Haalt alle producten op.
+	 *
+	 * @return array Producten
+	 */
+	function getProducten() {
+		$array = array ();
+		// De te gebruiken query
+		$query = "SELECT productcode, categorienummer, gerecht, prijs, actief FROM producten";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voer de query uit
+			if ($stmt->execute ()) {
+				
+				// Bind de resultaten aan variabelen
+				if ($stmt->bind_result ( $productcode, $categorienummer, $gerecht, $prijs, $actief )) {
+					
+					// Haal alle resultaten op een loop er doorheen
+					while ( $stmt->fetch () ) {
+						$product = array (
+								'productcode' => $productcode,
+								'categorienummer' => $categorienummer,
+								'gerecht' => $gerecht,
+								'prijs' => $prijs,
+								'actief' => $actief 
+						);
+						
+						array_push ( $array, $product );
+						// Doe iets met de resultaten
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array;
+	}
 }

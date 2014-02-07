@@ -59,7 +59,8 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 			break;
 		case 'tafel_status':
 				
-				// Tafel status
+			// Tafel status
+				
 			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
 				
 				// Haal alle tafels op
@@ -85,7 +86,30 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$response ['error_msg'] = 'Inloggegevens incorrect.';
 				
 			}
+			break;
+		case 'producten':
 			
+			// Producten
+			
+			if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) {
+				
+				// Haal alle producten op
+				$producten = $db->getProducten();
+				
+				foreach ($producten as $i => $product) {
+					
+					$response ['producten'] [$i] = $product;
+					
+				}
+				
+				$response ['success'] = 1;
+				
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggegevens incorrect.';
+				
+			}
 			break;
 		default:
 			
