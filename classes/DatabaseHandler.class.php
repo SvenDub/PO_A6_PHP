@@ -1320,5 +1320,49 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		
 		$stmt->close ();
 	}
+}
+                 function omzetPerPeriode() {
+		// De te gebruiken query
+		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS omzet_per_periode
+		          FROM bestelllingen A, producten B
+		          WHERE (A.productcode = B.productcode) AND (A.datum BETWEEN ? AND ?)
+		          
+		          
+		          ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+		
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
+			
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		
+		$stmt->close ();
+	}
+
 
 }
