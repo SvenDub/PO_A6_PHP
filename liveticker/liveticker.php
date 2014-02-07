@@ -1,4 +1,5 @@
 <table>
+<tr><td>Nummer</td><td>Bestellignnummer</td><td>id</td><td>Productcode</td><td>Aantal Besteld</td><td>Opmerking</td><td>Datum</td><td>Status</td></tr>
 <?php
 require_once('../classes/DatabaseHandler.class.php');
 $db=new DatabaseHandler(); 
