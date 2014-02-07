@@ -19,6 +19,8 @@ $db->login();
 <h1> Liveticker </h1>
 <div id='liveticker'>
 <table>
+<tr><td>nummer</td><td>bestellignnummer</td><td>id</td><td>productcode</td><td>aantal_besteld</td><td>opmerking</td><td>datum</td><td>status</td></tr>
+
 <?php
 
 $resultaat=$db->alle_bestellingen(0);
