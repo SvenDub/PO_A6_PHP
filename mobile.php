@@ -94,12 +94,14 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 			if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) {
 				
 				// Haal alle producten op
-				$producten = $db->getProducten();
+				$producten = $db->getProducten ();
 				
-				foreach ($producten as $i => $product) {
+				foreach ( $producten as $product ) {
 					
-					$response ['producten'] [$i] = $product;
-					
+					$response ['producten'] [$product ['productcode']] ['categorienummer'] = $product ['categorienummer'];
+					$response ['producten'] [$product ['productcode']] ['gerecht'] = utf8_encode ( $product ['gerecht'] );
+					$response ['producten'] [$product ['productcode']] ['prijs'] = $product ['prijs'];
+					$response ['producten'] [$product ['productcode']] ['actief'] = $product ['actief'];
 				}
 				
 				$response ['success'] = 1;
