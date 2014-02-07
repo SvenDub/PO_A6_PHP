@@ -14,3 +14,5 @@
 * 29-01-14 Sven: Link app naar server maken
 * 30-01-14 Joris, Martijn, Stefan en Sven: liveticker en inlogsysteem 
 * 31-01-14 Joris, Stefan: documentatie project. Martijn en Sven: Liveticker maken
+* 03-02-14 Sven, Martijn: website maken. Stefan en Joris: system requirement document gemaakt en database gevuld. 
+* 07-02-14 Sven: app maken. Martijn: Website maken. Stefan: beheerquery's maken
