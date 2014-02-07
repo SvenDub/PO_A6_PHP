@@ -29,5 +29,6 @@ foreach($resultaat as $bestelling=>$data)
 ?>
 </table>
 </div>
+<a href="?logout">uitloggen<a/>
 </body>
 </html>
