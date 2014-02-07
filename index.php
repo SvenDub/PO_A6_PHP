@@ -12,5 +12,6 @@ $db->login();
 	</head>
 	<body>
 	<p>De website van uw kassasysteem</p>
+	<a href="?logout">uitloggen<a/>
 	</body>
 </html>
