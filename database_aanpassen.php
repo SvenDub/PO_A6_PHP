@@ -18,9 +18,9 @@ $db->login();
 
 <form id="product_toevoegen" method="post" action="">
 Categorienummer: <br />
-<input type="number" name="categorienummer" maxlength="11" /> <br />
+<input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Gerecht: <br />
-<input type="text" name="gerecht" maxlength="50" /> <br />
+<input type="text" name="gerecht" maxlength="50" min="0" /> <br />
 Prijs: <br />
 <input type="number" step="0.01" name="prijs" min="0" /> <br />
 Actief: <br />
@@ -29,23 +29,23 @@ Actief: <br />
 
 <form id="tafelnummer_toevoegen" method="post" action="">
 Tafelnummer toevoegen: <br />
-<input type="number" name="tafelnummer" maxlength="3" /> <br />
+<input type="number" name="tafelnummer" maxlength="3" min="0" /> <br />
 </form><br />
 
 <form id="categorie_toevoegen" method="post" action="">
 Categorienummer: <br />
-<input type="number" name="categorienummer" maxlength="11" /> <br />
+<input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Categorie: <br />
-<input type="text" name="categorie" maxlength="50" /> <br />
+<input type="text" name="categorie" maxlength="50" min="0" /> <br />
 </form><br />
 
 <form id="personeel_wijzigen" method="post" action="">
 ID: <br />
-<input type="number" name="id" maxlength="4" /> <br />
+<input type="number" name="id" maxlength="4" min="0" /> <br />
 Gebruikersnaam: <br />
-<input type="text" name="gebruikersnaam" maxlength="50" /> <br />
+<input type="text" name="gebruikersnaam" maxlength="50" min="0" /> <br />
 Wachtwoord: <br />
-<input type="password" name="wachtwoord" /> <br />
+<input type="password" name="wachtwoord" min="5" /> <br />
 Beheer: <br />
 <input type="number" name="beheer" maxlength="1" /> <br />
 Actief: <br />
