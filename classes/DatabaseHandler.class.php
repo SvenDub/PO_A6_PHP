@@ -94,9 +94,9 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	function product_toevoegen($productcode, $categorie, $gerecht, $prijs, $actief) {
+	function product_toevoegen($categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
-		$query = "INSERT INTO producten ( productcode, categorie, geerechtrecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
+		$query = "INSERT INTO producten ( categorie, geerechtrecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -105,7 +105,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'issdi', $productcode, $categorie, $gerecht, $prijs, $actief )) {
+			if ($stmt->bind_param ( 'ssdi', $categorie, $gerecht, $prijs, $actief )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
