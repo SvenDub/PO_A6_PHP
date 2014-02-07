@@ -415,7 +415,7 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	function tafelnummer_wijzigen($tafelnummeroud, $tafelnummernieuw) {
+	function tafelnummer_wijzigen($tafelnummer) {
 		// De te gebruiken query
 		$query = "UPDATE tafelnummer ( tafelnummer )  VALUES ( ? ) 
 		          WHERE tafelnummer=?";
@@ -427,7 +427,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'ii', $tafelnummernieuw, $tafelnummeroud)) {
+			if ($stmt->bind_param ( 'i', $tafelnummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -1265,6 +1265,48 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 					// Verwerk errors
 					echo $stmt->error;
 				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		
+		$stmt->close ();
+	}
+                 function totaleOmzet() {
+		// De te gebruiken query
+		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS totale_omzet
+		          FROM bestelllingen A, producten B
+		          WHERE A.productcode = B.productcode
+		          
+		          
+		          ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+		
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
+			
 			} else {
 				// Verwerk errors
 				echo $stmt->error;
