@@ -94,9 +94,9 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	function product_toevoegen($categorie, $gerecht, $prijs, $actief) {
+	function product_toevoegen($productcode, $categorienummer, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
-		$query = "INSERT INTO producten ( categorie, geerechtrecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
+		$query = "INSERT INTO producten ( productcode, categorienummer, gerecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) ";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -105,7 +105,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'ssdi', $categorie, $gerecht, $prijs, $actief )) {
+			if ($stmt->bind_param ( 'iisdi', $productcode, $categorienummer, $gerecht, $prijs, $actief )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -1235,4 +1235,48 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $bezet;
 	}
+
+function klanten_totaal($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+		// De te gebruiken query
+		$query = "SELECT SUM(aantal_klanten) AS klanten_per_periode
+		          FROM tafelregistratie WHERE datum BETWEEN ? AND ?
+		          ";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'iiiisi', $id, $tafelnummer, $aantal_klanten, $actief, $datum, $nummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		
+		$stmt->close ();
+	}
+
 }
