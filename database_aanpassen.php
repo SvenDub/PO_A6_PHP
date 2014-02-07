@@ -24,7 +24,7 @@ Gerecht: <br />
 Prijs: <br />
 <input type="number" step="0.01" name="prijs" min="0" /> <br />
 Actief: <br />
-<input type="number" name="actief" maxlength="1" /> <br />
+<input type="checkbox" name="actief" maxlength="1" /> <br />
 </form><br />
 
 <form id="tafelnummer_toevoegen" method="post" action="">
