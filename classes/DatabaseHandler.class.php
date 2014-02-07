@@ -1320,7 +1320,7 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		
 		$stmt->close ();
 	}
-}
+
                  function omzetPerPeriode() {
 		// De te gebruiken query
 		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS omzet_per_periode
