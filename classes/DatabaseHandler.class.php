@@ -1236,7 +1236,7 @@ class DatabaseHandler {
 		return $bezet;
 	}
 
-function klanten_totaal($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "SELECT SUM(aantal_klanten) AS klanten_per_periode
 		          FROM tafelregistratie WHERE datum BETWEEN ? AND ?
