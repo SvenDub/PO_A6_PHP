@@ -19,7 +19,7 @@ $db->login();
 <h1> Liveticker </h1>
 <div id='liveticker'>
 <table>
-<tr><td>Nummer</td><td>Bestellignnummer</td><td>id</td><td>Productcode</td><td>Aantal Besteld</td><td>Opmerking</td><td>Datum</td><td>Status</td></tr>
+<tr><td>Nummer</td><td>Bestellignnummer</td><td>ID</td><td>Productcode</td><td>Aantal Besteld</td><td>Opmerking</td><td>Datum</td><td>Status</td></tr>
 
 <?php
 
