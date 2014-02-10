@@ -1281,7 +1281,7 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
                  function totaleOmzet() {
 		// De te gebruiken query
 		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS totale_omzet
-		          FROM bestelllingen A, producten B
+		          FROM bestellingen A, producten B
 		          WHERE A.productcode = B.productcode
 		          
 		          
