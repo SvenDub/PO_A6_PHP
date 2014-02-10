@@ -1416,4 +1416,7 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		$stmt->close ();
 		return $array;
 	}
+	function omzetperklant() {
+		return self:: totaleOmzet () / self:: klanten_totaal () ;
+	}
 }
