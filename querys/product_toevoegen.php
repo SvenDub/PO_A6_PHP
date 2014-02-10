@@ -5,17 +5,17 @@ $db=new DatabaseHandler();
 
 $db->login(); 
 
+$categorienummer=$_POST["categorienummer"];
+$gerecht=$_POST["gerecht"];
+$prijs=$_POST["prijs"];
+$actief=$_POST["actief"];
+
+$resultaat=$db->product_toevoegen($categorienummer, $gerecht, $prijs, $actief)
+
+if ( $resultaat == true ) {
+  print ("Product succes toegevoegd");
+}
+else {print ("Het is niet gelukt om het product toe te voegen");}
 ?>
-<!DOCTYPE html > 
-<html>
-<head>
-<link href="opmaak.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Beheer database</title>
-</head>
-<body>
 
 
-
-</body>
-</html>
