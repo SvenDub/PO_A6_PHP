@@ -10,7 +10,7 @@ $gerecht=$_POST["gerecht"];
 $prijs=$_POST["prijs"];
 $actief=$_POST["actief"];
 
-$resultaat=$db->product_toevoegen($categorienummer, $gerecht, $prijs, $actief)
+$resultaat=$db->product_toevoegen($categorienummer, $gerecht, $prijs, $actief);
 
 if ( $resultaat == true ) {
   print ("Product succesvol toegevoegd");
