@@ -15,7 +15,8 @@ $db->login();
 </head>
 <body>
 <h1> Beheer database</h1>
-
+<br />
+<h2>Product toevoegen</h2><br />
 <form id="product_toevoegen" method="post" action="">
 Categorienummer: <br />
 <input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
@@ -26,19 +27,19 @@ Prijs: <br />
 Actief: <br />
 <input type="number" name="actief" maxlength="1" /> <br />
 </form><br />
-
+<h2>Tafelnummer toevoegen</h2><br />
 <form id="tafelnummer_toevoegen" method="post" action="">
 Tafelnummer toevoegen: <br />
 <input type="number" name="tafelnummer" maxlength="3" min="0" /> <br />
 </form><br />
-
+<h2>Categorie toevoegen</h2><br />
 <form id="categorie_toevoegen" method="post" action="">
 Categorienummer: <br />
 <input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Categorie: <br />
 <input type="text" name="categorie" maxlength="50" min="0" /> <br />
 </form><br />
-
+<h2>Personeel wijzigen</h2><br />
 <form id="personeel_wijzigen" method="post" action="">
 ID: <br />
 <input type="number" name="id" maxlength="4" min="0" /> <br />
@@ -51,7 +52,7 @@ Beheer: <br />
 Actief: <br />
 <input type="number" name="actief" min="0" maxlength="1" /> <br />
 </form> <br />
-
+<h2>Product wijzigen</h2><br />
 <form id="product_wijzigen" method="post" action="">
 Productcode: <br />
 <input type="number" name="productcode" maxlength="4" /> <br />
@@ -64,26 +65,26 @@ Prijs: <br />
 Actief: <br />
 <input type="number" name="actief" min="0" maxlength="1" /> <br />
 </form><br />
-
+<h2>Tafelnummer wijzigen</h2><br />
 <form id="tafelnummer_wijzigen" method="post" action="">
 Oude tafelnummer: <br />
 <input type="number" name="tafelnummeroud" min="0" maxlength="3" /> <br />
 Nieuwe tafelnummer: <br />
 <input type="number" name="tafelnummernieuw" min="0"  maxlength="3" /> <br />
 </form><br />
-
+<h2>Categorie wijzigen</h2><br />
 <form id="categorie_wijzigen" method="post" action="">
 Categorienummer: <br />
 <input type="number" name="categorienummer" min="0" maxlength="11" /> <br />
 Categorie: <br />
 <input type="text" name="categorie" maxlength="50" /> <br />
 </form><br />
-
+<h2>Tafelnummer verwijderen</h2><br />
 <form id="tafelnummer_verwijderen" method="post" action="">
 Tafelnummer: <br />
 <input type="number" name="tafelnummer" min="0" maxlength="3" /> <br />
 </form><br />
-
+<h2>Gebruiker toevoegen</h2><br />
 <form id="voegGebruikerToe" method="post" action="">
 Gebruikersnaam: <br />
 <input type="text" name="gebruikersnaam" maxlength="50" /> <br />
