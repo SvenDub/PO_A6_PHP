@@ -47,9 +47,9 @@ Gebruikersnaam: <br />
 Wachtwoord: <br />
 <input type="password" name="wachtwoord" min="5" /> <br />
 Beheer: <br />
-<input type="number" name="beheer" maxlength="1" /> <br />
+<input type="number" name="beheer" min="0" maxlength="1" /> <br />
 Actief: <br />
-<input type="number" name="actief" maxlength="1" /> <br />
+<input type="number" name="actief" min="0" maxlength="1" /> <br />
 </form> <br />
 
 <form id="product_wijzigen" method="post" action="">
@@ -62,26 +62,26 @@ Gerecht: <br />
 Prijs: <br />
 <input type="number" step="0.01" name="prijs" min="0" /> <br />
 Actief: <br />
-<input type="number" name="actief" maxlength="1" /> <br />
+<input type="number" name="actief" min="0" maxlength="1" /> <br />
 </form><br />
 
 <form id="tafelnummer_wijzigen" method="post" action="">
 Oude tafelnummer: <br />
-<input type="number" name="tafelnummeroud" maxlength="3" /> <br />
+<input type="number" name="tafelnummeroud" min="0" maxlength="3" /> <br />
 Nieuwe tafelnummer: <br />
-<input type="number" name="tafelnummernieuw" maxlength="3" /> <br />
+<input type="number" name="tafelnummernieuw" min="0"  maxlength="3" /> <br />
 </form><br />
 
 <form id="categorie_wijzigen" method="post" action="">
 Categorienummer: <br />
-<input type="number" name="categorienummer" maxlength="11" /> <br />
+<input type="number" name="categorienummer" min="0" maxlength="11" /> <br />
 Categorie: <br />
 <input type="text" name="categorie" maxlength="50" /> <br />
 </form><br />
 
 <form id="tafelnummer_verwijderen" method="post" action="">
 Tafelnummer: <br />
-<input type="number" name="tafelnummer" maxlength="3" /> <br />
+<input type="number" name="tafelnummer" min="0" maxlength="3" /> <br />
 </form><br />
 
 <form id="voegGebruikerToe" method="post" action="">
@@ -90,9 +90,9 @@ Gebruikersnaam: <br />
 Wachtwoord: <br />
 <input type="password" name="wachtwoord" /> <br />
 Beheer: <br />
-<input type="number" name="beheer" maxlength="1" /> <br />
+<input type="number" name="beheer" min="0" maxlength="1" /> <br />
 Actief: <br />
-<input type="number" name="actief" maxlength="1" /> <br />
+<input type="number" name="actief" min="0" maxlength="1" /> <br />
 </form> <br />
 
 </body>
