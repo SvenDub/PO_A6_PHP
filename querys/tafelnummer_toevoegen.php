@@ -7,7 +7,7 @@ $db->login();
 
 $tafelnummer=$_POST["tafelnummer"];
 
-$resultaat=$db->tafelnummer_toevoegen($tafelnummer)
+$resultaat=$db->tafelnummer_toevoegen($tafelnummer);
 
 if ( $resultaat == true ) {
   print ("Tafelnummer is toegevoegd ");
