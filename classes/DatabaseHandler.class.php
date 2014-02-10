@@ -3,7 +3,7 @@
  * Verzorgt alle verbindingen naar de database toe.
  * 
  * @name DatabaseHandler
- * @author Sven Dubbeld <sven.dubbeld1@gmail.com>
+ * @author Sven Dubbeld, Martijn de Munck, Stefan Peeman en Joris de Vogel <sven.dubbeld1@gmail.com>
  *
  */
 class DatabaseHandler {
