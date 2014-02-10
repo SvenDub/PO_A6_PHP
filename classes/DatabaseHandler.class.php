@@ -295,7 +295,7 @@ class DatabaseHandler {
 	}
 	function personeel_wijzigen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
 		// De te gebruiken query
-		$query = " UPDATE inlogsysteem ( id, gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ?, ? ) 
+		$query = " UPDATE inlogsysteem ( gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ? ) 
 		           WHERE id=?";
 		
 		// Maak een nieuw statement
@@ -305,7 +305,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'issii', $id, $gebruikersnaam, $wachtwoord, $beheer, $actief )) {
+			if ($stmt->bind_param ( 'ssiii', $gebruikersnaam, $wachtwoord, $beheer, $actief, $id )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
