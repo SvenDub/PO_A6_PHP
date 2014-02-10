@@ -13,7 +13,7 @@ $actief=$_POST["actief"];
 $resultaat=$db->product_toevoegen($categorienummer, $gerecht, $prijs, $actief)
 
 if ( $resultaat == true ) {
-  print ("Product succes toegevoegd");
+  print ("Product succesvol toegevoegd");
 }
 else {print ("Het is niet gelukt om het product toe te voegen");}
 ?>
