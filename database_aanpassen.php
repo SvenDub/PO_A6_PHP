@@ -11,13 +11,14 @@ $db->login();
 <head>
 <link href="opmaak.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <title>Beheer database</title>
 </head>
 <body>
 <h1> Beheer database</h1>
 <br />
 <h2>Product toevoegen</h2><br />
-<form id="product_toevoegen" method="post" action="">
+<form id="product_toevoegen" method="post" action="" onsubmit="opslaan('product_toevoegen');">
 Categorienummer: <br />
 <input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Gerecht: <br />
@@ -26,24 +27,27 @@ Prijs: <br />
 <input type="number" step="0.01" name="prijs" min="0" /> <br />
 Actief: <br />
 <input type="number" name="actief" maxlength="1" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Tafelnummer toevoegen</h2><br />
-<form id="tafelnummer_toevoegen" method="post" action="">
+<form id="tafelnummer_toevoegen" method="post" action="" onsubmit="opslaan('tafelnummer_toevoegen');">
 Tafelnummer toevoegen: <br />
 <input type="number" name="tafelnummer" maxlength="3" min="0" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Categorie toevoegen</h2><br />
-<form id="categorie_toevoegen" method="post" action="">
+<form id="categorie_toevoegen" method="post" action="" onsubmit="opslaan('categorie_toevoegen');">
 Categorienummer: <br />
 <input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Categorie: <br />
 <input type="text" name="categorie" maxlength="50" min="0" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Personeel wijzigen</h2><br />
-<form id="personeel_wijzigen" method="post" action="">
+<form id="personeel_wijzigen" method="post" action="" onsubmit="opslaan('personeel_wijzigen');">
 ID: <br />
 <input type="number" name="id" maxlength="4" min="0" /> <br />
 Gebruikersnaam: <br />
@@ -54,10 +58,11 @@ Beheer: <br />
 <input type="number" name="beheer" min="0" maxlength="1" /> <br />
 Actief: <br />
 <input type="number" name="actief" min="0" maxlength="1" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form> <br />
-<h2>Product wijzigen</h2><br />
 
-<form id="product_wijzigen" method="post" action="">
+<h2>Product wijzigen</h2><br />
+<form id="product_wijzigen" method="post" action="" onsubmit="opslaan('product_wijzigen');">
 Productcode: <br />
 <input type="number" name="productcode" maxlength="4" /> <br />
 Categorienummer: <br />
@@ -68,32 +73,36 @@ Prijs: <br />
 <input type="number" step="0.01" name="prijs" min="0" /> <br />
 Actief: <br />
 <input type="number" name="actief" min="0" maxlength="1" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Tafelnummer wijzigen</h2><br />
-<form id="tafelnummer_wijzigen" method="post" action="">
+<form id="tafelnummer_wijzigen" method="post" action="" onsubmit="opslaan('tafelnummer_wijzigen');">
 Oude tafelnummer: <br />
 <input type="number" name="tafelnummeroud" min="0" maxlength="3" /> <br />
 Nieuwe tafelnummer: <br />
 <input type="number" name="tafelnummernieuw" min="0"  maxlength="3" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Categorie wijzigen</h2><br />
-<form id="categorie_wijzigen" method="post" action="">
+<form id="categorie_wijzigen" method="post" action="" onsubmit="opslaan('categorie_wijzigen');">
 Categorienummer: <br />
 <input type="number" name="categorienummer" min="0" maxlength="11" /> <br />
 Categorie: <br />
 <input type="text" name="categorie" maxlength="50" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Tafelnummer verwijderen</h2><br />
-<form id="tafelnummer_verwijderen" method="post" action="">
+<form id="tafelnummer_verwijderen" method="post" action="" onsubmit="opslaan('tafelnummer_verwijderen');">
 Tafelnummer: <br />
 <input type="number" name="tafelnummer" min="0" maxlength="3" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Gebruiker toevoegen</h2><br />
-<form id="voegGebruikerToe" method="post" action="">
+<form id="voegGebruikerToe" method="post" action="" onsubmit="opslaan('voegGebruikerToe');">
 Gebruikersnaam: <br />
 <input type="text" name="gebruikersnaam" maxlength="50" /> <br />
 Wachtwoord: <br />
@@ -102,6 +111,7 @@ Beheer: <br />
 <input type="number" name="beheer" min="0" maxlength="1" /> <br />
 Actief: <br />
 <input type="number" name="actief" min="0" maxlength="1" /> <br />
+<input type="submit" name="verzenden" /><br />
 </form> <br />
 
 </body>
