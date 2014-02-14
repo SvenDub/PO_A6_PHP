@@ -15,4 +15,4 @@ Ontwerpen
 - [ ] Beheer
 - [ ] Statistieken
 - [ ] Notificaties beide kanten op
-- [ ] Design
+- [x] Design
