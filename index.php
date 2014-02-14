@@ -9,6 +9,7 @@ $db->login();
 <html>
 	<head>
 		<title>PO Kassasysteem</title>
+		<link href="opmaak.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 	<p>De website van uw kassasysteem</p>
