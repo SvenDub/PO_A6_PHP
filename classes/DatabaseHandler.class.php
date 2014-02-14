@@ -415,7 +415,7 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	function tafelnummer_wijzigen($tafelnummer) {
+	function tafelnummer_wijzigen($tafelnummeroud, $tafelnummernieuw) {
 		// De te gebruiken query
 		$query = "UPDATE tafelnummer ( tafelnummer )  VALUES ( ? ) 
 		          WHERE tafelnummer=?";
@@ -427,7 +427,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'i', $tafelnummer )) {
+			if ($stmt->bind_param ( 'ii', $tafelnummernieuwm, $tafelnummeroud  )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
