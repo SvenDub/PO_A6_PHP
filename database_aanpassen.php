@@ -19,7 +19,7 @@ $db->login();
 <h1> Beheer database</h1>
 <br />
 <h2>Product toevoegen</h2><br />
-<form id="product_toevoegen" method="post" action="" onsubmit="opslaan('product_toevoegen');">
+<form id="product_toevoegen" method="post" action="" onsubmit="opslaan('product_toevoegen'); return false;">
 Categorienummer: <br />
 <input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Gerecht: <br />
