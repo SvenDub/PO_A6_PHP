@@ -16,3 +16,5 @@
 * 31-01-14 Joris, Stefan: documentatie project. Martijn en Sven: Liveticker maken
 * 03-02-14 Sven, Martijn: website maken. Stefan en Joris: system requirement document gemaakt en database gevuld. 
 * 07-02-14 Sven: app maken. Martijn: Website maken. Stefan: beheerquery's maken
+* 10-02-14 Sven: app maken(producten ophalen). Martijn: Website maken. Joris en Stefan: beheerquery's
+* 14-02-14 Sven: opties instellingen in app. Martijn: website maken. Joris en Stefan: css website
