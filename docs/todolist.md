@@ -4,7 +4,7 @@ Ontwerpen
 - [x] Interface ontwerpen
 - [x] App ontwerpen
 
-- [ ] Database handler class
+- [x] Database handler class
 - [x] Inlogsysteem maken
 - [ ] Link database naar app
 - [x] Inlogsysteem android app
