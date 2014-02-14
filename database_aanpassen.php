@@ -32,14 +32,14 @@ Actief: <br />
 </form><br />
 
 <h2>Tafelnummer toevoegen</h2><br />
-<form id="tafelnummer_toevoegen" method="post" action="" onsubmit="opslaan('tafelnummer_toevoegen');">
+<form id="tafelnummer_toevoegen" method="post" action="" onsubmit="opslaan('tafelnummer_toevoegen'); return false;">
 Tafelnummer toevoegen: <br />
 <input type="number" name="tafelnummer" maxlength="3" min="0" /> <br />
 <input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Categorie toevoegen</h2><br />
-<form id="categorie_toevoegen" method="post" action="" onsubmit="opslaan('categorie_toevoegen');">
+<form id="categorie_toevoegen" method="post" action="" onsubmit="opslaan('categorie_toevoegen'); return false;">
 Categorienummer: <br />
 <input type="number" name="categorienummer" maxlength="11" min="0" /> <br />
 Categorie: <br />
@@ -48,7 +48,7 @@ Categorie: <br />
 </form><br />
 
 <h2>Personeel wijzigen</h2><br />
-<form id="personeel_wijzigen" method="post" action="" onsubmit="opslaan('personeel_wijzigen');">
+<form id="personeel_wijzigen" method="post" action="" onsubmit="opslaan('personeel_wijzigen'); return false;">
 ID: <br />
 <input type="number" name="id" maxlength="4" min="0" /> <br />
 Gebruikersnaam: <br />
@@ -63,7 +63,7 @@ Actief: <br />
 </form> <br />
 
 <h2>Product wijzigen</h2><br />
-<form id="product_wijzigen" method="post" action="" onsubmit="opslaan('product_wijzigen');">
+<form id="product_wijzigen" method="post" action="" onsubmit="opslaan('product_wijzigen'); return false;">
 Productcode: <br />
 <input type="number" name="productcode" maxlength="4" /> <br />
 Categorienummer: <br />
@@ -78,7 +78,7 @@ Actief: <br />
 </form><br />
 
 <h2>Tafelnummer wijzigen</h2><br />
-<form id="tafelnummer_wijzigen" method="post" action="" onsubmit="opslaan('tafelnummer_wijzigen');">
+<form id="tafelnummer_wijzigen" method="post" action="" onsubmit="opslaan('tafelnummer_wijzigen'); return false;">
 Oude tafelnummer: <br />
 <input type="number" name="tafelnummeroud" min="0" maxlength="3" /> <br />
 Nieuwe tafelnummer: <br />
@@ -87,7 +87,7 @@ Nieuwe tafelnummer: <br />
 </form><br />
 
 <h2>Categorie wijzigen</h2><br />
-<form id="categorie_wijzigen" method="post" action="" onsubmit="opslaan('categorie_wijzigen');">
+<form id="categorie_wijzigen" method="post" action="" onsubmit="opslaan('categorie_wijzigen'); return false;">
 Categorienummer: <br />
 <input type="number" name="categorienummer" min="0" maxlength="11" /> <br />
 Categorie: <br />
@@ -96,14 +96,14 @@ Categorie: <br />
 </form><br />
 
 <h2>Tafelnummer verwijderen</h2><br />
-<form id="tafelnummer_verwijderen" method="post" action="" onsubmit="opslaan('tafelnummer_verwijderen');">
+<form id="tafelnummer_verwijderen" method="post" action="" onsubmit="opslaan('tafelnummer_verwijderen'); return false;">
 Tafelnummer: <br />
 <input type="number" name="tafelnummer" min="0" maxlength="3" /> <br />
 <input type="submit" name="verzenden" /><br />
 </form><br />
 
 <h2>Gebruiker toevoegen</h2><br />
-<form id="voegGebruikerToe" method="post" action="" onsubmit="opslaan('voegGebruikerToe');">
+<form id="voegGebruikerToe" method="post" action="" onsubmit="opslaan('voegGebruikerToe'); return false;">
 Gebruikersnaam: <br />
 <input type="text" name="gebruikersnaam" maxlength="50" /> <br />
 Wachtwoord: <br />
