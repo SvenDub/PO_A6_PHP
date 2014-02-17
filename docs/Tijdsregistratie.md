@@ -18,3 +18,4 @@
 * 07-02-14 Sven: app maken. Martijn: Website maken. Stefan: beheerquery's maken
 * 10-02-14 Sven: app maken(producten ophalen). Martijn: Website maken. Joris en Stefan: beheerquery's
 * 14-02-14 Sven: opties instellingen in app. Martijn: website maken. Joris en Stefan: css website
+* 17-02-14 Sven: Thema app
