@@ -1,9 +1,8 @@
-window.onload=function()
-{
-refresh();
-}
+window.onload = function() {
+	refresh();
+};
 
 refresh = function() {
-$( "#liveticker" ).load( "liveticker.php" ); 
-setTimeout('refresh()', 3000);
-}
+	$("#liveticker").load("liveticker.php");
+	setTimeout('refresh()', 3000);
+};

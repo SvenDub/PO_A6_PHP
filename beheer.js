@@ -18,8 +18,8 @@ function opslaan(id) {
 			});
 		}
 		break;
-		
-	  case 'tafelnummer_toevoegen':
+
+	case 'tafelnummer_toevoegen':
 		var $inputs = $('#tafelnummer_toevoegen :input');
 
 		if (($inputs[0].value == '')) {
@@ -33,7 +33,7 @@ function opslaan(id) {
 			});
 		}
 		break;
-		
+
 	case 'categorie_toevoegen':
 		var $inputs = $('#categorie_toevoegen :input');
 
@@ -44,17 +44,18 @@ function opslaan(id) {
 			$.post('querys/categorie_toevoegen.php', {
 				categorienummer : $inputs[0].value,
 				categorie : $inputs[1].value
-				
+
 			}, function(data) {
 				alert(data);
 			});
 		}
 		break;
-		case 'personeel_wijzigen':
+	case 'personeel_wijzigen':
 		var $inputs = $('#personeel_wijzigen :input');
 
 		if (($inputs[0].value == '') || ($inputs[1].value == '')
-				|| ($inputs[2].value == '') || ($inputs[3].value == '') || ($inputs[4].value == ''))  {
+				|| ($inputs[2].value == '') || ($inputs[3].value == '')
+				|| ($inputs[4].value == '')) {
 			alert('Voer alle velden in.');
 		} else {
 
@@ -69,11 +70,12 @@ function opslaan(id) {
 			});
 		}
 		break;
-		case 'product_wijzigen':
+	case 'product_wijzigen':
 		var $inputs = $('#product_wijzigen :input');
 
 		if (($inputs[0].value == '') || ($inputs[1].value == '')
-				|| ($inputs[2].value == '') || ($inputs[3].value == '') || ($inputs[4].value == ''))  {
+				|| ($inputs[2].value == '') || ($inputs[3].value == '')
+				|| ($inputs[4].value == '')) {
 			alert('Voer alle velden in.');
 		} else {
 
@@ -88,10 +90,10 @@ function opslaan(id) {
 			});
 		}
 		break;
-		case 'tafelnummer_wijzigen':
+	case 'tafelnummer_wijzigen':
 		var $inputs = $('#tafelnummer_wijzigen :input');
 
-		if (($inputs[0].value == '')|| ($inputs[1].value == '')) {
+		if (($inputs[0].value == '') || ($inputs[1].value == '')) {
 			alert('Voer alle velden in.');
 		} else {
 
@@ -103,11 +105,11 @@ function opslaan(id) {
 			});
 		}
 		break;
-		
-		case 'categorie_wijzigen':
+
+	case 'categorie_wijzigen':
 		var $inputs = $('#categorie_wijzigen :input');
 
-		if (($inputs[0].value == '')|| ($inputs[1].value == '')) {
+		if (($inputs[0].value == '') || ($inputs[1].value == '')) {
 			alert('Voer alle velden in.');
 		} else {
 
@@ -119,8 +121,8 @@ function opslaan(id) {
 			});
 		}
 		break;
-		
-		case 'tafelnummer_verwijderen':
+
+	case 'tafelnummer_verwijderen':
 		var $inputs = $('#tafelnummer_verwijderen :input');
 
 		if (($inputs[0].value == '')) {
@@ -134,7 +136,7 @@ function opslaan(id) {
 			});
 		}
 		break;
-		case 'voegGebruikerToe':
+	case 'voegGebruikerToe':
 		var $inputs = $('#voegGebruikerToe :input');
 
 		if (($inputs[0].value == '') || ($inputs[1].value == '')
@@ -152,6 +154,6 @@ function opslaan(id) {
 			});
 		}
 		break;
-		
+
 	}
 }

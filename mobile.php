@@ -49,23 +49,21 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$response ['user'] ['actief'] = $gebruiker ['actief'];
 				
 				$response ['success'] = 1;
-				
 			} else {
 				
 				$response ['error'] = 2;
 				$response ['error_msg'] = 'Inloggegevens incorrect.';
-				
 			}
 			break;
-		case 'tafel_status':
-				
+		case 'tafel_status' :
+			
 			// Tafel status
-				
+			
 			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
 				
 				// Haal alle tafels op
 				$tafels = $db->tafelnummers ();
-								
+				
 				foreach ( $tafels as $id ) {
 					
 					// Kijk bij elke tafel of deze bezet is
@@ -79,19 +77,17 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				}
 				
 				$response ['success'] = 1;
-				
 			} else {
 				
 				$response ['error'] = 2;
 				$response ['error_msg'] = 'Inloggegevens incorrect.';
-				
 			}
 			break;
-		case 'producten':
+		case 'producten' :
 			
 			// Producten
 			
-			if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) {
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
 				
 				// Haal alle producten op
 				$producten = $db->getProducten ();
@@ -105,26 +101,22 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				}
 				
 				$response ['success'] = 1;
-				
 			} else {
 				
 				$response ['error'] = 2;
 				$response ['error_msg'] = 'Inloggegevens incorrect.';
-				
 			}
 			break;
-		default:
+		default :
 			
 			// Onbekende tag, geef error terug
 			
 			$response ['error_msg'] = 'Tag niet gevonden.';
 			$response ['error'] = 1;
-			
 	}
 	
 	// Stuur antwoord
 	echo json_encode ( $response );
-	
 } else {
 	
 	// Geen tag meegestuurd, geef error terug

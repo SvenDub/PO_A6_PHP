@@ -427,7 +427,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'ii', $tafelnummernieuwm, $tafelnummeroud  )) {
+			if ($stmt->bind_param ( 'ii', $tafelnummernieuw, $tafelnummeroud )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -707,8 +707,8 @@ class DatabaseHandler {
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
-			
-			// Bereid de query voor
+		
+		// Bereid de query voor
 		if ($stmt->prepare ( $query )) {
 			
 			// Voer de query uit
@@ -816,7 +816,7 @@ class DatabaseHandler {
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
 									'datum' => $datum,
-									'status' => $status
+									'status' => $status 
 							);
 							
 							array_push ( $array, $bestelling );
@@ -907,7 +907,7 @@ class DatabaseHandler {
 	}
 	/**
 	 * Logt de gebruiker in als er logingegevens zijn gevonden.
-	 * 
+	 *
 	 * De logingegevens moeten via een POST request ingevoerd worden in het volgende formaat:
 	 * <code>
 	 * $_POST['login']['gebruikersnaam'] = $gebruikersnaam;
@@ -916,40 +916,40 @@ class DatabaseHandler {
 	 * Laat een loginscherm zien als er nog niet ingelogd is.
 	 */
 	function login() {
-		session_start();
+		session_start ();
 		if (isset ( $_GET ['logout'] )) { // Log de gebruiker uit
-			$_SESSION = array();
-			session_destroy();
+			$_SESSION = array ();
+			session_destroy ();
 			header ( 'Location: ?' );
-		} elseif (! isset($_SESSION['logged_in']) || ! $_SESSION['logged_in']) { // Gebruiker is niet ingelogd
-			if (isset ($_POST['login']['gebruikersnaam']) && isset($_POST['login']['wachtwoord'])) { // Login data found
-				$gebruikersnaam = $_POST['login']['gebruikersnaam'];
-				$wachtwoord = $_POST['login']['wachtwoord'];
-				if (self::controleerLogin($gebruikersnaam, $wachtwoord)) { // Controleer logingegevens
-					// OK!
-					session_regenerate_id();
-					$session = session_get_cookie_params();
-					setcookie(session_name(), session_id(), $session['lifetime'], $session['path'], $session['domain'], false, true );
-					$_SESSION['logged_in'] = 1;
-					$_SESSION['gebruikersnaam'] = $gebruikersnaam;
+		} elseif (! isset ( $_SESSION ['logged_in'] ) || ! $_SESSION ['logged_in']) { // Gebruiker is niet ingelogd
+			if (isset ( $_POST ['login'] ['gebruikersnaam'] ) && isset ( $_POST ['login'] ['wachtwoord'] )) { // Login data found
+				$gebruikersnaam = $_POST ['login'] ['gebruikersnaam'];
+				$wachtwoord = $_POST ['login'] ['wachtwoord'];
+				if (self::controleerLogin ( $gebruikersnaam, $wachtwoord )) { // Controleer logingegevens
+				                                                              // OK!
+					session_regenerate_id ();
+					$session = session_get_cookie_params ();
+					setcookie ( session_name (), session_id (), $session ['lifetime'], $session ['path'], $session ['domain'], false, true );
+					$_SESSION ['logged_in'] = 1;
+					$_SESSION ['gebruikersnaam'] = $gebruikersnaam;
 				} else {
 					// Verwijs naar loginpagina
-					$_SESSION = array();
-					session_destroy();
+					$_SESSION = array ();
+					session_destroy ();
 					header ( 'Location: ?error=1' );
 				}
 			} else { // Geen logingegevens gevonden, verwijs naar loginpagina
-				$_SESSION = array();
-				session_destroy();
+				$_SESSION = array ();
+				session_destroy ();
 				require_once 'login.php';
-				die();
+				die ();
 			}
-			} else {
-				// Gebruiker is ingelogd, vernieuw sessie voor de veiligheid
-				session_regenerate_id();
-				$session = session_get_cookie_params();
-				setcookie(session_name(), session_id(), $session['lifetime'], $session['path'], $session['domain'], false, true );
-			}
+		} else {
+			// Gebruiker is ingelogd, vernieuw sessie voor de veiligheid
+			session_regenerate_id ();
+			$session = session_get_cookie_params ();
+			setcookie ( session_name (), session_id (), $session ['lifetime'], $session ['path'], $session ['domain'], false, true );
+		}
 	}
 	/**
 	 * Voegt een gebruiker toe aan de database.
@@ -1009,9 +1009,8 @@ class DatabaseHandler {
 			return false;
 		}
 	}
-	
 	function alle_bestellingen($status) {
-		$array = array();
+		$array = array ();
 		// De te gebruiken query
 		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum, status FROM bestellingen WHERE status=? ";
 		
@@ -1040,7 +1039,7 @@ class DatabaseHandler {
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
 									'datum' => $datum,
-									'status' => $dbstatus
+									'status' => $dbstatus 
 							);
 							
 							array_push ( $array, $bestelling );
@@ -1090,7 +1089,7 @@ class DatabaseHandler {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
-						
+					
 					// Bind de resultaten aan variabelen
 					if ($stmt->bind_result ( $id, $beheer, $actief )) {
 						
@@ -1137,7 +1136,7 @@ class DatabaseHandler {
 		
 		// Val terug naar de ingelogde gebruiker als er geen gebruiker is opgegeven
 		if ($gebruikersnaam == null) {
-			$gebruikersnaam = $_SESSION['gebruikersnaam'];
+			$gebruikersnaam = $_SESSION ['gebruikersnaam'];
 		}
 		
 		// De te gebruiken query
@@ -1148,16 +1147,16 @@ class DatabaseHandler {
 		
 		// Bereid de query voor
 		if ($stmt->prepare ( $query )) {
-				
+			
 			// Voeg de parameters toe
 			if ($stmt->bind_param ( 's', $gebruikersnaam )) {
-		
+				
 				// Voer de query uit
 				if ($stmt->execute ()) {
-		
+					
 					// Bind de resultaten aan variabelen
 					if ($stmt->bind_result ( $beheer )) {
-		
+						
 						// Haal alle resultaten op een loop er doorheen
 						if ($stmt->fetch ()) {
 							// Doe iets met de resultaten
@@ -1185,12 +1184,12 @@ class DatabaseHandler {
 	}
 	/**
 	 * Geeft aan of een tafel bezet is.
-	 * 
-	 * @param int $tafelnummer Het nummer van de tafel.
+	 *
+	 * @param int $tafelnummer
+	 *        	Het nummer van de tafel.
 	 * @return boolean True als de tafel bezet is.
 	 */
 	function isTafelBezet($tafelnummer) {
-		
 		$bezet = false;
 		
 		// De te gebruiken query
@@ -1201,15 +1200,15 @@ class DatabaseHandler {
 		
 		// Bereid de query voor
 		if ($stmt->prepare ( $query )) {
-		
+			
 			// Voeg de parameters toe
 			if ($stmt->bind_param ( 'i', $tafelnummer )) {
-		
+				
 				// Voer de query uit
 				if ($stmt->execute ()) {
-		
+					
 					// Sla het resultaat op
-					$stmt->store_result();
+					$stmt->store_result ();
 					
 					// Tel het aantal rijen
 					if ($stmt->num_rows == 0) {
@@ -1217,7 +1216,6 @@ class DatabaseHandler {
 					} else {
 						$bezet = true;
 					}
-		
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
@@ -1235,8 +1233,7 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $bezet;
 	}
-
-function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
+	function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "SELECT SUM(aantal_klanten) AS klanten_per_periode
 		          FROM tafelregistratie WHERE datum BETWEEN ? AND ?
@@ -1256,9 +1253,7 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 					
 					if ($stmt->affected_rows > 0) {
 						return true;
-					} 
-
-					else {
+					} else {
 						return false;
 					}
 				} else {
@@ -1278,14 +1273,12 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		
 		$stmt->close ();
 	}
-                 function totaleOmzet() {
+	function totaleOmzet() {
 		// De te gebruiken query
 		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS totale_omzet
 		          FROM bestellingen A, producten B
 		          WHERE A.productcode = B.productcode
-		          
-		          
-		          ";
+				";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -1294,19 +1287,15 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-		
-				
-				// Voer de query uit
-				if ($stmt->execute ()) {
-					
-					if ($stmt->affected_rows > 0) {
-						return true;
-					} 
-
-					else {
-						return false;
-					}
 			
+			// Voer de query uit
+			if ($stmt->execute ()) {
+				
+				if ($stmt->affected_rows > 0) {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				// Verwerk errors
 				echo $stmt->error;
@@ -1320,15 +1309,12 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		
 		$stmt->close ();
 	}
-
-                 function omzetPerPeriode() {
+	function omzetPerPeriode() {
 		// De te gebruiken query
 		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS omzet_per_periode
 		          FROM bestelllingen A, producten B
 		          WHERE (A.productcode = B.productcode) AND (A.datum BETWEEN ? AND ?)
-		          
-		          
-		          ";
+				";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -1337,19 +1323,15 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-		
-				
-				// Voer de query uit
-				if ($stmt->execute ()) {
-					
-					if ($stmt->affected_rows > 0) {
-						return true;
-					} 
-
-					else {
-						return false;
-					}
 			
+			// Voer de query uit
+			if ($stmt->execute ()) {
+				
+				if ($stmt->affected_rows > 0) {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				// Verwerk errors
 				echo $stmt->error;
@@ -1417,6 +1399,6 @@ function klantenPerPeriode($nummer, $id, $tafelnummer, $aantal_klanten, $actief,
 		return $array;
 	}
 	function omzetperklant() {
-		return self:: totaleOmzet () / self:: klanten_totaal () ;
+		return self::totaleOmzet () / self::klanten_totaal ();
 	}
 }

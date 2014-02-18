@@ -1,21 +1,21 @@
 <?php
+require_once ('classes/DatabaseHandler.class.php');
+$db = new DatabaseHandler ();
 
-require_once('classes/DatabaseHandler.class.php');
-$db=new DatabaseHandler(); 
+$db->login ();
 
-$db->login(); 
+$categorienummer = $_POST ["categorienummer"];
+$gerecht = $_POST ["gerecht"];
+$prijs = $_POST ["prijs"];
+$actief = $_POST ["actief"];
 
-$categorienummer=$_POST["categorienummer"];
-$gerecht=$_POST["gerecht"];
-$prijs=$_POST["prijs"];
-$actief=$_POST["actief"];
+$resultaat = $db->product_toevoegen ( $categorienummer, $gerecht, $prijs, $actief );
 
-$resultaat=$db->product_toevoegen($categorienummer, $gerecht, $prijs, $actief);
-
-if ( $resultaat == true ) {
-  print ("Product succesvol toegevoegd");
+if ($resultaat == true) {
+	print ("Product succesvol toegevoegd") ;
+} else {
+	print ("Het is niet gelukt om het product toe te voegen") ;
 }
-else {print ("Het is niet gelukt om het product toe te voegen");}
 ?>
 
 
