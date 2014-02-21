@@ -3,7 +3,9 @@ require_once ('../classes/DatabaseHandler.class.php');
 $db = new DatabaseHandler ();
 
 $db->login ();
-
+/* De databasehandlerclass wordt aangeroepen, daarna wordt doormiddel van deze databasehandlerclass het loginscript 
+opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders kan de gebruiker deze pagina niet bekijken.
+*/
 ?>
 <!DOCTYPE html >
 <html>
@@ -34,7 +36,9 @@ $db->login ();
 $resultaat = $db->alle_bestellingen ( 0 );
 foreach ( $resultaat as $bestelling => $data ) {
 	echo '<tr><td>' . $data ['nummer'] . '</td><td>' . $data ['bestellingnummer'] . '</td><td>' . $data ['id'] . '</td><td>' . $data ['productcode'] . '</td><td>' . $data ['aantal_besteld'] . '</td><td>' . $data ['opmerking'] . '</td><td>' . $data ['datum'] . '</td><td>' . $data ['status'] . '</td></tr>';
-}
+} 
+/* Het resultaat van de Liveticker wordt doormiddel van deze constructie in een tabel geplaatst. De code is zo 
+geschreven dat elke variabele een aparte kolom heeft en elke bestelling een aparte rij is. */
 ?>
 		</table>
 	</div>
