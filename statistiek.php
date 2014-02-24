@@ -77,5 +77,6 @@ $omzetperklant=$db->omzetperklant();
 print ("De gemiddelde omzet per klant is $omzetperklant Euro");
 //De omzet per klant wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 ?>
+<a href="?logout">uitloggen</a>
 </body>
 </html>
