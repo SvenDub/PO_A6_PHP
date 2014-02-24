@@ -45,5 +45,20 @@ print("<tr><td>maand 6 tot 9 geleden</td><td>$omzet_3maanden</td><td><img src='b
 print("<tr><td>maand 9 tot 12 geleden</td><td>$omzet_3maanden</td><td><img src='blok.jpg' width='$breedte*$omzet_12maanden' height='40'></td></tr>");
 ?>
 </table>
+<h1>Totaal aantal klanten</h1>
+<?php
+$klanten_totaal=$db->klanten_totaal();
+print ("Er zijn $klanten_totaal geweest in het restaurant");
+?>
+<h1>Totale omzet</h1>
+<?php
+$totale_omzet=$db->totaleOmzet();
+print ("De totale omzet is $totale_omzet Euro");
+?>
+<h1>Gemiddelde omzet per klant</h1>
+<?php
+$omzetperklant=$db->omzetperklant();
+print ("De gemiddelde omzet per klant is $omzetperklant Euro");
+?>
 </body>
 </html>
