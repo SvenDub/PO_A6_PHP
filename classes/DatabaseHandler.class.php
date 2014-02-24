@@ -1318,10 +1318,16 @@ class DatabaseHandler {
 			// Voer de query uit
 			if ($stmt->execute ()) {
 				
-				if ($stmt->affected_rows > 0) {
-					return true;
+				// Bind de resultaten aan variabelen
+				if ($stmt->bind_result ( $omzet )) {
+						
+					// Haal alle resultaten op een loop er doorheen
+					if ($stmt->fetch ()) {
+						// Doe iets met de resultaten
+					}
 				} else {
-					return false;
+					// Verwerk errors
+					echo $stmt->error;
 				}
 			} else {
 				// Verwerk errors
@@ -1333,11 +1339,11 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-		
 		$stmt->close ();
+		return $omzet;
 	}
 	//functie voor de beheerder om de omzet in een bepaalde periode weer te geven 
-	function omzetPerPeriode() {
+	function omzetPerPeriode($begin, $eind) {
 		// De te gebruiken query
 		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS omzet_per_periode
 		          FROM bestelllingen A, producten B
@@ -1355,10 +1361,16 @@ class DatabaseHandler {
 			// Voer de query uit
 			if ($stmt->execute ()) {
 				
-				if ($stmt->affected_rows > 0) {
-					return true;
+				// Bind de resultaten aan variabelen
+				if ($stmt->bind_result ( $omzet )) {
+						
+					// Haal alle resultaten op een loop er doorheen
+					if ($stmt->fetch ()) {
+						// Doe iets met de resultaten
+					}
 				} else {
-					return false;
+					// Verwerk errors
+					echo $stmt->error;
 				}
 			} else {
 				// Verwerk errors
@@ -1370,8 +1382,8 @@ class DatabaseHandler {
 		}
 		
 		// Sluit het statement om geheugen vrij te geven
-		
 		$stmt->close ();
+		return $omzet;
 	}
 	
 	/**
