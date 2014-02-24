@@ -6,11 +6,11 @@ Ontwerpen
 
 - [x] Database handler class
 - [x] Inlogsysteem maken
-- [ ] Link database naar app
+- [.] Link database naar app
 - [x] Inlogsysteem android app
 - [x] Liveticker keuken
-- [ ] Bestellingen aanmaken
-- [ ] Betalen app
+- [.] Bestellingen aanmaken
+- [.] Betalen app
 
 - [ ] Beheer
 - [ ] Statistieken
