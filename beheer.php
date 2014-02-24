@@ -20,5 +20,6 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 	<a href="statistiek.php">Statistieken</a>
 	<br />
 	<a href="database_aanpassen.php">Database aanpassen</a>
+	<a href="?logout">uitloggen</a>
 </body>
 </html>
