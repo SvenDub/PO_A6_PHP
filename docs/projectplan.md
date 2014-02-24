@@ -47,6 +47,5 @@ Website algemeen
 *	Aantal klanten totaal
 *	Totale omzet
 *	Gemiddelde omzet per klant
-*	Opbrengst per periode
+*	Omzet per periode
 *	Aantal klanten per periode
-*	Omzet per tafel
