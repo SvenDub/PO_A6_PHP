@@ -203,6 +203,6 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 	</form>
 	<br />
-
+ <a href="?logout">uitloggen</a>
 </body>
 </html>
