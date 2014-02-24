@@ -107,6 +107,35 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$response ['error_msg'] = 'Inloggegevens incorrect.';
 			}
 			break;
+		case 'bestellingen' :
+			
+			// Bestellingen
+			
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
+				
+				// Haal alle actieve bestellingen op
+				$bestellingen = $db->alle_bestellingen (0);
+				array_merge($bestellingen, $db->alle_bestellingen(1));
+				array_merge($bestellingen, $db->alle_bestellingen(2));
+				
+				foreach ( $bestellingen as $bestelling) {
+					
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['tafelnummer'] = $bestelling['nummer'];
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['inlog_id'] = $bestelling['id'];
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['product'] = $bestelling['productcode'];
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['aantal_besteld'] = $bestelling['aantal_besteld'];
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['opmerking'] = $bestelling['opmerking'];
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['datum'] = $bestelling['datum'];
+					$response ['bestellingen'] [$bestelling['bestellingnummer']] ['status'] = $bestelling['status'];
+				}
+				
+			$response ['success'] = 1;
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggegevens incorrect.';
+			}
+			break;
 		default :
 			
 			// Onbekende tag, geef error terug
