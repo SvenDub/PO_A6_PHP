@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Home | Bolhoed</title>
+<title>Inloggen | Bolhoed</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="page" class="container">
-
+		
 		<div id="header">
 			<div id="logo">
 				<h1>
@@ -21,18 +21,18 @@
 			</div>
 			<div id="menu">
 				<ul>
-					<li class="current_page_item"><a>Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<?php
 					require_once 'classes/DatabaseHandler.class.php';
 					$db = new DatabaseHandler ();
 					if ($db->isIngelogd ()) {
-						echo '<li><a href="inloggen.php?logout">Uitloggen</a></li>';
+						echo '<li class="current_page_item"><a>Uitloggen</a></li>';
 						echo '<li><a href="liveticker">Bestellingen</a></li>';
 						if ($db->isBeheerder ()) {
 							echo '<li><a href="#">Statistieken</a></li>';
 						}
 					} else {
-						echo '<li><a href="inloggen.php">Inloggen</a></li>';
+						echo '<li class="current_page_item"><a>Inloggen</a></li>';
 					}
 					?>
 				</ul>
@@ -40,14 +40,14 @@
 		</div>
 
 		<div id="main">
-			<div id="banner">
-				<img src="bolhoed.png" alt="" class="image-full" />
-			</div>
 			<div id="welcome">
 				<div class="title">
-					<h2>Welkom op de beheerpagina</h2>
-					<span class="byline">Hier vindt u alle beschikbare informatie</span>
+					<h2>Welkom op de inlogpagina</h2>
 				</div>
+				<?php
+					$db->login ();
+				?>
+				<a href="?logout">Uitloggen</a>
 			</div>
 		</div>
 
