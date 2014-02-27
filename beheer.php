@@ -11,7 +11,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Bestellingen | Bolhoed</title>
+<title>Beheer | Bolhoed</title>
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
 	rel="stylesheet" />
