@@ -50,10 +50,10 @@ $db->login ();
 			<h2>Klanten per periode</h2>
 			<table>
 			<?php
-			$klanten_3maanden = $db->klantenPerPeriode ( date ( "Y-m-d" ), date ( "Y-m-d", time () - 8035200 ) );
-			$klanten_6maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 8035200 ), date ( "Y-m-d", time () - 16070400 ) );
-			$klanten_9maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 16070400 ), date ( "Y-m-d", time () - 24105600 ) );
-			$klanten_12maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 24105600 ), date ( "Y-m-d", time () - 32140800 ) );
+			$klanten_3maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 8035200 ), date ( "Y-m-d" ) );
+			$klanten_6maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 16070400 ), date ( "Y-m-d", time () - 8035200 ) );
+			$klanten_9maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 24105600 ), date ( "Y-m-d", time () - 16070400 ) );
+			$klanten_12maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 32140800 ), date ( "Y-m-d", time () - 24105600 ) );
 			/*
 			 * Er worden variabelen aangemaakt voor de klanten in de periodes. Deze periodes zijn nu tot 3 maanden geleden, 3 tot 6 maanden geleden, 6 tot 9 maanden geleden en 9 maanden tot een jaar geleden.
 			 */
@@ -62,10 +62,10 @@ $db->login ();
 			/*
 			 * Er wordt om de grafieken goed te kunnen maken een maximale variabele gemaakt, deze wordt bepaald uit de variabele van klanten in de periode. Vervolgens wordt de breedte gedefinieerd door deze max waarde. Hierdoor krijg je verschillende staven in het staafdiagram.
 			 */
-			print ("<tr><td>afgelopen drie maanden</td><td>$klanten_3maanden</td><td><img src='blok.jpg' width='$breedte*$klanten_3maanden' height='40'></td></tr>") ;
-			print ("<tr><td>maand 3 tot 6 geleden</td><td>$klanten_6maanden</td><td><img src='blok.jpg' width='$breedte*$klanten_6maanden' height='40'></td></tr>") ;
-			print ("<tr><td>maand 6 tot 9 geleden</td><td>$klanten_9maanden</td><td><img src='blok.jpg' width='$breedte*$klanten_9maanden' height='40'></td></tr>") ;
-			print ("<tr><td>maand 9 tot 12 geleden</td><td>$klanten_12maanden</td><td><img src='blok.jpg' width='$breedte*$klanten_12maanden' height='40'></td></tr>") ;
+			print ("<tr><td>afgelopen drie maanden</td><td>$klanten_3maanden</td><td><img src='blok.jpg' width='".$breedte*$klanten_3maanden."' height='40'></td></tr>") ;
+			print ("<tr><td>maand 3 tot 6 geleden</td><td>$klanten_6maanden</td><td><img src='blok.jpg' width='".$breedte*$klanten_6maanden."' height='40'></td></tr>") ;
+			print ("<tr><td>maand 6 tot 9 geleden</td><td>$klanten_9maanden</td><td><img src='blok.jpg' width='".$breedte*$klanten_9maanden."' height='40'></td></tr>") ;
+			print ("<tr><td>maand 9 tot 12 geleden</td><td>$klanten_12maanden</td><td><img src='blok.jpg' width='".$breedte*$klanten_12maanden."' height='40'></td></tr>") ;
 			// De variablee worden dan weergegeven doormiddel van een printscript, de breedte varieert doordat de waarde van de variabelen anders zijn.
 			?>
 			</table>

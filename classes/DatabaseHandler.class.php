@@ -1265,7 +1265,7 @@ class DatabaseHandler {
 	//functie voor beheerder om te kiken naar het aantal klanten in een bepaalde periode
 	function klantenPerPeriode($begin, $eind) {
 		// De te gebruiken query
-		$query = "SELECT SUM(aantal_klanten) AS klanten_per_periode
+		$query = "SELECT COALESCE(SUM(aantal_klanten), 0) AS klanten_per_periode
 		          FROM tafelregistratie WHERE datum BETWEEN ? AND ?
 		          ";
 		
