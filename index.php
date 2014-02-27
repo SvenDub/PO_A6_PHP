@@ -30,6 +30,7 @@
 						echo '<li><a href="liveticker">Bestellingen</a></li>';
 						if ($db->isBeheerder ()) {
 							echo '<li><a href="statistiek.php">Statistieken</a></li>';
+							echo '<li><a href="beheer.php">Beheer</a></li>';
 						}
 					} else {
 						echo '<li><a href="inloggen.php">Inloggen</a></li>';

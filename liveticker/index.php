@@ -37,6 +37,7 @@ $db->login ();
 						echo '<li class="current_page_item"><a>Bestellingen</a></li>';
 						if ($db->isBeheerder ()) {
 							echo '<li><a href="../statistiek.php">Statistieken</a></li>';
+							echo '<li><a href="../beheer.php">Beheer</a></li>';
 						}
 					} else {
 						echo '<li><a href="../inloggen.php">Inloggen</a></li>';
