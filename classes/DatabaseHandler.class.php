@@ -971,12 +971,12 @@ class DatabaseHandler {
 	}
 	/**
 	 * Controleert of de gebruiker is ingelogd.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	function isIngelogd() {
-		session_start();
-		return (! isset ( $_SESSION ['logged_in'] ) || ! $_SESSION ['logged_in']);
+		session_start ();
+		return (isset ( $_SESSION ['logged_in'] ) || $_SESSION ['logged_in']);
 	}
 	/**
 	 * Voegt een gebruiker toe aan de database.
