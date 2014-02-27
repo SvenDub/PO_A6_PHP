@@ -29,7 +29,7 @@
 						echo '<li class="current_page_item"><a>Uitloggen</a></li>';
 						echo '<li><a href="liveticker">Bestellingen</a></li>';
 						if ($db->isBeheerder ()) {
-							echo '<li><a href="#">Statistieken</a></li>';
+							echo '<li><a href="statistiek.php">Statistieken</a></li>';
 						}
 					} else {
 						echo '<li class="current_page_item"><a>Inloggen</a></li>';

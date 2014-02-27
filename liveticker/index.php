@@ -36,7 +36,7 @@ $db->login ();
 						echo '<li><a href="../inloggen.php?logout">Uitloggen</a></li>';
 						echo '<li class="current_page_item"><a>Bestellingen</a></li>';
 						if ($db->isBeheerder ()) {
-							echo '<li><a href="../#">Statistieken</a></li>';
+							echo '<li><a href="../statistiek.php">Statistieken</a></li>';
 						}
 					} else {
 						echo '<li><a href="../inloggen.php">Inloggen</a></li>';
