@@ -21,3 +21,4 @@
 * 17-02-14 Sven: Thema app
 * 21-02-14 Martijn: commentaar website 
 * 24-02-14 Sven: app maken. Martijn: Statistieken. Stefan en Joris: CSS
+* 27-02-14 Sven: Layout uploaden
