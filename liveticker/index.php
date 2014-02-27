@@ -48,7 +48,7 @@ $db->login ();
 		</div>
 
 		<div id="main">
-			<h2>Bestellingen</h2>
+			<h1>Bestellingen</h1>
 			<div id='liveticker'>
 				<table>
 					<tr>

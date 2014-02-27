@@ -10,13 +10,44 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 <!DOCTYPE html >
 <html>
 <head>
-<link href="opmaak.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bestellingen | Bolhoed</title>
+<link
+	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
+	rel="stylesheet" />
+<link href="opmaak.css" rel="stylesheet" type="text/css" media="all" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="beheer.js"></script>
-<title>Beheer database</title>
 </head>
 <body>
+<div id="page" class="container">
+
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a>Bolhoed</a>
+				</h1>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="index.php">Home</a></li>
+					<?php
+					if ($db->isIngelogd ()) {
+						echo '<li><a href="inloggen.php?logout">Uitloggen</a></li>';
+						echo '<li><a href="liveticker">Bestellingen</a></li>';
+						if ($db->isBeheerder ()) {
+							echo '<li><a href="statistiek.php">Statistieken</a></li>';
+							echo '<li class="current_page_item"><a>Beheer</a></li>';
+						}
+					} else {
+						echo '<li><a href="inloggen.php">Inloggen</a></li>';
+					}
+					?>
+				</ul>
+			</div>
+		</div>
+
+		<div id="main">
 	<h1>Beheer database</h1>
 	<br />
 	<h2>Product toevoegen</h2>
@@ -202,7 +233,8 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<input type="submit" name="verzenden" />
 		<br />
 	</form>
-	<br />
- <a href="?logout">uitloggen</a>
+	</div>
+	
+</div>
 </body>
 </html>
