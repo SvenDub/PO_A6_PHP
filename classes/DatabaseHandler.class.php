@@ -970,6 +970,15 @@ class DatabaseHandler {
 		}
 	}
 	/**
+	 * Controleert of de gebruiker is ingelogd.
+	 * 
+	 * @return boolean
+	 */
+	function isIngelogd() {
+		session_start();
+		return (! isset ( $_SESSION ['logged_in'] ) || ! $_SESSION ['logged_in']);
+	}
+	/**
 	 * Voegt een gebruiker toe aan de database.
 	 *
 	 * @param String $gebruikersnaam        	
@@ -1153,6 +1162,7 @@ class DatabaseHandler {
 	 */
 	function isBeheerder($gebruikersnaam = null) {
 		
+		session_start();
 		// Val terug naar de ingelogde gebruiker als er geen gebruiker is opgegeven
 		if ($gebruikersnaam == null) {
 			$gebruikersnaam = $_SESSION ['gebruikersnaam'];
