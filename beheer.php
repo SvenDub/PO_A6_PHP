@@ -76,7 +76,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Actief:
 		<br />
-		<input type="number" name="actief" maxlength="1" />
+		<input type="number" name="actief" max="1" min="0" maxlength="1" />
 		<br />
 		<input type="submit" name="verzenden" />
 		<br />
@@ -135,7 +135,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Actief:
 		<br />
-		<input type="number" name="actief" min="0" maxlength="1" />
+		<input type="number" name="actief" min="0" max="1" maxlength="1" />
 		<br />
 		<input type="submit" name="verzenden" />
 		<br />
@@ -164,7 +164,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Actief:
 		<br />
-		<input type="number" name="actief" min="0" maxlength="1" />
+		<input type="number" name="actief" min="0" max="1" maxlength="1" />
 		<br />
 		<input type="submit" name="verzenden" />
 		<br />
@@ -236,7 +236,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Actief:
 		<br />
-		<input type="number" name="actief" min="0" maxlength="1" />
+		<input type="number" name="actief" min="0" max="1" maxlength="1" />
 		<br />
 		<input type="submit" name="verzenden" />
 		<br />
