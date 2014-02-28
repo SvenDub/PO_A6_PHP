@@ -1312,7 +1312,7 @@ class DatabaseHandler {
 	//functie voor de beheerder om de totale omzet weer te geven 
 	function totaleOmzet() {
 		// De te gebruiken query
-		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS totale_omzet
+		$query = "SELECT SUM(A.aantal_besteld * B.prijs) AS totale_omzet
 		          FROM bestellingen A, producten B
 		          WHERE A.productcode = B.productcode
 				";
@@ -1355,8 +1355,8 @@ class DatabaseHandler {
 	//functie voor de beheerder om de omzet in een bepaalde periode weer te geven 
 	function omzetPerPeriode($begin, $eind) {
 		// De te gebruiken query
-		$query = "SELECT SUM (A.aantal_besteld * B.prijs) AS omzet_per_periode
-		          FROM bestelllingen A, producten B
+		$query = "SELECT SUM(A.aantal_besteld * B.prijs) AS omzet_per_periode
+		          FROM bestellingen A, producten B
 		          WHERE (A.productcode = B.productcode) AND (A.datum BETWEEN ? AND ?)
 				";
 		
