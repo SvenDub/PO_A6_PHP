@@ -56,7 +56,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('product_toevoegen'); return false;">
 		Categorienummer:
 		<br />
-		<select name=""categorienummer >
+		<select name="categorienummer" >
 		<?php
 		$resultaat=$db->categorie();
 		foreach($resultaat as $categorienummer=>$categorie)
@@ -119,7 +119,15 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('personeel_wijzigen'); return false;">
 		ID:
 		<br />
-		<input type="number" name="id" maxlength="4" min="0" />
+		<select name="id" >
+		<?php
+		$resultaat=$db->id_ophalen();
+		foreach($resultaat as $id=>$gebruikersnaam)
+		{
+			print("<option value='$id'>$gebruikersnaam</option>");
+		}
+		?>
+		</select>
 		<br />
 		Gebruikersnaam:
 		<br />
