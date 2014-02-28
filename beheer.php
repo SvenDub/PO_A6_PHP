@@ -61,7 +61,8 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		$resultaat=$db->categorie();
 		foreach($resultaat as $categorienummer=>$categorie)
 		{
-			print("<option value='$categorienummer'>$categorie</option>");
+			print("<option value='$categorienummer'>$categorie</option>"); 
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande categoriën kiezen
 		}
 		?>
 		</select>
@@ -125,6 +126,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		foreach($resultaat as $id=>$gebruikersnaam)
 		{
 			print("<option value='$id'>$gebruikersnaam</option>");
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande gebruikers kiezen
 		}
 		?>
 		</select>
@@ -165,6 +167,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 			$gerecht=$value['gerecht'];
 			
 			print("<option value='$productcode'>$gerecht</option>");
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande producten kiezen
 		}
 		?>
 		</select>
@@ -177,6 +180,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		foreach($resultaat as $categorienummer=>$categorie)
 		{
 			print("<option value='$categorienummer'>$categorie</option>");
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande categoriën kiezen
 		}
 		?>
 		</select>
@@ -210,6 +214,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		foreach($resultaat as $tafelnummer)
 		{
 			print("<option value='$tafelnummer'>$tafelnummer</option>");
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande tafelnummers kiezen
 		}
 		?>
 		</select>
@@ -235,6 +240,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		foreach($resultaat as $categorienummer=>$categorie)
 		{
 			print("<option value='$categorienummer'>$categorie</option>");
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande categoriën kiezen
 		}
 		?>
 		</select>
@@ -260,6 +266,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		foreach($resultaat as $tafelnummer)
 		{
 			print("<option value='$tafelnummer'>$tafelnummer</option>");
+			//Met dit phpscript kan de gebruiker uit een lijst de bestaande tafelnummers kiezen
 		}
 		?>
 		</select>
