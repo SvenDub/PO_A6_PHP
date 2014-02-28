@@ -206,7 +206,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		<select name="tafelnummeroud" >
 		<?php
-		$resultaat=$db->categorie();
+		$resultaat=$db->tafelnummers();
 		foreach($resultaat as $tafelnummer)
 		{
 			print("<option value='$tafelnummer'>$tafelnummer</option>");
