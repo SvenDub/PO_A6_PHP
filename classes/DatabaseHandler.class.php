@@ -1217,7 +1217,7 @@ class DatabaseHandler {
 		$bezet = false;
 		
 		// De te gebruiken query
-		$query = "SELECT * FROM tafelregistratie WHERE tafelnummer=?";
+		$query = "SELECT * FROM tafelregistratie WHERE tafelnummer=? AND actief=1";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
