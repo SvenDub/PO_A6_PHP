@@ -56,7 +56,14 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('product_toevoegen'); return false;">
 		Categorienummer:
 		<br />
-		<input type="number" name="categorienummer" maxlength="11" min="0" />
+		<select name=""categorienummer />
+		<?php
+		$resultaat=$db->categorie();
+		foreach($resultaat as $categorienummer=>$categorie)
+		{
+			print("<option value='$categorienummer'>$categorie</option>");
+		}
+		?>
 		<br />
 		Gerecht:
 		<br />
