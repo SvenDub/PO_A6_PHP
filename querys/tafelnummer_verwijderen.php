@@ -8,7 +8,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 */
 $tafelnummer = $_POST ["tafelnummer"];
 
-$resultaat = $db->tafelnummer_toevoegen ( $tafelnummer );
+$resultaat = $db->tafelnummer_verwijderen ( $tafelnummer );
 
 if ($resultaat == true) {
 	print ("Tafelnummer is verwijderd ") ;
