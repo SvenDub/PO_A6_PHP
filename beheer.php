@@ -254,7 +254,15 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('tafelnummer_verwijderen'); return false;">
 		Tafelnummer:
 		<br />
-		<input type="number" name="tafelnummer" min="0" maxlength="3" />
+		<select name="tafelnummer" >
+		<?php
+		$resultaat=$db->tafelnummers();
+		foreach($resultaat as $tafelnummer)
+		{
+			print("<option value='$tafelnummer'>$tafelnummer</option>");
+		}
+		?>
+		</select>
 		<br />
 		<input type="submit" name="verzenden" />
 		<br />
