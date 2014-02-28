@@ -1489,4 +1489,43 @@ class DatabaseHandler {
 		return $array;
 	}
 	
+	function id_ophalen() {
+		$array = array ();
+		// De te gebruiken query
+		$query = "SELECT id, gebruikersnaam FROM inlogsysteem";
+
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+
+			// Voer de query uit
+			if ($stmt->execute ()) {
+
+				// Bind de resultaten aan variabelen
+				if ($stmt->bind_result ( $id, $gebruikersnaam )) {
+
+					// Haal alle resultaten op een loop er doorheen
+					while ( $stmt->fetch () ) {
+						$array[$id]=$gebruikersnaam;
+						// Doe iets met de resultaten
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array;
+	}
 }
