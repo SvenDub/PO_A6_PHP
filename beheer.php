@@ -221,7 +221,15 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('categorie_wijzigen'); return false;">
 		Categorienummer:
 		<br />
-		<input type="number" name="categorienummer" min="0" maxlength="11" />
+		<select name="categorienummer" >
+		<?php
+		$resultaat=$db->categorie();
+		foreach($resultaat as $categorienummer=>$categorie)
+		{
+			print("<option value='$categorienummer'>$categorie</option>");
+		}
+		?>
+		</select>
 		<br />
 		Categorie:
 		<br />
