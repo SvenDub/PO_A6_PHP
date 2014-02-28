@@ -117,7 +117,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 	<br />
 	<form id="personeel_wijzigen" method="post" action=""
 		onsubmit="opslaan('personeel_wijzigen'); return false;">
-		ID:
+		Originele gebruikersnaam:
 		<br />
 		<select name="id" >
 		<?php
