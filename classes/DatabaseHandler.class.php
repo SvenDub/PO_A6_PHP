@@ -1365,26 +1365,28 @@ class DatabaseHandler {
 		
 		// Bereid de query voor
 		if ($stmt->prepare ( $query )) {
-			
-			// Voeg de parameters toe
-			
-			// Voer de query uit
-			if ($stmt->execute ()) {
 				
-				// Bind de resultaten aan variabelen
-				if ($stmt->bind_result ( $omzet )) {
+				// Voeg de parameters toe
+			if ($stmt->bind_param ( 'ss', $begin, $eind )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $omzet )) {
 						
-					// Haal alle resultaten op een loop er doorheen
-					if ($stmt->fetch ()) {
-						// Doe iets met de resultaten
+						// Haal alle resultaten op een loop er doorheen
+						if ($stmt->fetch ()) {
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
 					}
 				} else {
 					// Verwerk errors
 					echo $stmt->error;
 				}
-			} else {
-				// Verwerk errors
-				echo $stmt->error;
 			}
 		} else {
 			// Verwerk errors
