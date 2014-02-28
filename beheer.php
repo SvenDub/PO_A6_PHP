@@ -156,7 +156,18 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('product_wijzigen'); return false;">
 		Productcode:
 		<br />
-		<input type="number" name="productcode" maxlength="4" />
+		<select name="productcode" >
+		<?php
+		$resultaat=$db->getProducten();
+		foreach($resultaat as $key=>$value)
+		{
+			$productcode=$value['productcode'];
+			$gerecht=$value['gerecht'];
+			
+			print("<option value='$productcode'>$gerecht</option>");
+		}
+		?>
+		</select>
 		<br />
 		Categorienummer:
 		<br />
