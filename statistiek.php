@@ -58,7 +58,7 @@ $db->login ();
 			 * Er worden variabelen aangemaakt voor de klanten in de periodes. Deze periodes zijn nu tot 3 maanden geleden, 3 tot 6 maanden geleden, 6 tot 9 maanden geleden en 9 maanden tot een jaar geleden.
 			 */
 			$max = max ( $klanten_3maanden, $klanten_6maanden, $klanten_9maanden, $klanten_12maanden );
-			$breedte = 300 / $max;
+			$breedte = 450 / $max;
 			/*
 			 * Er wordt om de grafieken goed te kunnen maken een maximale variabele gemaakt, deze wordt bepaald uit de variabele van klanten in de periode. Vervolgens wordt de breedte gedefinieerd door deze max waarde. Hierdoor krijg je verschillende staven in het staafdiagram.
 			 */
@@ -81,7 +81,7 @@ $db->login ();
 			 * Er worden variabelen aangemaakt voor de omzet in de periodes. Deze periodes zijn nu tot 3 maanden geleden, 3 tot 6 maanden geleden, 6 tot 9 maanden geleden en 9 maanden tot een jaar geleden.
 			 */
 			$max = max ( $omzet_3maanden, $omzet_6maanden, $omzet_9maanden, $omzet_12maanden );
-			$breedte = 300 / $max;
+			$breedte = 450 / $max;
 			/*
 			 * Er wordt om de grafieken goed te kunnen maken een maximale variabele gemaakt, deze wordt bepaald uit de variabele van de omzet in de periode. Vervolgens wordt de breedte gedefinieerd door deze max waarde. Hierdoor krijg je verschillende staven in het staafdiagram.
 			 */
