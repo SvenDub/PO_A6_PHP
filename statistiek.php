@@ -103,14 +103,14 @@ $db->login ();
 			<h2>Totale omzet</h2>
 			<?php
 			$totale_omzet = $db->totaleOmzet ();
-			print ("De totale omzet is $totale_omzet Euro") ;
+			print ("De totale omzet is &euro; $totale_omzet.") ;
 			// Totale omzet wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
 			
 			<h2>Gemiddelde omzet per klant</h2>
 			<?php
 			$omzetperklant = $db->omzetperklant ();
-			print ("De gemiddelde omzet per klant is $omzetperklant Euro") ;
+			print ("De gemiddelde omzet per klant is &euro; $omzetperklant.") ;
 			// De omzet per klant wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
 		</div>
