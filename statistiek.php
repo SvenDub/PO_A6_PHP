@@ -73,10 +73,10 @@ $db->login ();
 			<h2>Omzet per periode</h2>
 			<table>
 			<?php
-			$omzet_3maanden = $db->omzetPerPeriode ( date ( "Y-m-d" ), date ( "Y-m-d", time () - 8035200 ) );
-			$omzet_6maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 8035200 ), date ( "Y-m-d", time () - 16070400 ) );
-			$omzet_9maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 16070400 ), date ( "Y-m-d", time () - 24105600 ) );
-			$omzet_12maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 24105600 ), date ( "Y-m-d", time () - 32140800 ) );
+			$omzet_3maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 8035200 ), date ( "Y-m-d" )  );
+			$omzet_6maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 16070400 ), date ( "Y-m-d", time () - 8035200 ) );
+			$omzet_9maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 24105600 ), date ( "Y-m-d", time () - 16070400) );
+			$omzet_12maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 32140800 ), date ( "Y-m-d", time () - 24105600 ) );
 			/*
 			 * Er worden variabelen aangemaakt voor de omzet in de periodes. Deze periodes zijn nu tot 3 maanden geleden, 3 tot 6 maanden geleden, 6 tot 9 maanden geleden en 9 maanden tot een jaar geleden.
 			 */
