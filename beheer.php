@@ -204,7 +204,15 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('tafelnummer_wijzigen'); return false;">
 		Oude tafelnummer:
 		<br />
-		<input type="number" name="tafelnummeroud" min="0" maxlength="3" />
+		<select name="tafelnummeroud" >
+		<?php
+		$resultaat=$db->categorie();
+		foreach($resultaat as $tafelnummer)
+		{
+			print("<option value='$tafelnummer'>$tafelnummer</option>");
+		}
+		?>
+		</select>
 		<br />
 		Nieuwe tafelnummer:
 		<br />
