@@ -1448,4 +1448,45 @@ class DatabaseHandler {
 	function omzetperklant() {
 		return self::totaleOmzet () / self::klanten_totaal ();
 	}
+	
+	function categorie() {
+		$array = array ();
+		// De te gebruiken query
+		$query = "SELECT categorie FROM categorie";
+
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+
+			// Voer de query uit
+			if ($stmt->execute ()) {
+
+				// Bind de resultaten aan variabelen
+				if ($stmt->bind_result ( $categorie )) {
+
+					// Haal alle resultaten op een loop er doorheen
+					while ( $stmt->fetch () ) {
+						array_push ( $array, $categorie );
+						// Doe iets met de resultaten
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $array;
+	}
+	
 }
