@@ -62,10 +62,10 @@ $db->login ();
 			/*
 			 * Er wordt om de grafieken goed te kunnen maken een maximale variabele gemaakt, deze wordt bepaald uit de variabele van klanten in de periode. Vervolgens wordt de breedte gedefinieerd door deze max waarde. Hierdoor krijg je verschillende staven in het staafdiagram.
 			 */
-			print ("<tr><td>afgelopen drie maanden</td><td>$klanten_3maanden</td><td><img src='blok.png'  style='float:left;' width='".$breedte*$klanten_3maanden."' height='40'></td></tr>") ;
-			print ("<tr><td>maand 3 tot 6 geleden</td><td>$klanten_6maanden</td><td><img src='blok.png'   style='float:left;' width='".$breedte*$klanten_6maanden."' height='40'></td></tr>") ;
-			print ("<tr><td>maand 6 tot 9 geleden</td><td>$klanten_9maanden</td><td><img src='blok.png'   style='float:left;' width='".$breedte*$klanten_9maanden."' height='40'></td></tr>") ;
-			print ("<tr><td>maand 9 tot 12 geleden</td><td>$klanten_12maanden</td><td><img src='blok.png' style='float:left;' width='".$breedte*$klanten_12maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>afgelopen drie maanden</td><td style='width: 50px'>$klanten_3maanden</td><td><img src='blok.png'  style='float:left;' width='".$breedte*$klanten_3maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>maand 3 tot 6 geleden</td><td style='width: 50px'>$klanten_6maanden</td><td><img src='blok.png'   style='float:left;' width='".$breedte*$klanten_6maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>maand 6 tot 9 geleden</td><td style='width: 50px'>$klanten_9maanden</td><td><img src='blok.png'   style='float:left;' width='".$breedte*$klanten_9maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>maand 9 tot 12 geleden</td><td style='width: 50px'>$klanten_12maanden</td><td><img src='blok.png' style='float:left;' width='".$breedte*$klanten_12maanden."' height='40'></td></tr>") ;
 			// De variablee worden dan weergegeven doormiddel van een printscript, de breedte varieert doordat de waarde van de variabelen anders zijn.
 			?>
 			</table>
@@ -85,10 +85,10 @@ $db->login ();
 			/*
 			 * Er wordt om de grafieken goed te kunnen maken een maximale variabele gemaakt, deze wordt bepaald uit de variabele van de omzet in de periode. Vervolgens wordt de breedte gedefinieerd door deze max waarde. Hierdoor krijg je verschillende staven in het staafdiagram.
 			 */
-			print ("<tr><td>afgelopen drie maanden</td><td>&euro; $omzet_3maanden</td><td><img src='blok.png' style='float:left;' width='".$breedte*$omzet_3maanden."' height='40'></td></tr>") ;
-			print ("<tr><td>maand 3 tot 6 geleden</td><td>&euro; $omzet_6maanden</td><td><img src='blok.png'  style='float:left;' width='".$breedte*$omzet_6maanden."' height='40'></td></tr>") ;
-			print ("<tr><td>maand 6 tot 9 geleden</td><td>&euro; $omzet_9maanden</td><td><img src='blok.png'  style='float:left;' width='".$breedte*$omzet_9maanden."' height='40'></td></tr>") ;
-			print ("<tr><td>maand 9 tot 12 geleden</td><td>&euro; $omzet_12maanden</td><td><img src='blok.png' style='float:left;' width='".$breedte*$omzet_12maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>afgelopen drie maanden</td><td style='width: 50px'>&euro; $omzet_3maanden</td><td><img src='blok.png' style='float:left;' width='".$breedte*$omzet_3maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>maand 3 tot 6 geleden</td><td style='width: 50px'>&euro; $omzet_6maanden</td><td><img src='blok.png'  style='float:left;' width='".$breedte*$omzet_6maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>maand 6 tot 9 geleden</td><td style='width: 50px'>&euro; $omzet_9maanden</td><td><img src='blok.png'  style='float:left;' width='".$breedte*$omzet_9maanden."' height='40'></td></tr>") ;
+			print ("<tr><td style='width: 200px'>maand 9 tot 12 geleden</td><td style='width: 50px'>&euro; $omzet_12maanden</td><td><img src='blok.png' style='float:left;' width='".$breedte*$omzet_12maanden."' height='40'></td></tr>") ;
 			// De variablee worden dan weergegeven doormiddel van een printscript, de breedte varieert doordat de waarde van de variabelen anders zijn.
 			?>
 			</table>
