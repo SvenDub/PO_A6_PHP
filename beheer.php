@@ -171,7 +171,15 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Categorienummer:
 		<br />
-		<input type="text" name="categorienummer" maxlength="11" />
+		<select name="categorienummer" >
+		<?php
+		$resultaat=$db->categorie();
+		foreach($resultaat as $categorienummer=>$categorie)
+		{
+			print("<option value='$categorienummer'>$categorie</option>");
+		}
+		?>
+		</select>
 		<br />
 		Gerecht:
 		<br />
