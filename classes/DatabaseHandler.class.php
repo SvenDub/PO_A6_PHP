@@ -1452,7 +1452,7 @@ class DatabaseHandler {
 	function categorie() {
 		$array = array ();
 		// De te gebruiken query
-		$query = "SELECT categorie FROM categorie";
+		$query = "SELECT categorie, categorienummer FROM categorie";
 
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -1464,11 +1464,11 @@ class DatabaseHandler {
 			if ($stmt->execute ()) {
 
 				// Bind de resultaten aan variabelen
-				if ($stmt->bind_result ( $categorie )) {
+				if ($stmt->bind_result ( $categorie, $categorienummer )) {
 
 					// Haal alle resultaten op een loop er doorheen
 					while ( $stmt->fetch () ) {
-						array_push ( $array, $categorie );
+						$array[$categorienummer]=$categorie;
 						// Doe iets met de resultaten
 					}
 				} else {
