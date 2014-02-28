@@ -56,7 +56,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		onsubmit="opslaan('product_toevoegen'); return false;">
 		Categorienummer:
 		<br />
-		<select name=""categorienummer />
+		<select name=""categorienummer >
 		<?php
 		$resultaat=$db->categorie();
 		foreach($resultaat as $categorienummer=>$categorie)
@@ -64,6 +64,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 			print("<option value='$categorienummer'>$categorie</option>");
 		}
 		?>
+		</select>
 		<br />
 		Gerecht:
 		<br />
