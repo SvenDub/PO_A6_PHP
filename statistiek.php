@@ -96,7 +96,7 @@ $db->login ();
 			<h2>Totaal aantal klanten</h2>
 			<?php
 			$klanten_totaal = $db->klanten_totaal ();
-			print ("Er zijn $klanten_totaal geweest in het restaurant") ;
+			print ("Er zijn $klanten_totaal klanten geweest in het restaurant") ;
 			// Totaal aantal klanten wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
 			
