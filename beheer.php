@@ -131,7 +131,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Beheer:
 		<br />
-		<input type="number" name="beheer" min="0" maxlength="1" />
+		<input type="number" name="beheer" min="0" max="1" maxlength="1" />
 		<br />
 		Actief:
 		<br />
@@ -232,7 +232,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 		<br />
 		Beheer:
 		<br />
-		<input type="number" name="beheer" min="0" maxlength="1" />
+		<input type="number" name="beheer" min="0" max="1" maxlength="1" />
 		<br />
 		Actief:
 		<br />
