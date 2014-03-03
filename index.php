@@ -46,7 +46,7 @@
 			</div>
 			<div id="welcome">
 				<div class="title">
-					<h2>Welkom op de beheerpagina</h2>
+					<h2>Welkom bij het kassasysteem van de Bolhoed.</h2>
 					<span class="byline">Hier vindt u alle beschikbare informatie</span>
 				</div>
 			</div>
