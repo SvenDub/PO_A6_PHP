@@ -94,7 +94,14 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	// Functie om producten toe te voegen
+	/**
+	 * Voegt een product toe aan de database.
+	 * 
+	 * @param Integer het nummer van de categorie
+	 * @param String de naam van het gerecht
+	 * @param Double de prijs
+	 * @param Integer actief of niet actief
+	 */
 	function product_toevoegen($categorienummer, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
 		$query = "INSERT INTO producten ( categorienummer, gerecht, prijs, actief )  VALUES ( ?, ?, ?, ? ) ";
@@ -134,7 +141,15 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	//Functie om klant toe te voegen
+	/**
+	 * Voegt een klant toe aan de database.
+	 * 
+	 * @param Integer het nummer van de ober
+	 * @param Integer het nummer de tafel
+	 * @param Integer het totaal aantal klanten
+	 * @param Integer actief of niet actief
+	 * @param String de datum
+	 */
 	function klant_toevoegen($id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "INSERT INTO tafelregistratie (  id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) ";
@@ -175,7 +190,11 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om tafelnummer toe te voegen 
+	/**
+	 * Voegt een tafelnummer toe aan de database.
+	 * 
+	 * @param Integer het nummer van de tafel
+	 */
 	function tafelnummer_toevoegen($tafelnummer) {
 		// De te gebruiken query
 		$query = "INSERT INTO tafelnummer ( tafelnummer )  VALUES ( ? ) ";
@@ -216,7 +235,12 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om categorie toe te voegen
+	/**
+	 * Voegt een categorie toe aan de database.
+	 * 
+	 * @param Integer het nummer van de categorie
+	 * @param String de naam van de categorie
+	 */
 	function categorie_toevoegen($categorienummer, $categorie) {
 		// De te gebruiken query
 		$query = "INSERT INTO categorie ( categorienummer, categorie )  VALUES ( ?, ? ) ";
@@ -257,7 +281,16 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om bestelling toe te voegen
+	/**
+	 * Voegt een bestelling toe aan de database.
+	 * 
+	 * @param Integer het nummer van de klant
+	 * @param Integer het nummer van de ober
+	 * @param Integer het nummer het product
+	 * @param Integer het aantal besteld
+	 * @param String een opmerking over de bestelling
+	 * @param String de datum
+	 */
 	function bestelling_toevoegen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum) {
 		// De te gebruiken query
 		$query = "INSERT INTO bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum )  VALUES ( ?, ?, ?, ?, ?, ? ) ";
@@ -298,7 +331,15 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om personeel te wijzigen
+	/**
+	 * Wijzigt het personeel in de database.
+	 * 
+	 * @param Integer het nummer van het personeel
+	 * @param String de gebruikersnaam van het opersoneel
+	 * @param String het wachtwoord van het personeel
+	 * @param Integer het beheer van het personeel
+	 * @param Integer actief niet actief van het personeel
+	 */
 	function personeel_wijzigen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
 		// De te gebruiken query
 		$query = " UPDATE inlogsysteem ( gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ? ) 
@@ -340,7 +381,15 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om product te wijzigen
+	/**
+	 * Wijzigt het personeel in de database.
+	 * 
+	 * @param Integer het nummer van het product
+	 * @param String de naam van de categorie
+	 * @param String de naam van het gerecht
+	 * @param Double de prijs van het product
+	 * @param Integer actief niet actief van product
+	 */
 	function product_wijzigen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
 		$query = "UPDATE producten ( productcode, categorie, gerecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) 
@@ -381,7 +430,16 @@ class DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
-	//Functie om klant te wijzigen
+	/**
+	 * Wijzigt een klant in de database.
+	 * 
+	 * @param Integer het nummer van de klant
+	 * @param Integer het nummer de ober
+	 * @param Integer het nummer de tafel
+	 * @param Integer het totaal aantal klanten
+	 * @param Integer actief of niet actief
+	 * @param String de datum
+	 */
 	function klant_wijzigen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
 		$query = "UPDATE tafelregistratie ( id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) 
@@ -423,7 +481,12 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om tafelnummer te wijzigen
+	/**
+	 * Wijzigt een tafelnummer in de database.
+	 * 
+	 * @param Integer het nummer van de tafel
+	 * @param Integer het nieuwe nummer van de tafel 
+	 */
 	function tafelnummer_wijzigen($tafelnummeroud, $tafelnummernieuw) {
 		// De te gebruiken query
 		$query = "UPDATE tafelnummer ( tafelnummer )  VALUES ( ? ) 
@@ -465,7 +528,12 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om categorie te wijzigen
+	/**
+	 * Wijzigt een tafelnummer in de database.
+	 * 
+	 * @param Integer het nummer van de categorie
+	 * @param String de naam van de categorie
+	 */
 	function categorie_wijzigen($categorienummer, $categorie) {
 		// De te gebruiken query
 		$query = "UPDATE categorie ( categorienummer, categorie )  VALUES ( ?, ? )
@@ -507,7 +575,18 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om besteling te wijzigen
+	/**
+	 * Wijzigt een bestelling in de database.
+	 * 
+	 * @param Integer het nummer van de klant
+	 * @param Integer het nummer van de ober
+	 * @param Integer het nummer het product
+	 * @param Integer het aantal besteld
+	 * @param String een opmerking over de bestelling
+	 * @param String de datum
+	 * @param Integer het bestellingnummer
+	 * @param Integer de status
+	 */
 	function bestelling_wijzigen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer, $status) {
 		// De te gebruiken query
 		$query = "UPDATE bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum, status )  VALUES ( ?, ?, ?, ?, ?, ?, ? ) 
@@ -549,7 +628,11 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om bestelling te verwijderen
+	/**
+	 * Verwijdert een bestelling in de database.
+	 * 
+	 * @param Integer het bestellingnummer
+	 */
 	function bestelling_verwijderen($bestellingnummer) {
 		// De te gebruiken query
 		$query = "DELETE FROM bestellingen WHERE bestellingnummer=?";
@@ -590,7 +673,11 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om tafelnummer te verwijderen
+	/**
+	 * Verwijdert een tafelnummer in de database.
+	 * 
+	 * @param Integer het tafelnummer
+	 */
 	function tafelnummer_verwijderen($tafelnummer) {
 		// De te gebruiken query
 		$query = "DELETE FROM tafelnummer WHERE tafelnummer=?";
@@ -631,7 +718,11 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	//Functie om klant te verwijderen
+	/**
+	 * Verwijdert een klant toe aan de database.
+	 * 
+	 * @param Integer het nummer van de bestelling
+	 */
 	function klant_verwijderen($nummer) {
 		// De te gebruiken query
 		$query = "DELETE FROM tafelregistratie WHERE nummer=?";
@@ -672,7 +763,10 @@ class DatabaseHandler {
 		
 		$stmt->close ();
 	}
-	// funcite voor de beheerder om te kijken naar het aantal klanten 
+	/**
+	 * Haalt het totaal aantal klanten uit de database
+	 * 
+	 */
 	function klanten_totaal() {
 		// De te gebruiken query
 		$query = "SELECT SUM(aantal_klanten) AS klanten_totaal
@@ -710,7 +804,10 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $klanten;
 	}
-	// functie voor alle tafelnummers
+	/**
+	 * Haalt de tafelnummers op uit de database.
+	 * 
+	 */
 	function tafelnummers() {
 		$array = array ();
 		// De te gebruiken query
@@ -750,7 +847,11 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $array;
 	}
-	//functie voor alle gerechten in een categorie
+	/**
+	 * Geeft de gerechten per categorie weer.
+	 * 
+	 * @param String de naam van de categorie
+	 */
 	function gerechtenpercategorie($categorie) {
 		$array = array ();
 		// De te gebruiken query
@@ -797,7 +898,11 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $array;
 	}
-	// functie bestellingen per tafel 
+	/**
+	 * Geeft de bestellingen per tafel weer. 
+	 * 
+	 * @param Integer het klantnummer
+	 */ 
 	function bestellingpertafel($nummer) {
 		$array = array ();
 		// De te gebruiken query
@@ -1031,7 +1136,11 @@ class DatabaseHandler {
 			return false;
 		}
 	}
-	//functie die alle bestellingen weergeeft
+	/**
+	 * Geeft alle bestellingen weer.
+	 * 
+	 * @param Integer de status van de bestellingen
+	 */
 	function alle_bestellingen($status) {
 		$array = array ();
 		// De te gebruiken query
@@ -1257,7 +1366,12 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $bezet;
 	}
-	//functie voor beheerder om te kiken naar het aantal klanten in een bepaalde periode
+	/**
+	 * Geeft het aantal klanten per periode weer
+	 * 
+	 * @param String begin van de periode
+	 * @param String eind van de periode
+	 */
 	function klantenPerPeriode($begin, $eind) {
 		// De te gebruiken query
 		$query = "SELECT COALESCE(SUM(aantal_klanten), 0) AS klanten_per_periode
@@ -1304,7 +1418,10 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $klanten;
 	}
-	//functie voor de beheerder om de totale omzet weer te geven 
+	/**
+	 * Geeft de totale omzet weer 
+	 * 
+	 */
 	function totaleOmzet() {
 		// De te gebruiken query
 		$query = "SELECT COALESCE(SUM(A.aantal_besteld * B.prijs), 0) AS totale_omzet
@@ -1318,7 +1435,6 @@ class DatabaseHandler {
 		// Bereid de query voor
 		if ($stmt->prepare ( $query )) {
 			
-			// Voeg de parameters toe
 			
 			// Voer de query uit
 			if ($stmt->execute ()) {
@@ -1347,7 +1463,12 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $omzet;
 	}
-	//functie voor de beheerder om de omzet in een bepaalde periode weer te geven 
+	/**
+	 * Geeft de omzet per periode weer
+	 * 
+	 * @param String begin van de periode
+	 * @param String eind van de periode
+	 */
 	function omzetPerPeriode($begin, $eind) {
 		// De te gebruiken query
 		$query = "SELECT COALESCE(SUM(A.aantal_besteld * B.prijs), 0) AS omzet_per_periode
@@ -1445,10 +1566,17 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $array;
 	}
+	/**
+	 * Geeft de omzet per klant weer
+	 * 
+	 */
 	function omzetperklant() {
 		return self::totaleOmzet () / self::klanten_totaal ();
 	}
-	
+	/**
+	 * Geeft de categoriën weer 
+	 * 
+	 */
 	function categorie() {
 		$array = array ();
 		// De te gebruiken query
@@ -1488,7 +1616,10 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $array;
 	}
-	
+	/**
+	 * Haalt alle id's op uit de database
+	 * 
+	 */
 	function id_ophalen() {
 		$array = array ();
 		// De te gebruiken query
