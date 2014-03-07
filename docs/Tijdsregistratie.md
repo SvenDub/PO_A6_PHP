@@ -24,3 +24,4 @@
 * 27-02-14 Sven: Layout uploaden
 * 28-02-14 Sven, Martijn: Statistieken en beheer. Stefan en Joris: documentatie
 * 03-03-14 Stefan: ingelezen in de documentatie. Sven: App. Martijn: commentaar databasehandlerclass 
+* 07-03-14 Sven: app en websitecontrole Martijn: websitecontrole
