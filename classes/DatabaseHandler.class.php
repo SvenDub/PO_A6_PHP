@@ -385,14 +385,14 @@ class DatabaseHandler {
 	 * Wijzigt het personeel in de database.
 	 * 
 	 * @param Integer het nummer van het product
-	 * @param String de naam van de categorie
+	 * @param Integer het nummer van de categorie
 	 * @param String de naam van het gerecht
 	 * @param Double de prijs van het product
 	 * @param Integer actief niet actief van product
 	 */
-	function product_wijzigen($productcode, $categorie, $gerecht, $prijs, $actief) {
+	function product_wijzigen($productcode, $categorienummer, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
-		$query = "UPDATE producten SET productcode=?, categorie=?, gerecht=?, prijs=?, actief=? 
+		$query = "UPDATE producten SET productcode=?, categorienummer=?, gerecht=?, prijs=?, actief=? 
 		          WHERE productcode=?";
 		
 		// Maak een nieuw statement
@@ -402,7 +402,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'issdi', $productcode, $categorie, $gerecht, $prijs, $actief )) {
+			if ($stmt->bind_param ( 'iisdi', $productcode, $categorienummer, $gerecht, $prijs, $actief )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
