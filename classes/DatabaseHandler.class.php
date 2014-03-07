@@ -550,7 +550,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'is', $categorienummer, $categorie )) {
+			if ($stmt->bind_param ( 'isi', $categorienummer, $categorie, $categorienummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
