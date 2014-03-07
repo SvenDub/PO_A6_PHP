@@ -1659,4 +1659,53 @@ class DatabaseHandler {
 		$stmt->close ();
 		return $array;
 	}
+	
+		/**
+	 * Wijzigt een bestellingstatus in de database.
+	 * 
+	 * @param Integer het bestellingnummer
+	 * @param Integer de status
+	 */
+	function bestelling_wijzigen($bestellingnummer, $status) {
+		// De te gebruiken query
+		$query = "UPDATE bestellingen ( status )  VALUES ( ? ) 
+		          WHERE bestellingnummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'ii', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer, $status )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		
+		$stmt->close ();
+	}
+	
 }
