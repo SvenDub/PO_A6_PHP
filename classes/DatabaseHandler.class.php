@@ -341,6 +341,10 @@ class DatabaseHandler {
 	 * @param Integer actief niet actief van het personeel
 	 */
 	function personeel_wijzigen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
+		
+		$salt = sprintf ( "$2a$%02d$", 10 ) . strtr ( base64_encode ( mcrypt_create_iv ( 16, MCRYPT_DEV_URANDOM ) ), '+', '.' ); // Password salt
+
+		$hash = crypt ( $wachtwoord, $salt ); // Encrypt wachtwoord
 		// De te gebruiken query
 		$query = " UPDATE inlogsysteem SET gebruikersnaam=?, wachtwoord=?, beheer=?, actief=?  
 		           WHERE id=?";
@@ -352,7 +356,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'ssiii', $gebruikersnaam, $wachtwoord, $beheer, $actief, $id )) {
+			if ($stmt->bind_param ( 'ssiii', $gebruikersnaam, $hash, $beheer, $actief, $id )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
