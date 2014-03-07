@@ -402,7 +402,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'iisdi', $productcode, $categorienummer, $gerecht, $prijs, $actief )) {
+			if ($stmt->bind_param ( 'iisdii', $productcode, $categorienummer, $gerecht, $prijs, $actief, $productcode )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
