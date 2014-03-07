@@ -12,7 +12,7 @@ Ontwerpen
 - [.] Bestellingen aanmaken
 - [.] Betalen app
 
-- [ ] Beheer
-- [ ] Statistieken
+- [x] Beheer
+- [x] Statistieken
 - [ ] Notificaties beide kanten op
 - [x] Design
