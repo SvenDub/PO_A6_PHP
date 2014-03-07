@@ -1668,7 +1668,7 @@ class DatabaseHandler {
 	 */
 	function bestellingstatus_wijzigen($bestellingnummer, $status) {
 		// De te gebruiken query
-		$query = "UPDATE bestellingen ( status )  VALUES ( ? ) 
+		$query = "UPDATE bestellingen SET status=? 
 		          WHERE bestellingnummer=?";
 		
 		// Maak een nieuw statement
