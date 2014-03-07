@@ -540,7 +540,7 @@ class DatabaseHandler {
 	 */
 	function categorie_wijzigen($categorienummer, $categorie) {
 		// De te gebruiken query
-		$query = "UPDATE categorie SET categorienummer=?, cattegorie=?  
+		$query = "UPDATE categorie SET categorienummer=?, categorie=?  
 		          WHERE categorienummer=?";
 		
 		// Maak een nieuw statement
