@@ -47,7 +47,7 @@ $db->login ();
 
 		<div id="main">
 			<h1>Statistieken</h1>
-			<h2>Klanten per periode</h2>
+			<h2>Klanten per periode</h2><br />
 			<table>
 			<?php
 			$klanten_3maanden = $db->klantenPerPeriode ( date ( "Y-m-d", time () - 8035200 ), date ( "Y-m-d" ) );
@@ -93,21 +93,21 @@ $db->login ();
 			?>
 			</table>
 
-			<h2>Totaal aantal klanten</h2>
+			<h2>Totaal aantal klanten</h2><br />
 			<?php
 			$klanten_totaal = $db->klanten_totaal ();
 			print ("Er zijn $klanten_totaal klanten geweest in het restaurant.") ;
 			// Totaal aantal klanten wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
-			
-			<h2>Totale omzet</h2>
+			<br />
+			<h2>Totale omzet</h2><br />
 			<?php
 			$totale_omzet = $db->totaleOmzet ();
 			print ("De totale omzet is &euro; $totale_omzet.") ;
 			// Totale omzet wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
-			
-			<h2>Gemiddelde omzet per klant</h2>
+			<br />
+			<h2>Gemiddelde omzet per klant</h2><br />
 			<?php
 			$omzetperklant = $db->omzetperklant ();
 			print ("De gemiddelde omzet per klant is &euro; $omzetperklant.") ;
