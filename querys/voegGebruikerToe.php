@@ -11,7 +11,7 @@ $wachtwoord = $_POST ["wachtwoord"];
 $beheer = $_POST ["beheer"];
 $actief = $_POST ["actief"];
 
-$resultaat = $db->tafelnummer_toevoegen ( $gebruikersnaam, $wachtwoord, $beheer, $actief );
+$resultaat = $db->voegGebruikerToe ( $gebruikersnaam, $wachtwoord, $beheer, $actief );
 
 if ($resultaat == true) {
 	print ("Gebruiker is toegevoegd. ") ;
