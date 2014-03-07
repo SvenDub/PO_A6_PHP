@@ -9,7 +9,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 $tafelnummeroud = $_POST ["tafelnummeroud"];
 $tafelnummernieuw = $_POST ["tafelnummernieuw"];
 
-$resultaat = $db->tafelnummer_toevoegen ( $tafelnummeroud, $tafelnummernieuw );
+$resultaat = $db->tafelnummer_wijzigen ( $tafelnummeroud, $tafelnummernieuw );
 
 if ($resultaat == true) {
 	print ("Tafelnummer is gewijzigd ") ;
