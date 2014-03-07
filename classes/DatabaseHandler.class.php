@@ -1678,7 +1678,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'ii', $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer, $status )) {
+			if ($stmt->bind_param ( 'ii', $bestellingnummer, $status )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
