@@ -7,7 +7,7 @@ refresh = function() {
 	setTimeout('refresh()', 3000);
 };
 
-versturen = function(var nr) 
+versturen = function( nr ) 
 	{
 	$.post('livetickerquery.php', {
 		bestellingnummer : nr
