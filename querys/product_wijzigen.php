@@ -12,7 +12,7 @@ $gerecht = $_POST ["gerecht"];
 $prijs = $_POST ["prijs"];
 $actief = $_POST ["actief"];
 
-$resultaat = $db->product_wijzigen ( $productcode, $categorie, $gerecht, $prijs, $actief );
+$resultaat = $db->product_wijzigen ( $productcode, $categorienummer, $gerecht, $prijs, $actief );
 
 if ($resultaat == true) {
 	print ("Product succesvol gewijzigd") ;
