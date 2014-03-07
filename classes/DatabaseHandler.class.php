@@ -342,7 +342,7 @@ class DatabaseHandler {
 	 */
 	function personeel_wijzigen($id, $gebruikersnaam, $wachtwoord, $beheer, $actief) {
 		// De te gebruiken query
-		$query = " UPDATE inlogsysteem ( gebruikersnaam, wachtwoord, beheer, actief )  VALUES ( ?, ?, ?, ? ) 
+		$query = " UPDATE inlogsysteem SET gebruikersnaam=?, wachtwoord=?, beheer=?, actief=?  
 		           WHERE id=?";
 		
 		// Maak een nieuw statement
@@ -392,7 +392,7 @@ class DatabaseHandler {
 	 */
 	function product_wijzigen($productcode, $categorie, $gerecht, $prijs, $actief) {
 		// De te gebruiken query
-		$query = "UPDATE producten ( productcode, categorie, gerecht, prijs, actief )  VALUES ( ?, ?, ?, ?, ? ) 
+		$query = "UPDATE producten SET productcode=?, categorie=?, gerecht=?, prijs=?, actief=? 
 		          WHERE productcode=?";
 		
 		// Maak een nieuw statement
@@ -442,7 +442,7 @@ class DatabaseHandler {
 	 */
 	function klant_wijzigen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum) {
 		// De te gebruiken query
-		$query = "UPDATE tafelregistratie ( id, tafelnummer, aantal_klanten, actief, datum )  VALUES (  ?, ?, ?, ?, ? ) 
+		$query = "UPDATE tafelregistratie SET id=?, tafelnummer=?, aantal_klanten=?, actief=?, datum=?   
 		          WHERE nummer=?";
 		
 		// Maak een nieuw statement
@@ -489,7 +489,7 @@ class DatabaseHandler {
 	 */
 	function tafelnummer_wijzigen($tafelnummeroud, $tafelnummernieuw) {
 		// De te gebruiken query
-		$query = "UPDATE tafelnummer ( tafelnummer )  VALUES ( ? ) 
+		$query = "UPDATE tafelnummer  SET tafelnummer=?   
 		          WHERE tafelnummer=?";
 		
 		// Maak een nieuw statement
@@ -536,7 +536,7 @@ class DatabaseHandler {
 	 */
 	function categorie_wijzigen($categorienummer, $categorie) {
 		// De te gebruiken query
-		$query = "UPDATE categorie ( categorienummer, categorie )  VALUES ( ?, ? )
+		$query = "UPDATE categorie SET categorienummer=?, cattegorie=?  
 		          WHERE categorienummer=?";
 		
 		// Maak een nieuw statement
@@ -589,7 +589,7 @@ class DatabaseHandler {
 	 */
 	function bestelling_wijzigen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $bestellingnummer, $status) {
 		// De te gebruiken query
-		$query = "UPDATE bestellingen ( nummer, id, productcode, aantal_besteld, opmerking, datum, status )  VALUES ( ?, ?, ?, ?, ?, ?, ? ) 
+		$query = "UPDATE bestellingen SET nummer=?, id=?, productcode=?, aantal_besteld=?, opmerking=?, datum=?, status=?   
 		          WHERE bestellingnummer=?";
 		
 		// Maak een nieuw statement
