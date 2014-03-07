@@ -9,7 +9,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 $categorienummer = $_POST ["categorienummer"];
 $categorie = $_POST ["categorie"];
 
-$resultaat = $db->tafelnummer_toevoegen ( $categorienummer, $categorie );
+$resultaat = $db->categorie_wijzigen ( $categorienummer, $categorie );
 
 if ($resultaat == true) {
 	print ("Categorie is gewijzigd ") ;
