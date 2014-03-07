@@ -66,7 +66,7 @@ $db->login ();
 			
 				$resultaat = $db->alle_bestellingen ( 0 );
 				foreach ( $resultaat as $bestelling => $data ) {
-					echo '<tr><td>' . $data ['nummer'] . '</td><td>' . $data ['bestellingnummer'] . '</td><td>' . $data ['id'] . '</td><td>' . $data ['productcode'] . '</td><td>' . $data ['aantal_besteld'] . '</td><td>' . $data ['opmerking'] . '</td><td>' . $data ['datum'] . '</td><td>' . $data ['status'] . '</td><td> <button onclick="versturen('.$data['bestellingnummer'].')">Product kan geleverd worden aan de klant</button>   </td></tr>';
+					echo '<tr><td>' . $data ['nummer'] . '</td><td>' . $data ['bestellingnummer'] . '</td><td>' . $data ['id'] . '</td><td>' . $data ['productcode'] . '</td><td>' . $data ['aantal_besteld'] . '</td><td>' . $data ['opmerking'] . '</td><td>' . $data ['datum'] . '</td><td>' . $data ['status'] . '</td><td> <button onclick="versturen('.$data['bestellingnummer'].')">Gerecht is klaar</button>   </td></tr>';
 				}
 				/*
 				 * Het resultaat van de Liveticker wordt doormiddel van deze constructie in een tabel geplaatst. De code is zo geschreven dat elke variabele een aparte kolom heeft en elke bestelling een aparte rij is.
