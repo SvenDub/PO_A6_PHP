@@ -93,21 +93,21 @@ $db->login ();
 			?>
 			</table>
 
-			<h2>Totaal aantal klanten</h2><br />
+			<h2>Totaal aantal klanten</h2>
 			<?php
 			$klanten_totaal = $db->klanten_totaal ();
 			print ("Er zijn $klanten_totaal klanten geweest in het restaurant.") ;
 			// Totaal aantal klanten wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
 			<br />
-			<h2>Totale omzet</h2><br />
+			<h2>Totale omzet</h2>
 			<?php
 			$totale_omzet = $db->totaleOmzet ();
 			print ("De totale omzet is &euro; $totale_omzet.") ;
 			// Totale omzet wordt opgehaald uit de database, vervolgens wordt deze variable weergegeven.
 			?>
 			<br />
-			<h2>Gemiddelde omzet per klant</h2><br />
+			<h2>Gemiddelde omzet per klant</h2>
 			<?php
 			$omzetperklant = $db->omzetperklant ();
 			print ("De gemiddelde omzet per klant is &euro; $omzetperklant.") ;
