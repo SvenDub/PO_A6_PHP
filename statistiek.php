@@ -70,7 +70,7 @@ $db->login ();
 			?>
 			</table>
 
-			<h2>Omzet per periode</h2>
+			<h2>Omzet per periode</h2><br />
 			<table>
 			<?php
 			$omzet_3maanden = $db->omzetPerPeriode ( date ( "Y-m-d", time () - 8035200 ), date ( "Y-m-d" )  );
