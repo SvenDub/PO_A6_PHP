@@ -13,6 +13,7 @@ Software die vereist is voor dit project:
 
 Iedereen moet met deze software kunnen werken, misschien is een kleine opfriscursus voor het personeel van 
 restaurant de Bolhoed nodig.
+Obers hebben een Androidapp waarmee ze bestellingen op kunnen nemen.
 Beheerders hebben op de website meer mogelijkheden dan het personeel, beheerders kunnen namelijk naast de liveticker 
 de database beheren en de statistieken van het aantal klanten en de omzet bekijken. 
 
