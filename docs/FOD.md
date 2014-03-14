@@ -3,7 +3,7 @@ In dit bestand staat een complete beschrijving van de software/informatiesysteem
 Welke verschillende (typen) gebruikers moeten met de sofware kunnen werken?
 De obers: zij nemen de bestellingen op via de app
 De koks: zij krijgen de bestellingen via een liveticker op een beeldscherm in de keuken
-De beheerders: zij kunnen op hun webpagina alle beschikbare statistieken bekijken
+De beheerders: zij kunnen op hun webpagina alle beschikbare statistieken bekijken ook kunnen ze aanpassingen in de database maken.
 
 Over welke functionaliteiten moeten de verschillende (typen) gebruikers kunnen beschikken?
 De obers: zij gaan door een follow-through-menu en kunnen daarbij verschillende gerechten/producten
