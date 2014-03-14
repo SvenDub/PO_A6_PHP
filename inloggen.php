@@ -43,7 +43,7 @@
 		<div id="main">
 			<div id="welcome">
 				<div class="title">
-					<h2>Welkom op de inlogpagina</h2>
+					<h2>Welkom</h2>
 				</div>
 				<?php
 					$db->login ();
