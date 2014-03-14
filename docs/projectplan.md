@@ -8,7 +8,7 @@ Kassysteem
 *	Android applicatie	
 *	Voor documentatie github
 
-Infastructuur
+Infrastructuur
 ---
 *	Centrale server
 *	MySQL
