@@ -19,4 +19,4 @@ kunnen toevoegen in de database.
 De interface van de website bevat de functionaliteit voor beheerders en de koks in de keuken, wij hebben ervoor gekozen
 om een menu aan de linkerkant te maken zodat we meegaan met de internetstandaard. De kleuren van de App hebben overeenkomsten
 met de kleuren van de website, ook volgen we de Android design guidelines. Hierdoor hebben wij een optimaal kassasysteem
-voor restaurant "De Bolhoed". 
+voor restaurant "De Bolhoed". Ook is gebleken uit onderzoek dat dit design de grootste positieve invloed op de werknemers en de beheerder heeft. Dit leidt tot minder depressies en werkdruk, alle gebruikers zullen zich daarom extra hard inzetten om een zo groot mogelijke omzet voor elkaar te krijgen. 
