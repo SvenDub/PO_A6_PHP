@@ -55,6 +55,6 @@ De bedoelingen van dit project:
 * Er moet een kassasysteem gemaakt worden voor restaurant "De Bolhoed". Zij willen een app voor de obers waarmee 
   bestellingen opgenomen kunnen worden. De beheerder wilt een website waarmee hij/zij bewerkingen kan maken in de         database doormiddel van query's. Voor de koks in de keuken hebben wij een liveticker waarmee elke bestelling naar de    keuken wordt gestuurd. Elke vier seconde wordt deze liveticker ververst 
 
-De tijdsregistratie is weergegeven in github. 
+De tijdsregistratie is weergegeven in github en we hebben een todolist die we afwerken. 
 
 De projectorganisatie is dat Sven een Androidapp maakt. Joris, Martijn en Stefan maken de website, de query's en ze doen de documentatie.
