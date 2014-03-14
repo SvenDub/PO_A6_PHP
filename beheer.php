@@ -54,7 +54,7 @@ opgehaald. Er wordt daarmee gecontroleerd of een gebruiker is ingelogd, anders k
 	<br />
 	<form id="product_toevoegen" method="post" action=""
 		onsubmit="opslaan('product_toevoegen'); return false;">
-		Categorienummer:
+		Categorie:
 		<br />
 		<select name="categorienummer" >
 		<?php
