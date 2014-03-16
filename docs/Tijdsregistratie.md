@@ -27,3 +27,4 @@
 * 07-03-14 Sven: app en websitecontrole Martijn: websitecontrole
 * 10-03-14 Sven: App maken. Stefan, Joris, Martijn: documentatie 
 * 14-03-14 Sven: App maken. Stefan, Joris, Martijn: documentatie
+* 16-03-14 Sven: App maken, JavaScript commentaar
