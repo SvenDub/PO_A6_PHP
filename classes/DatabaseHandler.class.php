@@ -1524,7 +1524,7 @@ class DatabaseHandler {
 	 * 
 	 */
 	function omzetperklant() {
-		return self::totaleOmzet () / self::klanten_totaal ();
+		return round(self::totaleOmzet () / self::klanten_totaal (),2);
 	}
 	/**
 	 * Geeft de categoriën weer 

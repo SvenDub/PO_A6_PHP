@@ -28,3 +28,4 @@
 * 10-03-14 Sven: App maken. Stefan, Joris, Martijn: documentatie 
 * 14-03-14 Sven: App maken. Stefan, Joris, Martijn: documentatie
 * 16-03-14 Sven: App maken, JavaScript commentaar
+* 17-03-14 Sven: App maken. Stefan, Joris, Martijn: documentatie
