@@ -1613,7 +1613,7 @@ class DatabaseHandler {
 		return $array;
 	}
 	
-		/**
+	/**
 	 * Wijzigt een bestellingstatus in de database.
 	 * 
 	 * @param Integer het bestellingnummer
@@ -1661,4 +1661,50 @@ class DatabaseHandler {
 		$stmt->close ();
 	}
 	
+	/**
+	 * Sluit een tafel af als zijnde betaald.
+	 * 
+	 * @param Integer $tafelnummer
+	 * @return boolean
+	 */
+	function betalen($tafelnummer) {
+		// De te gebruiken query
+		$query = "UPDATE tafelregistratie SET actief=0
+		          WHERE tafelnummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+				
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $tafelnummer )) {
+		
+				// Voer de query uit
+				if ($stmt->execute ()) {
+						
+					if ($stmt->affected_rows > 0) {
+						return true;
+					}
+		
+					else {
+						return false;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
 }

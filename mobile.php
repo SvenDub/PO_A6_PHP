@@ -141,13 +141,30 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 			
 			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
 				
-				$id = $db->getPersoneelByGebruikersnaam($gebruikersnaam);
-				$tafelnummer = $_POST['tafelnummer'];
-				$aantal_klanten = $_POST['aantal_klanten'];
+				$id = $db->getPersoneelByGebruikersnaam ( $gebruikersnaam );
+				$tafelnummer = $_POST ['tafelnummer'];
+				$aantal_klanten = $_POST ['aantal_klanten'];
 				$actief = 1;
-				$datum = date('Y-m-d');
+				$datum = date ( 'Y-m-d' );
 				
-				$db->klant_toevoegen($id, $tafelnummer, $aantal_klanten, $actief, $datum);
+				$db->klant_toevoegen ( $id, $tafelnummer, $aantal_klanten, $actief, $datum );
+				
+				$response ['success'] = 1;
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggevens incorrect.';
+			}
+			break;
+		case 'betaal_tafel' :
+			
+			// Betaal tafel
+			
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
+				
+				$tafelnummer = $_POST ['tafelnummer'];
+				
+				$db->betalen ( $tafelnummer );
 				
 				$response ['success'] = 1;
 			} else {
