@@ -1465,7 +1465,7 @@ class DatabaseHandler {
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
-		return $omzet;
+		return round($omzet,2);
 	}
 	/**
 	 * Geeft de omzet per periode weer
@@ -1515,7 +1515,7 @@ class DatabaseHandler {
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
-		return $omzet;
+		return round($omzet,2);
 	}
 	
 	/**
