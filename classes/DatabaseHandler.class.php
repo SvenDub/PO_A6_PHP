@@ -3,8 +3,10 @@
  * Verzorgt alle verbindingen naar de database toe.
  * 
  * @name DatabaseHandler
- * @author Sven Dubbeld <sven.dubbeld1@gmail.com>, Martijn de Munck, Stefan Peeman en Joris de Vogel
- *
+ * @author Sven Dubbeld <sven.dubbeld1@gmail.com>
+ * @author Martijn de Munck
+ * @author Stefan Peeman
+ * @author Joris de Vogel
  */
 class DatabaseHandler {
 	
@@ -1097,7 +1099,7 @@ class DatabaseHandler {
 	function alle_bestellingen($status) {
 		$array = array ();
 		// De te gebruiken query
-		$query = "SELECT nummer, bestellingnummer, id, productcode, aantal_besteld, opmerking, datum, status FROM bestellingen WHERE status=? ";
+		$query = "SELECT b.nummer, b.bestellingnummer, b.id, b.productcode, b.aantal_besteld, b.opmerking, b.datum, b.status, t.tafelnummer FROM bestellingen b, tafelregistratie t WHERE status=? AND b.nummer=t.nummer";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
@@ -1112,7 +1114,7 @@ class DatabaseHandler {
 				if ($stmt->execute ()) {
 					
 					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $dbstatus )) {
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $dbstatus, $tafelnummer )) {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
@@ -1124,7 +1126,8 @@ class DatabaseHandler {
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
 									'datum' => $datum,
-									'status' => $dbstatus 
+									'status' => $dbstatus,
+									'tafelnummer' => $tafelnummer 
 							);
 							
 							array_push ( $array, $bestelling );
@@ -1631,7 +1634,7 @@ class DatabaseHandler {
 		if ($stmt->prepare ( $query )) {
 			
 			// Voeg de parameters toe
-			if ($stmt->bind_param ( 'ii', $bestellingnummer, $status )) {
+			if ($stmt->bind_param ( 'ii', $status, $bestellingnummer )) {
 				
 				// Voer de query uit
 				if ($stmt->execute ()) {
@@ -1662,12 +1665,114 @@ class DatabaseHandler {
 	}
 	
 	/**
+	 * Wijzigt een bestellingstatus van een hele tafel in de database.
+	 *
+	 * @param Integer het registratienummer van de tafel
+	 * @param Integer de status
+	 */
+	function bestellingstatus_tafel_wijzigen($nummer, $status) {
+		// De te gebruiken query
+		$query = "UPDATE bestellingen SET status=?
+		          WHERE nummer=?";
+	
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+	
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+				
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'ii', $status, $nummer )) {
+	
+				// Voer de query uit
+				if ($stmt->execute ()) {
+						
+					if ($stmt->affected_rows > 0) {
+						return true;
+					}
+	
+					else {
+						return false;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+	
+		// Sluit het statement om geheugen vrij te geven
+	
+		$stmt->close ();
+	}
+	
+	/**
+	 * Haalt de huidige bestelling op van een tafel.
+	 * 
+	 * @param Integer Het nummer van de tafel
+	 * @return Integer Het nummer van de bestelling
+	 */
+	function huidigeBestelling($tafelnummer) {
+		// De te gebruiken query
+		$query = "SELECT MAX(nummer) FROM tafelregistratie WHERE tafelnummer=?";
+
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+				
+				// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $tafelnummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $bestelling )) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						$stmt->fetch ();
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $bestelling;
+		
+	}
+	
+	/**
 	 * Sluit een tafel af als zijnde betaald.
 	 * 
 	 * @param Integer $tafelnummer
 	 * @return boolean
 	 */
 	function betalen($tafelnummer) {
+		
+		// Zet alle bestellingen op status 3
+		self::bestellingstatus_tafel_wijzigen(self::huidigeBestelling($tafelnummer),3);
+		
 		// De te gebruiken query
 		$query = "UPDATE tafelregistratie SET actief=0
 		          WHERE tafelnummer=?";

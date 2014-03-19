@@ -119,7 +119,8 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				
 				foreach ( $bestellingen as $bestelling ) {
 					
-					$response ['bestellingen'] [$bestelling ['bestellingnummer']] ['tafelnummer'] = $bestelling ['nummer'];
+					$response ['bestellingen'] [$bestelling ['bestellingnummer']] ['tafelnummer'] = $bestelling ['tafelnummer'];
+					$response ['bestellingen'] [$bestelling ['bestellingnummer']] ['nummer'] = $bestelling ['nummer'];
 					$response ['bestellingen'] [$bestelling ['bestellingnummer']] ['inlog_id'] = $bestelling ['id'];
 					$response ['bestellingen'] [$bestelling ['bestellingnummer']] ['product'] = $bestelling ['productcode'];
 					$response ['bestellingen'] [$bestelling ['bestellingnummer']] ['aantal_besteld'] = $bestelling ['aantal_besteld'];
