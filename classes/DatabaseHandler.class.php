@@ -1048,7 +1048,7 @@ class DatabaseHandler {
 		
 		$salt = sprintf ( "$2a$%02d$", 10 ) . strtr ( base64_encode ( mcrypt_create_iv ( 16, MCRYPT_DEV_URANDOM ) ), '+', '.' ); // Password salt
 		
-		$hash = crypt ( $password, $salt ); // Encrypt wachtwoord
+		$hash = crypt ( $wachtwoord, $salt ); // Encrypt wachtwoord
 		
 		$query = "INSERT INTO inlogsysteem (gebruikersnaam, wachtwoord, beheer, actief) VALUES (?,?,?,?)";
 		
