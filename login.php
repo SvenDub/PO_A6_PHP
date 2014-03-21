@@ -24,7 +24,7 @@ if (isset ( $_GET ['error'] )) {
 		Gebruikersnaam: <input name="login[gebruikersnaam]" type="text"
 			id="gebruikersnaam" />
 		<br />
-		Wachtwoord:<input name="login[wachtwoord]" type="password"
+		Wachtwoord:	<input name="login[wachtwoord]" type="password"
 			id="wachtwoord" />
 		<br />
 		<input type="submit" name="Submit" value="Inloggen" />
