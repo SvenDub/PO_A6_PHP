@@ -157,6 +157,29 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$response ['error_msg'] = 'Inloggevens incorrect.';
 			}
 			break;
+		case 'pas_tafel_aan' :
+			
+			// Pas tafel aan
+			
+			if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) {
+				
+				$id = $db->getPersoneelByGebruikersnaam($gebruikersnaam);
+				$tafelnummer = $_POST['tafelnummer'];
+				$nummer = $db->huidigeBestelling($tafelnummer);
+				$aantal_klanten = $_POST['aantal_klanten'];
+				$actief = 1;
+				$datum = date( 'Y-m-d' );
+				
+				$db->klant_wijzigen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum);
+				
+				$response['success'] = 1;
+				
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggevens incorrect.';
+			}
+			break;
 		case 'betaal_tafel' :
 			
 			// Betaal tafel
