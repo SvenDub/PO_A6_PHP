@@ -10,9 +10,9 @@ Ontwerpen
 - [x] Inlogsysteem android app
 - [x] Liveticker keuken
 - [.] Bestellingen aanmaken
-- [.] Betalen app
+- [x] Betalen app
 
 - [x] Beheer
 - [x] Statistieken
-- [ ] Notificaties beide kanten op
+- ~~[ ] Notificaties beide kanten op~~ (technisch niet te realiseren)
 - [x] Design
