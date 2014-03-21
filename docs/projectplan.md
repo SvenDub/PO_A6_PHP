@@ -28,7 +28,7 @@ Vorm
 App
 ---
 *	Doorklikken
-*	Notificaties vanuit keuken
+*	~~Notificaties vanuit keuken~~ (technisch niet te realiseren)
 *	Bedragen optellen
 *	Betalen
 *	Meerdere tabellen in database (tijdelijk, altijd)
