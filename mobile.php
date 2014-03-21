@@ -174,6 +174,29 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$response ['error_msg'] = 'Inloggevens incorrect.';
 			}
 			break;
+		case 'bestel' :
+			
+			// Voeg bestelling toe
+			
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
+				
+				$tafelnummer = $_POST ['tafelnummer'];
+				$nummer = $db->huidigeBestelling ( $tafelnummer );
+				$id = $db->getPersoneelByGebruikersnaam ( $gebruikersnaam )['id'];
+				$productcode = $_POST ['product'];
+				$aantal_besteld = $_POST ['aantal'];
+				$opmerking = $_POST ['opmerking'];
+				$datum = date ( 'Y-m-d' );
+				
+				$db->bestelling_toevoegen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum);
+				
+				$response ['success'] = 1;
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggegevens incorrect.';
+			}
+			break;
 		default :
 			
 			// Onbekende tag, geef error terug
