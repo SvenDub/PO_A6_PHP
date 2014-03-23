@@ -5,9 +5,7 @@
 <title>Inloggen | Bolhoed</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
-	rel="stylesheet" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="opmaak.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
@@ -46,10 +44,10 @@
 					<h2>Welkom</h2>
 				</div>
 				<?php
-					$db->login ();
-					if ($db->isIngelogd ()) {
-						header ( 'Location: ./' );
-					}
+				$db->login ();
+				if ($db->isIngelogd ()) {
+					header ( 'Location: ./' );
+				}
 				?>
 				<a href="?logout">Uitloggen</a>
 			</div>

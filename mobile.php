@@ -1,11 +1,8 @@
 <?php
 /**
  * Mobile API
- * 
- * <p>
- * Dit script verwerkt verzoeken van de App en stuurt een reactie terug in JSON.
- * </p>
- * 
+ * <p> Dit script verwerkt verzoeken van de App en stuurt een reactie terug in JSON. </p>
+ *
  * @author Sven Dubbeld <sven.dubbeld1@gmail.com>
  */
 
@@ -161,19 +158,18 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 			
 			// Pas tafel aan
 			
-			if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) {
+			if ($db->controleerLogin ( $gebruikersnaam, $wachtwoord )) {
 				
-				$id = $db->getPersoneelByGebruikersnaam($gebruikersnaam);
-				$tafelnummer = $_POST['tafelnummer'];
-				$nummer = $db->huidigeBestelling($tafelnummer);
-				$aantal_klanten = $_POST['aantal_klanten'];
+				$id = $db->getPersoneelByGebruikersnaam ( $gebruikersnaam );
+				$tafelnummer = $_POST ['tafelnummer'];
+				$nummer = $db->huidigeBestelling ( $tafelnummer );
+				$aantal_klanten = $_POST ['aantal_klanten'];
 				$actief = 1;
-				$datum = date( 'Y-m-d' );
+				$datum = date ( 'Y-m-d' );
 				
-				$db->klant_wijzigen($nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum);
+				$db->klant_wijzigen ( $nummer, $id, $tafelnummer, $aantal_klanten, $actief, $datum );
 				
-				$response['success'] = 1;
-				
+				$response ['success'] = 1;
 			} else {
 				
 				$response ['error'] = 2;
@@ -211,7 +207,7 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$opmerking = $_POST ['opmerking'];
 				$datum = date ( 'Y-m-d' );
 				
-				$db->bestelling_toevoegen($nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum);
+				$db->bestelling_toevoegen ( $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum );
 				
 				$response ['success'] = 1;
 			} else {
