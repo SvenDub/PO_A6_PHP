@@ -1103,7 +1103,10 @@ class DatabaseHandler {
 	function alle_bestellingen($status) {
 		$array = array ();
 		// De te gebruiken query
-		$query = "SELECT b.nummer, b.bestellingnummer, b.id, b.productcode, b.aantal_besteld, b.opmerking, b.datum, b.status, t.tafelnummer FROM bestellingen b, tafelregistratie t WHERE status=? AND b.nummer=t.nummer";
+		$query = "SELECT b.nummer, b.bestellingnummer, b.id, b.productcode, b.aantal_besteld, b.opmerking, b.datum, b.status, t.tafelnummer
+					FROM bestellingen b, tafelregistratie t
+					WHERE status=? AND b.nummer=t.nummer
+					ORDER BY b.bestellingnummer";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
