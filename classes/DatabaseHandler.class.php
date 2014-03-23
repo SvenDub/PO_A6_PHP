@@ -989,7 +989,9 @@ class DatabaseHandler {
 	 * Laat een loginscherm zien als er nog niet ingelogd is.
 	 */
 	function login() {
-		session_start ();
+		if (session_id () == "") {
+			session_start ();
+		}
 		if (isset ( $_GET ['logout'] )) { // Log de gebruiker uit
 			$_SESSION = array ();
 			session_destroy ();
@@ -1030,8 +1032,10 @@ class DatabaseHandler {
 	 * @return boolean
 	 */
 	function isIngelogd() {
-		session_start ();
-		return (isset ( $_SESSION ['logged_in'] ) || $_SESSION ['logged_in']);
+		if (session_id () == "") {
+			session_start ();
+		}
+		return isset ( $_SESSION ['logged_in'] );
 	}
 	/**
 	 * Voegt een gebruiker toe aan de database.
@@ -1222,7 +1226,9 @@ class DatabaseHandler {
 	 */
 	function isBeheerder($gebruikersnaam = null) {
 		
-		session_start();
+		if (session_id () == "") {
+			session_start ();
+		}
 		// Val terug naar de ingelogde gebruiker als er geen gebruiker is opgegeven
 		if ($gebruikersnaam == null) {
 			$gebruikersnaam = $_SESSION ['gebruikersnaam'];
