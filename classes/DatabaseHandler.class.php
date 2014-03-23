@@ -1060,8 +1060,15 @@ class DatabaseHandler {
 	
 	/**
 	 * Logt de gebruiker in als er logingegevens zijn gevonden.
-	 * De logingegevens moeten via een POST request ingevoerd worden in het volgende formaat: <code> $_POST ['login'] ['gebruikersnaam'] =
-	 * $gebruikersnaam; $_POST ['login'] ['wachtwoord'] = $wachtwoord; </code> Laat een loginscherm zien als er nog niet ingelogd is./
+	 *
+	 * De logingegevens moeten via een POST request ingevoerd worden in het volgende formaat:
+	 * <code>
+	 * $_POST ['login'] ['gebruikersnaam'] = $gebruikersnaam;
+	 * $_POST ['login'] ['wachtwoord'] = $wachtwoord;
+	 * </code>
+	 *
+	 * Laat een loginscherm zien als er nog niet ingelogd is.
+	 */
 	function login() {
 		if (session_id () == "") {
 			session_start ();
