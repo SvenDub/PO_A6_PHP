@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="page" class="container">
-		
+
 		<div id="header">
 			<div id="logo">
 				<h1>
@@ -47,6 +47,9 @@
 				</div>
 				<?php
 					$db->login ();
+					if ($db->isIngelogd ()) {
+						header ( 'Location: ./' );
+					}
 				?>
 				<a href="?logout">Uitloggen</a>
 			</div>
