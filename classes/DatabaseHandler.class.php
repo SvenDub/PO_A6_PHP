@@ -1194,9 +1194,9 @@ class DatabaseHandler {
 	function alle_bestellingen($status) {
 		$array = array ();
 		// De te gebruiken query
-		$query = "SELECT b.nummer, b.bestellingnummer, b.id, b.productcode, b.aantal_besteld, b.opmerking, b.datum, b.status, t.tafelnummer
-					FROM bestellingen b, tafelregistratie t
-					WHERE status=? AND b.nummer=t.nummer
+		$query = "SELECT b.nummer, b.bestellingnummer, b.id, b.productcode, p.gerecht, b.aantal_besteld, b.opmerking, b.datum, b.status, t.tafelnummer
+					FROM bestellingen b, tafelregistratie t, producten p
+					WHERE status=? AND b.nummer=t.nummer AND b.productcode=p.productcode
 					ORDER BY b.bestellingnummer";
 		
 		// Maak een nieuw statement
@@ -1212,7 +1212,7 @@ class DatabaseHandler {
 				if ($stmt->execute ()) {
 					
 					// Bind de resultaten aan variabelen
-					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $aantal_besteld, $opmerking, $datum, $dbstatus, $tafelnummer )) {
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $product, $aantal_besteld, $opmerking, $datum, $dbstatus, $tafelnummer )) {
 						
 						// Haal alle resultaten op een loop er doorheen
 						while ( $stmt->fetch () ) {
@@ -1221,6 +1221,7 @@ class DatabaseHandler {
 									'bestellingnummer' => $bestellingnummer,
 									'id' => $id,
 									'productcode' => $productcode,
+									'product' => $product,
 									'aantal_besteld' => $aantal_besteld,
 									'opmerking' => $opmerking,
 									'datum' => $datum,

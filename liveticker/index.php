@@ -13,9 +13,7 @@ $db->login ();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Bestellingen | Bolhoed</title>
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
-	rel="stylesheet" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="../opmaak.css" rel="stylesheet" type="text/css" media="all" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="liveticker.js"></script>
@@ -53,21 +51,21 @@ $db->login ();
 			<div id='liveticker'>
 				<table>
 					<tr>
-						<td>Nummer</td>
-						<td>Bestellingnummer</td>
+						<td>Tafel</td>
+						<td>Bestelling</td>
 						<td>ID</td>
 						<td>Productcode</td>
-						<td>Aantal Besteld</td>
+						<td>Product</td>
+						<td>Aantal</td>
 						<td>Opmerking</td>
 						<td>Datum</td>
-						<td>Status</td>
 					</tr>
 	
 				<?php
 				
 				$resultaat = $db->alle_bestellingen ( 0 );
 				foreach ( $resultaat as $bestelling => $data ) {
-					echo '<tr><td>' . $data ['nummer'] . '</td><td>' . $data ['bestellingnummer'] . '</td><td>' . $data ['id'] . '</td><td>' . $data ['productcode'] . '</td><td>' . $data ['aantal_besteld'] . '</td><td>' . $data ['opmerking'] . '</td><td>' . $data ['datum'] . '</td><td>' . $data ['status'] . '</td><td><button onclick="versturen(' . $data ['bestellingnummer'] . ')">Gerecht is klaar</button></td></tr>';
+					echo '<tr><td>' . $data ['tafelnummer'] . '</td><td>' . $data ['bestellingnummer'] . '</td><td>' . $data ['id'] . '</td><td>' . $data ['productcode'] . '</td><td>' . $data ['product'] . '</td><td>' . $data ['aantal_besteld'] . '</td><td>' . $data ['opmerking'] . '</td><td>' . $data ['datum'] . '</td><td><button onclick="versturen(' . $data ['bestellingnummer'] . ')">Gerecht is klaar</button></td></tr>';
 				}
 				/*
 				 * Het resultaat van de Liveticker wordt doormiddel van deze constructie in een tabel geplaatst. De code is zo geschreven dat elke
