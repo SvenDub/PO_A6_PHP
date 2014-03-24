@@ -1,8 +1,6 @@
 <?php
 require_once ('classes/DatabaseHandler.class.php');
 $db = new DatabaseHandler ();
-
-$db->login ();
 /*
  * De databasehandlerclass wordt aangeroepen, daarna wordt doormiddel van deze databasehandlerclass het loginscript opgehaald. Er wordt daarmee
  * gecontroleerd of een gebruiker is ingelogd, anders kan de gebruiker deze pagina niet bekijken.
@@ -46,6 +44,9 @@ $db->login ();
 
 		<div id="main">
 			<h1>Statistieken</h1>
+			<?php 
+			$db->login ();
+			?>
 			<h2>Klanten per periode</h2>
 			<br />
 			<table>
