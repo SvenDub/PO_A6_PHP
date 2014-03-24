@@ -39,12 +39,17 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				
 				$gebruiker = $db->getPersoneelByGebruikersnaam ( $gebruikersnaam );
 				
+				$regid = $_POST ['registration_id'];
+				
+				$db->addRegistratieId($gebruiker ['id'], $regid);
+				
 				$response ['user'] ['id'] = $gebruiker ['id'];
 				$response ['user'] ['gebruikersnaam'] = $gebruikersnaam;
 				$response ['user'] ['wachtwoord'] = $wachtwoord;
 				$response ['user'] ['beheer'] = $gebruiker ['beheer'];
 				$response ['user'] ['actief'] = $gebruiker ['actief'];
-				
+				$response ['user'] ['regid'] = $regid;
+
 				$response ['success'] = 1;
 			} else {
 				
