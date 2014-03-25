@@ -1,4 +1,7 @@
 <?php
+// Imports
+require_once 'classes/GoogleCloudMessaging.class.php';
+
 /**
  * Verzorgt alle verbindingen naar de database toe.
  *
@@ -1255,6 +1258,72 @@ class DatabaseHandler {
 	}
 	
 	/**
+	 * Haalt een bestelling op
+	 *
+	 * @param $bestellingnummer Integer
+	 *        	Het nummer van de bestelling
+	 */
+	function getBestelling($bestellingnummer) {
+		$bestelling = array ();
+		// De te gebruiken query
+		$query = "SELECT b.nummer, b.bestellingnummer, b.id, b.productcode, p.gerecht, b.aantal_besteld, b.opmerking, b.datum, b.status, t.tafelnummer
+					FROM bestellingen b, tafelregistratie t, producten p
+					WHERE b.bestellingnummer=? AND b.nummer=t.nummer AND b.productcode=p.productcode";
+	
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+	
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+				
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $bestellingnummer )) {
+	
+				// Voer de query uit
+				if ($stmt->execute ()) {
+						
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $nummer, $bestellingnummer, $id, $productcode, $product, $aantal_besteld, $opmerking, $datum, $dbstatus, $tafelnummer )) {
+	
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							$bestelling = array (
+									'nummer' => $nummer,
+									'bestellingnummer' => $bestellingnummer,
+									'id' => $id,
+									'productcode' => $productcode,
+									'product' => $product,
+									'aantal_besteld' => $aantal_besteld,
+									'opmerking' => $opmerking,
+									'datum' => $datum,
+									'status' => $dbstatus,
+									'tafelnummer' => $tafelnummer
+							);
+							// Doe iets met de resultaten
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+	
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $bestelling;
+	}
+	
+	/**
 	 * Haalt de gegevens van een personeelslid.
 	 *
 	 * @param $gebruikersnaam String
@@ -1755,7 +1824,10 @@ class DatabaseHandler {
 				if ($stmt->execute ()) {
 					
 					if ($stmt->affected_rows > 0) {
-						return true;
+						if ($status == 1) {
+							// Stuur een notificatie naar de app
+							self::stuurNotificatie ( $bestellingnummer );
+						}
 					} 
 
 					else {
@@ -1931,5 +2003,91 @@ class DatabaseHandler {
 		
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
+	}
+	/**
+	 * Haalt de registratie id's van een gebruiker op.
+	 * 
+	 * @param int $bestellingnummer Het nummer van de bestelling.
+	 * @return array
+	 */
+	function getRegistratieId($bestellingnummer) {
+		$regids = array();
+		// De te gebruiken query
+		$query = "SELECT r.regid
+					FROM bestellingen b, regids r
+					WHERE b.bestellingnummer=? AND r.id=b.id";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'i', $bestellingnummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					// Bind de resultaten aan variabelen
+					if ($stmt->bind_result ( $regid )) {
+						
+						// Haal alle resultaten op een loop er doorheen
+						while ( $stmt->fetch () ) {
+							// Voeg het id toe aan de lijst
+							array_push($regids, $regid);
+						}
+					} else {
+						// Verwerk errors
+						echo $stmt->error;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $regids;
+	}
+	
+	/**
+	 * Stuurt een notificatie naar de app dat een bestelling klaar is.
+	 *
+	 * @param int $bestellingnummer
+	 *        	Het nummer van de bestelling.
+	 */
+	function stuurNotificatie($bestellingnummer) {
+		// Maak een nieuwe GoogleCloudMessaging class aan
+		$gcm = new GoogleCloudMessaging ();
+		
+		// Haal registratie id bij bestelling op
+		$ids = self::getRegistratieId ( $bestellingnummer );
+		$gcm->setRegistrationIDs ( $ids );
+		
+		// Haal tafelnummer van de bestelling op
+		$tafelnummer = self::getBestelling($bestellingnummer)['tafelnummer'];
+		
+		// Stuur bestelling mee
+		$data = array(
+			'tag' => 'bestelstatus',
+			'bestellingnummer' => $bestellingnummer,
+			'tafelnummer' => $tafelnummer
+		);
+		$gcm->setData ( $data );
+		
+		// Stel POST velden in
+		$gcm->setFields ();
+		
+		// Stuur notificatie
+		$gcm->execute ();
 	}
 }

@@ -32,7 +32,7 @@ class GoogleCloudMessaging {
 	 *
 	 * @var string
 	 */
-	private $sendUrl = 'https://android.googleapis.com/gcm/send';
+	private $url = 'https://android.googleapis.com/gcm/send';
 	
 	/**
 	 * POST velden om mee te sturen.
@@ -62,7 +62,7 @@ class GoogleCloudMessaging {
 		
 		// Mee te sturen headers
 		$this->headers = array (
-				'Authorization: key=' . $apiKey,
+				'Authorization: key=' . $this->apiKey,
 				'Content-Type: application/json' 
 		);
 		
@@ -70,16 +70,16 @@ class GoogleCloudMessaging {
 		$this->ch = curl_init ();
 		
 		// Stel URL in
-		curl_setopt ( $ch, CURLOPT_URL, $url );
+		curl_setopt ( $this->ch, CURLOPT_URL, $this->url );
 		
 		// Gebruik POST
-		curl_setopt ( $ch, CURLOPT_POST, true );
+		curl_setopt ( $this->ch, CURLOPT_POST, true );
 		
 		// Stel headers in
-		curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt ( $this->ch, CURLOPT_HTTPHEADER, $this->headers );
 		
 		// Krijg antwoord terug als String
-		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt ( $this->ch, CURLOPT_RETURNTRANSFER, true );
 	}
 	
 	/**
@@ -119,30 +119,37 @@ class GoogleCloudMessaging {
 	}
 	/**
 	 * Stelt de POST velden in.
-	 * 
-	 * @param array $fields
+	 *
+	 * @param array $fields        	
 	 */
-	function setFields($fields = null) {
+	function setFields($fields = array()) {
 		$this->fields = array_merge ( array (
 				'registration_ids' => $this->registrationIDs,
 				'data' => $this->data 
 		), $fields );
+		
+		// Stel POST velden in
+		curl_setopt ( $this->ch, CURLOPT_POSTFIELDS, json_encode ( $this->fields ) );
+		error_log ( json_encode ( $this->fields ) );
 	}
 	
 	/**
 	 * Voert het POST request uit.
-	 * 
+	 *
 	 * @return string Het antwoord van de server.
 	 */
 	function execute() {
-		return curl_exec($this->ch);
+		$result = curl_exec ( $this->ch );
+		
+		error_log ( $result );
+		return $result;
 	}
 	
 	/**
 	 * Verbreekt de verbinding.
 	 */
 	function __destruct() {
-		curl_close($ch);
+		curl_close ( $this->ch );
 	}
 }
 
