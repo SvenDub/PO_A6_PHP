@@ -11,7 +11,53 @@ require_once 'classes/DatabaseHandler.class.php';
  */
 class MobileDatabaseHandler extends DatabaseHandler {
 	/**
-	 * Voegt een registratie id toe aan een gebruiker.
+	 * Bepaalt of een registratie id al bestaat.
+	 *
+	 * @param string $regid
+	 *        	Het registratie id.
+	 * @return boolean
+	 */
+	function isGeregistreerd($regid) {
+		$geregistreerd = false;
+		
+		// De te gebruiken query
+		$query = "SELECT *
+				FROM regids";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voer de query uit
+			if ($stmt->execute ()) {
+				
+				// Sla het resultaat op
+				$stmt->store_result ();
+				
+				// Tel het aantal rijen
+				if ($stmt->num_rows == 0) {
+					$geregistreerd = false;
+				} else {
+					$geregistreerd = true;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+		return $geregistreerd;
+	}
+	
+	/**
+	 * Voegt een gebruiker toe aan een registratie id.
 	 *
 	 * @param int $id
 	 *        	Het id van de gebruiker.
@@ -21,7 +67,57 @@ class MobileDatabaseHandler extends DatabaseHandler {
 	function addRegistratieId($id, $regid) {
 		// De te gebruiken query
 		$query = "INSERT INTO regids ( id, regid )
-					VALUES ( ?, ? )";
+				VALUES ( ?, ? )";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'is', $id, $regid )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
+	
+	/**
+	 * Werkt de gebruiker bij een registratie id bij.
+	 *
+	 * @param int $id
+	 *        	Het id van de gebruiker.
+	 * @param string $regid
+	 *        	Het registratie id om te gebruiken.
+	 */
+	function updateRegistratieId($id, $regid) {
+		// De te gebruiken query
+		$query = "UPDATE regids
+				SET id=?
+				WHERE regid=?";
 		
 		// Maak een nieuw statement
 		$stmt = $this->con->stmt_init ();
