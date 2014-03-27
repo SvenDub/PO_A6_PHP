@@ -9,10 +9,11 @@ Ontwerpen
 - [x] Link database naar app
 - [x] Inlogsysteem android app
 - [x] Liveticker keuken
-- [.] Bestellingen aanmaken
+- [x] Bestellingen aanmaken
+- [ ] Bestellingen aanpassen
 - [x] Betalen app
 
 - [x] Beheer
 - [x] Statistieken
-- ~~[ ] Notificaties beide kanten op~~ (technisch niet te realiseren)
+- [x] Notificaties naar app
 - [x] Design

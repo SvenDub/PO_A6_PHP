@@ -5,12 +5,14 @@ Het doel van de software is het project laten draaien op de app, de server en de
 
 Software die vereist is voor dit project:
 * Android:
-   * 2.2 Froyo of hoger
+   * 3.0 Honeycomb of hoger
+   * 2.2 Froyo of hoger (zonder notificaties)
 * Server:
    * PHP 4 of hoger met de volgende extenties ingeschakeld:
       * MySQLi
       * JSON
       * mcrypt
+      * cURL
 * Moderne internetbrowser met JavaScript ingeschakeld
 * Stabiele netwerkverbinding tussen de app en de server
 

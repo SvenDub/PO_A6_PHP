@@ -28,7 +28,7 @@ Vorm
 App
 ---
 *	Doorklikken
-*	~~Notificaties vanuit keuken~~ (technisch niet te realiseren)
+*	Notificaties vanuit keuken
 *	Bedragen optellen
 *	Betalen
 *	Meerdere tabellen in database (tijdelijk, altijd)
@@ -57,4 +57,4 @@ De bedoelingen van dit project:
 
 De tijdsregistratie is weergegeven in github en we hebben een todolist die we afwerken. 
 
-De projectorganisatie is dat Sven een Androidapp maakt. Joris, Martijn en Stefan maken de website, de query's en ze doen de documentatie.
+De projectorganisatie is dat Sven een Android app maakt. Joris, Martijn en Stefan maken de website, de query's en ze doen de documentatie.
