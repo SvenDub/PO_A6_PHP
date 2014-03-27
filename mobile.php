@@ -1,7 +1,8 @@
 <?php
 /**
  * Mobile API
- * <p> Dit script verwerkt verzoeken van de App en stuurt een reactie terug in JSON. </p>
+ * <p> Dit script verwerkt verzoeken van de App en stuurt een reactie terug in JSON.
+ * </p>
  *
  * @author Sven Dubbeld <sven.dubbeld1@gmail.com>
  */
@@ -39,11 +40,21 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				
 				$gebruiker = $db->getPersoneelByGebruikersnaam ( $gebruikersnaam );
 				
+				$regid = $_POST ['registration_id'];
+				
+				// Werk de registratie id van de app bij naar de nieuwe gebruiker of maak een nieuwe id aan
+				if ($db->isGeregistreerd ( $regid )) {
+					$db->updateRegistratieId ( $gebruiker ['id'], $regid );
+				} else {
+					$db->addRegistratieId ( $gebruiker ['id'], $regid );
+				}
+				
 				$response ['user'] ['id'] = $gebruiker ['id'];
 				$response ['user'] ['gebruikersnaam'] = $gebruikersnaam;
 				$response ['user'] ['wachtwoord'] = $wachtwoord;
 				$response ['user'] ['beheer'] = $gebruiker ['beheer'];
 				$response ['user'] ['actief'] = $gebruiker ['actief'];
+				$response ['user'] ['regid'] = $regid;
 				
 				$response ['success'] = 1;
 			} else {
