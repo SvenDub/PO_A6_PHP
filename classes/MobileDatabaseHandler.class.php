@@ -154,6 +154,57 @@ class MobileDatabaseHandler extends DatabaseHandler {
 		// Sluit het statement om geheugen vrij te geven
 		$stmt->close ();
 	}
+	/**
+	 * Wijzigt een bestelling in de database.
+	 *
+	 * @param $bestellingnummer Integer
+	 *        	het bestellingnummer
+	 * @param $aantal_besteld Integer
+	 *        	het aantal besteld
+	 * @param $opmerking String
+	 *        	een opmerking over de bestelling
+	 */
+	function bestelling_wijzigen($bestellingnummer, $aantal_besteld, $opmerking) {
+		// De te gebruiken query
+		$query = "UPDATE bestellingen
+				SET aantal_besteld=?, opmerking=?
+				WHERE bestellingnummer=?";
+		
+		// Maak een nieuw statement
+		$stmt = $this->con->stmt_init ();
+		
+		// Bereid de query voor
+		if ($stmt->prepare ( $query )) {
+			
+			// Voeg de parameters toe
+			if ($stmt->bind_param ( 'isi', $aantal_besteld, $opmerking, $bestellingnummer )) {
+				
+				// Voer de query uit
+				if ($stmt->execute ()) {
+					
+					if ($stmt->affected_rows > 0) {
+						return true;
+					} 
+
+					else {
+						return false;
+					}
+				} else {
+					// Verwerk errors
+					echo $stmt->error;
+				}
+			} else {
+				// Verwerk errors
+				echo $stmt->error;
+			}
+		} else {
+			// Verwerk errors
+			echo $stmt->error;
+		}
+		
+		// Sluit het statement om geheugen vrij te geven
+		$stmt->close ();
+	}
 }
 
 ?>

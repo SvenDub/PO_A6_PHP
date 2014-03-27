@@ -30,7 +30,6 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 			'error' => 0 
 	);
 	
-	// TODO: Verwerk verzoek
 	switch ($tag) {
 		case 'login' :
 			
@@ -219,6 +218,25 @@ if (isset ( $_POST ['tag'] ) && $_POST ['tag'] != '') {
 				$datum = date ( 'Y-m-d' );
 				
 				$db->bestelling_toevoegen ( $nummer, $id, $productcode, $aantal_besteld, $opmerking, $datum );
+				
+				$response ['success'] = 1;
+			} else {
+				
+				$response ['error'] = 2;
+				$response ['error_msg'] = 'Inloggegevens incorrect.';
+			}
+			break;
+		case 'pas_bestelling_aan' :
+			
+			// Pas bestelling aan
+			
+			if ($db->controleerLogin($gebruikersnaam, $wachtwoord)) {
+				
+				$bestellingnummer = $_POST ['bestellingnummer'];
+				$aantal_besteld = $_POST ['aantal'];
+				$opmerking = $_POST ['opmerking'];
+				
+				$db->bestelling_wijzigen($bestellingnummer, $aantal_besteld, $opmerking);
 				
 				$response ['success'] = 1;
 			} else {
