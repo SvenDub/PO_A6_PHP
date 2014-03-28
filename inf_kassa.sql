@@ -2,10 +2,10 @@
 -- version 4.0.9deb1
 -- http://www.phpmyadmin.net
 --
--- Machine: localhost
--- Genereertijd: 24 mrt 2014 om 12:49
--- Serverversie: 5.5.35-0+wheezy1
--- PHP-versie: 5.5.6-1
+-- Host: localhost
+-- Generation Time: Mar 28, 2014 at 08:43 AM
+-- Server version: 5.5.35-0+wheezy1
+-- PHP Version: 5.5.6-1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,41 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databank: `inf_kassa`
+-- Database: `inf_kassa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `bestellingen`
+-- Stand-in structure for view `Actieve bestellingen`
+--
+CREATE TABLE IF NOT EXISTS `Actieve bestellingen` (
+`nummer` int(11)
+,`bestellingnummer` int(11)
+,`id` int(11)
+,`productcode` int(4)
+,`aantal_besteld` int(11)
+,`opmerking` text
+,`datum` date
+,`status` tinyint(4)
+);
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `Actieve tafels`
+--
+CREATE TABLE IF NOT EXISTS `Actieve tafels` (
+`nummer` int(11)
+,`id` int(4)
+,`tafelnummer` int(3)
+,`aantal_klanten` tinyint(4)
+,`actief` tinyint(1)
+,`datum` date
+);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bestellingen`
 --
 
 CREATE TABLE IF NOT EXISTS `bestellingen` (
@@ -39,12 +67,12 @@ CREATE TABLE IF NOT EXISTS `bestellingen` (
   KEY `id` (`id`),
   KEY `productcode` (`productcode`),
   KEY `nummer` (`nummer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `categorie`
+-- Table structure for table `categorie`
 --
 
 CREATE TABLE IF NOT EXISTS `categorie` (
@@ -57,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `inlogsysteem`
+-- Table structure for table `inlogsysteem`
 --
 
 CREATE TABLE IF NOT EXISTS `inlogsysteem` (
@@ -67,12 +95,12 @@ CREATE TABLE IF NOT EXISTS `inlogsysteem` (
   `beheer` tinyint(1) NOT NULL DEFAULT '0',
   `actief` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `producten`
+-- Table structure for table `producten`
 --
 
 CREATE TABLE IF NOT EXISTS `producten` (
@@ -83,12 +111,27 @@ CREATE TABLE IF NOT EXISTS `producten` (
   `actief` tinyint(1) NOT NULL,
   PRIMARY KEY (`productcode`),
   KEY `categorienummer` (`categorienummer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `tafelnummer`
+-- Table structure for table `regids`
+--
+
+CREATE TABLE IF NOT EXISTS `regids` (
+  `nr` int(11) NOT NULL AUTO_INCREMENT,
+  `regid` text NOT NULL,
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`nr`),
+  UNIQUE KEY `nr` (`nr`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tafelnummer`
 --
 
 CREATE TABLE IF NOT EXISTS `tafelnummer` (
@@ -99,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `tafelnummer` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `tafelregistratie`
+-- Table structure for table `tafelregistratie`
 --
 
 CREATE TABLE IF NOT EXISTS `tafelregistratie` (
@@ -112,14 +155,32 @@ CREATE TABLE IF NOT EXISTS `tafelregistratie` (
   PRIMARY KEY (`nummer`),
   KEY `id` (`id`),
   KEY `tafelnummer` (`tafelnummer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- Beperkingen voor gedumpte tabellen
+-- Structure for view `Actieve bestellingen`
+--
+DROP TABLE IF EXISTS `Actieve bestellingen`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`inf_po`@`localhost` SQL SECURITY DEFINER VIEW `Actieve bestellingen` AS select `bestellingen`.`nummer` AS `nummer`,`bestellingen`.`bestellingnummer` AS `bestellingnummer`,`bestellingen`.`id` AS `id`,`bestellingen`.`productcode` AS `productcode`,`bestellingen`.`aantal_besteld` AS `aantal_besteld`,`bestellingen`.`opmerking` AS `opmerking`,`bestellingen`.`datum` AS `datum`,`bestellingen`.`status` AS `status` from `bestellingen` where (`bestellingen`.`status` < 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `Actieve tafels`
+--
+DROP TABLE IF EXISTS `Actieve tafels`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`inf_po`@`localhost` SQL SECURITY DEFINER VIEW `Actieve tafels` AS select `tafelregistratie`.`nummer` AS `nummer`,`tafelregistratie`.`id` AS `id`,`tafelregistratie`.`tafelnummer` AS `tafelnummer`,`tafelregistratie`.`aantal_klanten` AS `aantal_klanten`,`tafelregistratie`.`actief` AS `actief`,`tafelregistratie`.`datum` AS `datum` from `tafelregistratie` where (`tafelregistratie`.`actief` = 1);
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Beperkingen voor tabel `bestellingen`
+-- Constraints for table `bestellingen`
 --
 ALTER TABLE `bestellingen`
   ADD CONSTRAINT `bestellingen_ibfk_1` FOREIGN KEY (`id`) REFERENCES `inlogsysteem` (`id`) ON UPDATE CASCADE,
@@ -127,13 +188,19 @@ ALTER TABLE `bestellingen`
   ADD CONSTRAINT `bestellingen_ibfk_3` FOREIGN KEY (`nummer`) REFERENCES `tafelregistratie` (`nummer`) ON UPDATE CASCADE;
 
 --
--- Beperkingen voor tabel `producten`
+-- Constraints for table `producten`
 --
 ALTER TABLE `producten`
   ADD CONSTRAINT `producten_ibfk_2` FOREIGN KEY (`categorienummer`) REFERENCES `categorie` (`categorienummer`) ON UPDATE CASCADE;
 
 --
--- Beperkingen voor tabel `tafelregistratie`
+-- Constraints for table `regids`
+--
+ALTER TABLE `regids`
+  ADD CONSTRAINT `regids_ibfk_1` FOREIGN KEY (`id`) REFERENCES `inlogsysteem` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tafelregistratie`
 --
 ALTER TABLE `tafelregistratie`
   ADD CONSTRAINT `tafelregistratie_ibfk_1` FOREIGN KEY (`id`) REFERENCES `inlogsysteem` (`id`) ON UPDATE CASCADE,
