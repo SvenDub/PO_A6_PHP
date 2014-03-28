@@ -33,3 +33,4 @@
 * 24-03-14 Laatste op en aanmerkingen aan de software en documentatie
 * 25-03-14 Sven: Notificaties
 * 26-03-14 Sven: Notificaties
+* 28-03-14 Laatste op en aanmerkingen aan de software en documentatie met iedereen
