@@ -10,7 +10,7 @@ Ontwerpen
 - [x] Inlogsysteem android app
 - [x] Liveticker keuken
 - [x] Bestellingen aanmaken
-- [ ] Bestellingen aanpassen
+- [x] Bestellingen aanpassen
 - [x] Betalen app
 
 - [x] Beheer
