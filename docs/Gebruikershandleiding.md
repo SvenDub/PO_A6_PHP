@@ -9,7 +9,7 @@ U bevindt zich nu op de homepage. Wanneer u links in het menu op 'Inloggen' klik
 Hier kan al het personeel inloggen met zijn gebruikersgegevens. Wanneer u correct inlogt met uw gebruikersgegevens, krijgt u de melding ‘Welkom op de inlogpagina’.
 Wanneer u nu teruggaat naar ‘Home’, kunt u beginnen met het gebruiken van de website. U ziet dan de onderstaande pagina:
 
-![Hoofdscherm][https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-1.png]
+![Hoofdscherm](https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-1.png)
 
 Het verschillende personeel heeft verschillende functies tot beschikking. Op die manier wordt er onderscheid gemaakt tussen beheerders en ’normaal’ personeel. De bovenstaande screenshot toont alle functies voor een beheerder, gewoon personeel ziet alleen de opties ‘Home’, ‘Uitloggen’ en  ‘Bestellingen’.
 
@@ -41,7 +41,7 @@ Uit de Google Play Store kunt u de applicatie voor het kassasysteem downloaden.
 
 Op het moment dat u de app gedownload hebt en voor het eerst de app start, dan zult u dit scherm krijgen:
 
-![Inlogscherm][https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-2.png]
+![Inlogscherm](https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-2.png)
 
 Hier moet u de url van de server, uw gebruikersnaam en uw wachtwoord invullen in de hiervoor bestemde vakjes. Vervolgens drukt u op inloggen. Het systeem zal uw gegevens verifiëren en zal u daarna inloggen. 
 
@@ -49,19 +49,19 @@ U krijgt vervolgens na het inloggen het hoofdscherm van de applicatie waar de ta
 
 Dit is het hoofdscherm van de app:
 
-![Hoofdscherm][https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-3.png]
+![Hoofdscherm](https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-3.png)
 
 In de Action Bar ziet u een ververs knop en het action overflow.  Bij tafel 1 en 2 zijn de tafels op dit moment bezet, dat ziet u aan het icoontje.
 
 Op het moment dat u een nieuwe tafel wilt activeren doordat er nieuwe gasten bij zijn gekomen, drukt u op een vrije tafel. U krijgt dan dit scherm te zien:
 
-![Beheer Tafel scherm][https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-4.png]
+![Beheer Tafel scherm](https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-4.png)
 
 U ziet hier in de Action Bar een beheerknop, als u daar op drukt komt er een pop up met een knop activeren. Als u vervolgens op activeren klikt, vraagt de app aan u hoeveel personen u aan deze tafel wilt laten eten in restaurant de Bolhoed. De tafel is op dat moment geactiveerd.
 
 U kunt dan na deze activatie op de gerechten klikken in de menulijst. Op de afbeelding hierboven staat de menulijst open op de hoofdgerechten. U klikt dan op een gerecht, u krijgt pop up te zien waarin het aantal wordt gevraagd en u kunt dan een opmerking toevoegen bij de bestelling van dit gerecht.
 
-![Bestellijst][https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-5.png]
+![Bestellijst](https://github.com/SvenDub/PO_A6_PHP/raw/master/docs/Gebruikershandleiding-5.png)
 
 De bestelling komt vervolgens in de bestellijst van de tafel. Hier ziet u een afbeelding met bestelling voor Crêpe soleil. De bestelling is 2x opgenomen en het product is dan totaal 12 euro. Dus 1 Crêpe soleil is 6 euro. U kunt ook op de bestelling klikken om de bestelling te wijzigen. 
 Op het moment dat de keuken de bestelling klaar heeft, krijgt de ober die de bestelling heeft aangemaakt een notificatie.
